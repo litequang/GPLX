@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b3434">
+  <meta name="description" content="Học 600 câu hỏi GPLX, ôn điểm liệt, tra cứu biển báo và luyện đề. Lưu tiến độ và học ngoại tuyến.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Ôn thi GPLX · Học vững, lái an tâm</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đến nội dung</a>
+  <aside id="sidebar" class="sidebar">
+    <a class="brand" href="#home"><span class="brand-icon">↟</span><span>GPLX<span class="brand-sub">HỌC VỮNG. LÁI AN TÂM.</span></span></a>
+    <p class="nav-caption">KHÔNG GIAN HỌC TẬP</p>
+    <nav aria-label="Điều hướng chính" id="nav"></nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="connection-label">Đang trực tuyến</span><small>Tiến độ lưu trên thiết bị của bạn</small></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-button mobile-menu" id="menu-button" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="breadcrumb">Góc học tập <span>/</span> <strong id="page-label">Tổng quan</strong></div>
+      <div class="header-actions"><button class="quiet-button" id="install-button" hidden>Cài ứng dụng <span>↗</span></button><span class="profile" aria-label="Hồ sơ cá nhân">BẠN</span></div>
+    </header>
+    <main id="main" tabindex="-1"><div class="loading">Đang mở bộ câu hỏi…</div></main>
+    <footer><span>Ôn thi GPLX · Không gian học tập cá nhân</span><button class="text-button" data-action="about">Nguồn dữ liệu & cài đặt</button></footer>
+  </div>
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

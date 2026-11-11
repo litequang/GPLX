@@ -1,0 +1,37 @@
+# Công việc tiếp theo
+
+## P0 — trước khi tuyên bố đã kiểm tra đầy đủ
+
+- [ ] Kiểm tra trực quan desktop và viewport mobile 390px. Công cụ Computer Use đã từ chối thao tác Chrome vì không xác định URL đủ tin cậy; chưa có screenshot/QA trình duyệt xác nhận.
+- [ ] Kiểm thử luồng thực tế: chọn đúng/sai → giải thích → đánh dấu → ôn câu sai → đổi hạng/chủ đề/tìm không dấu.
+- [ ] Kiểm thử bài làm thực tế: đổi đáp án, chuyển route trong khi đồng hồ chạy, reload tab, nộp sớm và tự nộp khi hết giờ.
+- [ ] Kiểm thử ngoại tuyến thực tế: tải đủ ảnh → chờ marker ready → tắt preview server/mạng → reload → mở câu có ảnh chưa xem → biển báo. Bật lại mạng và thử cập nhật cache từ phiên bản cũ.
+- [ ] Kiểm thử cài PWA trên Chrome Android và hành vi hosting có đăng nhập riêng. Người dùng đã rút điện thoại sau khi lấy APK; chưa kiểm tra cài PWA trên thiết bị đó.
+- [ ] Đối chiếu bộ đề/đáp án/cấu trúc hạng bằng với nguồn chính thức hiện hành nếu cần phát hành như tài liệu ôn thi cập nhật. Hiện ứng dụng ghi rõ snapshot từ app gốc.
+- [ ] Nếu cần khẳng định mô phỏng chính xác ứng dụng nguồn: đối chiếu mapping pool và cách ra đề với mã/behavior của app Android; hiện dựa vào DB, không decompile Java.
+
+## P1 — cải thiện trải nghiệm
+
+- [ ] Lưu chi tiết các bài đã nộp để mở lại lịch sử; hiện chỉ lưu tóm tắt và giữ chi tiết bài mới nhất trong bộ nhớ.
+- [ ] Thêm chọn “chỉ câu chưa học” và ôn theo lịch (spaced repetition), kèm migration schema tiến độ.
+- [ ] Kiểm thử với screen reader và công cụ contrast/accessibility; không tự gắn nhãn đạt WCAG.
+- [ ] Tăng vùng bấm số câu trên mobile nếu kiểm tra usability cho thấy quá nhỏ.
+- [ ] Hiển thị thông báo có bản cập nhật service worker, lựa chọn tải lại vào lúc không đang làm bài.
+- [ ] Cung cấp xóa riêng cache ngoại tuyến mà vẫn giữ tiến độ, cùng ước lượng dung lượng tải.
+- [ ] Kiểm tra data-extraction adapter khi ứng dụng Android nâng version/schema, lưu thêm versionName/versionCode nếu có công cụ đọc manifest.
+
+## P2 — chỉ làm khi người dùng yêu cầu
+
+- [ ] Đồng bộ nhiều thiết bị / tài khoản / backend. Cần lựa chọn lưu trữ và chính sách dữ liệu trước khi triển khai.
+- [ ] Bổ sung video mô phỏng, bài thực hành hoặc mẹo học. Không có các dữ liệu này trong dataset web hiện tại.
+- [ ] Tách câu hỏi/ảnh thành bộ tải theo hạng để giảm dung lượng tải lần đầu.
+- [ ] Thêm GitHub Pages hoặc domain công khai. Hiện không tự đổi repo visibility hay quyền hosting.
+
+## Hoàn thành ở phiên bản đầu
+
+- [x] Lấy đủ APK, trích SQLite và ảnh tham chiếu.
+- [x] 600 câu, 60 critical, 332 biển báo; kiểm tra ID/đáp án/đường dẫn ảnh.
+- [x] Các màn hình học, đánh dấu, ôn sai, tìm kiếm, biển báo, luyện đề.
+- [x] Local progress, export/import, session restore, manifest và worker tải ngoại tuyến.
+- [x] 9 nhóm kiểm thử tự động, trong đó 100 đề × 10 hạng và worker mô phỏng.
+- [x] Sơ đồ kiến trúc, bảng dữ liệu, quy tắc thiết kế và hướng dẫn AI tiếp tục.

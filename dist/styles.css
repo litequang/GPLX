@@ -1819,3 +1819,30 @@ html { scroll-padding-top:110px; scroll-padding-bottom:110px; }
   .bottom-nav { left:50%; width:calc(100% - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)); max-width:560px; gap:2px; }
   .bottom-item { font-size:10px; }
 }
+
+
+/* QCVN 41:2024: text-only additions must never impersonate validated sign artwork. */
+.sign-no-image {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  width:100%;
+  min-height:110px;
+  padding:12px;
+  margin-bottom:20px;
+  border:1px dashed var(--line);
+  border-radius:9px;
+  background:#f5f7f3;
+  color:#527255;
+  text-align:center;
+}
+.sign-no-image strong { font-size:20px; font-weight:650 }
+.sign-no-image span { font-size:10px; color:var(--muted); line-height:1.5 }
+.sign-no-image.detail { max-width:330px; min-height:155px; margin:0 auto 24px }
+.sign-new-panel { background:#f6f8f4; border:1px solid var(--line); border-radius:12px; padding:15px 18px; margin:0 0 20px }
+.sign-new-panel strong { font-size:12px; font-weight:650; line-height:1.6 }
+.sign-new-codes { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
+.sign-new-codes .text-button { font-size:12px }
+@media(max-width:700px) { .sign-no-image { min-height:96px; margin-bottom:15px } }

@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js?v=gplx-shell-v7';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds, restoredStudyResponses, studyPositionKey } from './core.js?v=gplx-shell-v7';
+import { initChrome } from './chrome.js?v=gplx-shell-v8';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds, restoredStudyResponses, studyPositionKey } from './core.js?v=gplx-shell-v8';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -42,7 +42,7 @@ const categoryName = id => dataset.categories.find(c => c.id === id)?.name || 'T
 const date = timestamp => new Intl.DateTimeFormat('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(timestamp);
 function licenseSelect() { return `<div class="license-control"><label for="license">Hạng bằng</label><select id="license" aria-label="Chọn hạng bằng" ${exam ? 'disabled' : ''}>${dataset.licenses.map(l => `<option value="${escape(l.name)}" ${l.name === progress.license ? 'selected' : ''}>Hạng ${escape(l.name)}</option>`).join('')}</select></div>`; }
 function heading(title, description, trailing = licenseSelect()) { return `<div class="page-heading"><div><p class="eyebrow">HỌC VỮNG · LÁI AN TÂM</p><h1>${title}</h1><p class="subtitle">${description}</p></div>${trailing}</div>`; }
-function sourceNote() { return `<p class="source-note">Bộ dữ liệu trích từ ứng dụng Android ngày 11/11/2026. Đề luyện được tạo ngẫu nhiên theo ma trận 2025; điểm liệt theo hạng căn cứ Công văn 2262/CSGT-P5. Câu 1, 2, 600 được hiệu đính theo PDF Cục CSGT. <button class="text-button" data-action="about">Xem nguồn dữ liệu</button></p>`; }
+function sourceNote() { return `<p class="source-note">Bộ câu hỏi từ APK và các hiệu đính Cục CSGT 2025. Thư viện biển báo đang đối chiếu QCVN 41:2024, từng biển có trạng thái kiểm duyệt riêng. <button class="text-button" data-action="about">Xem nguồn dữ liệu</button></p>`; }
 function updateNav() {
   const p = pool();
   $('#nav').innerHTML = navItems.map(([route, label, symbol], i) => `${i === 5 ? '<div class="nav-separator"></div>' : ''}<a class="nav-item ${route === state.route ? 'active' : ''}" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span>${route === 'critical' ? `<span class="count">${p.filter(q => q.critical).length}</span>` : route === 'wrong' ? `<span class="count">${p.filter(q => progress.answers[q.id]?.correct === false).length}</span>` : route === 'saved' ? `<span class="count">${p.filter(q => progress.bookmarks.includes(q.id)).length}</span>` : ''}</a>`).join('');
@@ -93,10 +93,25 @@ function renderStudy() {
   const q = state.list[state.index];
   $('#main').innerHTML = `${heading(title, description)}${toolbar()}${q ? `<div class="results-count">${state.list.length} câu hỏi · Hạng ${escape(progress.license)}</div><div class="study-layout">${questionMarkup(q, state.responses[q.id])}${renderNumberGrid(state.list, state.index, state.responses)}</div>` : emptyState(state.search || state.category ? 'Không tìm thấy câu hỏi' : state.route === 'wrong' ? 'Chưa có câu nào cần ôn lại' : state.route === 'saved' ? 'Góc ghi nhớ đang trống' : 'Chưa có câu hỏi', state.search || state.category ? 'Thử từ khóa khác hoặc bỏ bộ lọc chủ đề.' : state.route === 'saved' ? 'Bấm biểu tượng đánh dấu trên mỗi câu để lưu tại đây.' : 'Khi bạn trả lời sai, câu hỏi sẽ xuất hiện ở đây để ôn lại.', state.route === 'saved' ? 'bookmark' : 'check')}${sourceNote()}`;
 }
+function signFigure(s, detail = false) {
+  if (s.image) return `<img class="${detail ? 'sign-detail-image' : ''}" src="${escape(s.image)}" alt="${escape(s.name)}" loading="lazy" decoding="async">`;
+  return `<div class="sign-no-image ${detail ? 'detail' : ''}" role="img" aria-label="Biển ${escape(s.code)} chưa có hình đã kiểm duyệt"><strong>${escape(s.code)}</strong><span>Hình minh họa đang đối chiếu với quy chuẩn</span></div>`;
+}
+function signVerification(s) {
+  if (s.qcvn2024?.verification === 'text-verified') return 'Tên và ý nghĩa đã đối chiếu với QCVN 41:2024. Hình ảnh chưa được kiểm duyệt trực quan.';
+  if (s.qcvn2024?.verification === 'needs-code-review') return 'Mã và hình từ nguồn cũ chưa thể ánh xạ chắc chắn sang mã của QCVN 41:2024; đang chờ đối chiếu.';
+  return 'Tên, ý nghĩa và hình từ dữ liệu gốc chưa được kiểm duyệt đầy đủ theo QCVN 41:2024.';
+}
 function renderSigns() {
   const query = normalize(state.search).trim();
-  const signs = dataset.signs.filter(s => (!state.category || s.category === Number(state.category)) && (!query || normalize(s.name + ' ' + s.detail).includes(query)));
-  $('#main').innerHTML = `${heading('Nhận diện biển báo', 'Hiểu ý nghĩa của từng biển báo trên hành trình.', '')}${toolbar('signs')}<p class="results-count">${signs.length} biển báo${state.category ? ' trong nhóm đã chọn' : ' trong thư viện'}</p>${signs.length ? `<div class="sign-grid">${signs.slice(0, state.signLimit).map(s => `<button class="sign-card" data-action="sign" data-id="${s.id}"><img src="${escape(s.image)}" alt="${escape(s.name)}" loading="lazy" decoding="async"><h3>${escape(s.name)}</h3><small>Xem ý nghĩa →</small></button>`).join('')}</div>${signs.length > state.signLimit ? `<div class="show-more"><button class="secondary" data-action="more-signs">Xem thêm biển báo (${signs.length - state.signLimit} còn lại)</button></div>` : ''}` : emptyState('Không tìm thấy biển báo', 'Thử từ khóa ngắn hơn hoặc một nhóm biển báo khác.', 'sign')}${sourceNote()}`;
+  const signs = dataset.signs.filter(s => (!state.category || s.category === Number(state.category)) && (!query || normalize(s.code + ' ' + s.name + ' ' + s.detail).includes(query)));
+  const missingImage = dataset.signs.filter(s => !s.image);
+  $('#main').innerHTML = `${heading('Nhận diện biển báo', 'Tra cứu mã và ý nghĩa biển báo, kèm trạng thái đối chiếu QCVN 41:2024.', '')}
+    ${toolbar('signs')}
+    <p class="results-count">${signs.length} mục${state.category ? ' trong nhóm đã chọn' : ' trong thư viện'} · ${dataset.signs.length - missingImage.length} mục có hình nguồn cũ · ${missingImage.length} mục bổ sung đang chờ hình</p>
+    ${!state.category && !state.search && missingImage.length ? `<section class="sign-new-panel" aria-label="Mã biển bổ sung theo quy chuẩn"><strong>Các mã được bổ sung theo QCVN 41:2024 (chưa có hình kiểm duyệt)</strong><div class="sign-new-codes">${missingImage.map(s => `<button class="text-button" data-action="sign" data-id="${s.id}">${escape(s.code)}</button>`).join('')}</div></section>` : ''}
+    ${signs.length ? `<div class="sign-grid">${signs.slice(0, state.signLimit).map(s => `<button class="sign-card" data-action="sign" data-id="${s.id}">${signFigure(s)}<h3>${escape(s.name)}</h3><small>${s.qcvn2024?.verification === 'text-verified' ? 'Nội dung đã đối chiếu' : 'Đang kiểm duyệt'} · Xem ý nghĩa →</small></button>`).join('')}</div>${signs.length > state.signLimit ? `<div class="show-more"><button class="secondary" data-action="more-signs">Xem thêm biển báo (${signs.length - state.signLimit} còn lại)</button></div>` : ''}` : emptyState('Không tìm thấy biển báo', 'Thử từ khóa ngắn hơn hoặc một nhóm biển báo khác.', 'sign')}
+    <p class="source-note">Nguồn đối chiếu: QCVN 41:2024/BGTVT, Thông tư 51/2024/TT-BGTVT. Các mục chưa kiểm duyệt được ghi rõ; không dùng hình tạm cho biển mới. ${sourceNote()}</p>`;
 }
 function renderExamSetup() {
   const l = license();
@@ -148,7 +163,7 @@ function go(route, options = {}) {
 function showModal(markup) { chrome.show(); $('#modal-content').innerHTML = markup; if (!$('#modal').open) $('#modal').showModal(); }
 const modalHeading = title => `<div class="modal-heading"><h2>${title}</h2><button class="icon-button" data-action="close-modal" aria-label="Đóng">×</button></div>`;
 function about() {
-  showModal(`${modalHeading('Góc học tập của bạn')}<div class="modal-copy"><strong>Nguồn dữ liệu</strong><p>600 câu hỏi, 60 câu điểm liệt và 332 biển báo trích từ ứng dụng Android ngày 11/11/2026.</p><p><code>${escape(dataset.source.package)}</code></p><p>${escape(dataset.source.note)}</p><p>Hạng bằng, đáp án và ngưỡng đạt được giữ theo cơ sở dữ liệu nguồn. Đây là công cụ ôn tập cá nhân. Kết quả bài luyện không thay thế kết quả sát hạch.</p><hr class="modal-divider"><strong>Tiến độ trên thiết bị</strong><p>Câu đã học, đánh dấu và lịch sử luyện đề được lưu trong trình duyệt này. Xuất tệp để sao lưu hoặc chuyển sang thiết bị khác.</p></div><div class="modal-actions"><button class="secondary" data-action="export">Xuất tiến độ ↓</button><button class="secondary" data-action="import">Nhập tiến độ ↑</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><hr class="modal-divider"><div class="modal-copy"><strong>Học ngoại tuyến & cài ứng dụng</strong><p>Bấm “Tải để học ngoại tuyến” ở trang tổng quan và chờ hoàn tất. Khi có kết nối, Chrome/Edge có thể cho phép cài ứng dụng. Trên Safari iPhone: Chia sẻ → Thêm vào Màn hình chính. Tiến độ lưu riêng theo trình duyệt và địa chỉ trang web.</p></div><div class="modal-actions"><button class="danger-button" data-action="reset-confirm">Xóa tiến độ trên thiết bị</button></div>`);
+  showModal(`${modalHeading('Góc học tập của bạn')}<div class="modal-copy"><strong>Nguồn dữ liệu</strong><p>600 câu hỏi, 60 câu điểm liệt và ${dataset.signs.length} mục biển báo (332 mục nguồn Android; 8 mục bổ sung từ QCVN 41:2024, chưa có hình).</p><p><code>${escape(dataset.source.package)}</code></p><p>${escape(dataset.source.note)}</p><p>Hạng bằng, đáp án và ngưỡng đạt được giữ theo cơ sở dữ liệu nguồn. Ý nghĩa/hình biển từ nguồn cũ chưa được kiểm duyệt hết. Đây là công cụ ôn tập cá nhân. Kết quả bài luyện không thay thế kết quả sát hạch.</p><hr class="modal-divider"><strong>Tiến độ trên thiết bị</strong><p>Câu đã học, đánh dấu và lịch sử luyện đề được lưu trong trình duyệt này. Xuất tệp để sao lưu hoặc chuyển sang thiết bị khác.</p></div><div class="modal-actions"><button class="secondary" data-action="export">Xuất tiến độ ↓</button><button class="secondary" data-action="import">Nhập tiến độ ↑</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><hr class="modal-divider"><div class="modal-copy"><strong>Học ngoại tuyến & cài ứng dụng</strong><p>Bấm “Tải để học ngoại tuyến” ở trang tổng quan và chờ hoàn tất. Khi có kết nối, Chrome/Edge có thể cho phép cài ứng dụng. Trên Safari iPhone: Chia sẻ → Thêm vào Màn hình chính. Tiến độ lưu riêng theo trình duyệt và địa chỉ trang web.</p></div><div class="modal-actions"><button class="danger-button" data-action="reset-confirm">Xóa tiến độ trên thiết bị</button></div>`);
 }
 function recordAnswer(q, selected) {
   progress.answers[q.id] = { selected, correct: selected === q.answer, at: Date.now() };
@@ -200,7 +215,16 @@ function handleAction(action, button) {
     case 'retry-question': delete state.responses[q.id]; renderStudy(); break;
     case 'jump': if (index >= 0 && index < state.list.length) { state.index = index; rememberStudyPosition(); renderStudy(); if (window.innerWidth < 961) $('#main').scrollIntoView({ block: 'start' }); } break;
     case 'bookmark': { const at = progress.bookmarks.indexOf(id); if (at >= 0) progress.bookmarks.splice(at, 1); else progress.bookmarks.push(id); save(); render(); toast(at >= 0 ? 'Đã bỏ đánh dấu câu hỏi.' : 'Đã lưu vào câu đánh dấu.'); break; }
-    case 'sign': { const sign = dataset.signs.find(s => s.id === id); showModal(`${modalHeading(escape(sign.name))}<img class="sign-detail-image" src="${escape(sign.image)}" alt="${escape(sign.name)}"><div class="sign-detail-text">${escape(sign.detail)}</div><p class="source-note">Nội dung giữ theo dữ liệu ứng dụng gốc.</p>`); break; }
+    case 'sign': {
+      const sign = dataset.signs.find(s => s.id === id);
+      if (!sign) break;
+      const source = dataset.source.signAudit2024?.standard?.officialPdf;
+      showModal(`${modalHeading(escape(sign.name))}${signFigure(sign, true)}<div class="sign-detail-text">${escape(sign.detail)}</div>
+        <p class="source-note">Mã: ${escape(sign.code || 'Chưa xác định')} · Phụ lục ${escape(sign.qcvn2024?.annex || '?')}${sign.qcvn2024?.clause ? ', mục ' + escape(sign.qcvn2024.clause) : ''}</p>
+        <p class="source-note">${escape(signVerification(sign))}</p>
+        ${source ? `<p class="source-note"><a href="${escape(source)}" target="_blank" rel="noopener noreferrer">Đọc PDF quy chuẩn chính thức ↗</a></p>` : ''}`);
+      break;
+    }
     case 'more-signs': state.signLimit += 32; renderSigns(); break;
     case 'about': about(); break;
     case 'close-modal': $('#modal').close(); break;

@@ -44,14 +44,15 @@ export function applySign2024Updates(legacySigns) {
   // QCVN 2024 now uses DP.127; do not reassign either old image blindly.
   const mapped = legacySigns.map(sign => {
     const update = corrections[sign.id];
-    const code = update?.code || extractSignCode(sign);
+    const { code: overrideCode, clause = null, ...fields } = update || {};
+    const code = overrideCode || extractSignCode(sign);
     const needsCodeReview = sign.id === 54 || sign.id === 116;
     const annex = annexFor(sign.category);
     return {
-      ...sign, ...(update || {}), code,
+      ...sign, ...fields, code,
       legacy: { sourceId: sign.id, sourceUpdated: sign.sourceUpdated },
       qcvn2024: {
-        annex, clause: update?.clause || null,
+        annex, clause,
         verification: needsCodeReview ? 'needs-code-review' : update ? 'text-verified' : 'pending',
         imageVerification: 'pending',
       },

@@ -35,3 +35,11 @@
 - [x] Local progress, export/import, session restore, manifest và worker tải ngoại tuyến.
 - [x] 9 nhóm kiểm thử tự động, trong đó 100 đề × 10 hạng và worker mô phỏng.
 - [x] Sơ đồ kiến trúc, bảng dữ liệu, quy tắc thiết kế và hướng dẫn AI tiếp tục.
+
+
+## Theo dõi kiểm định CSGT 2025 (11/11/2026)
+- [x] Đối chiếu chính xác 250/300 ID trong hai phụ lục mô tô, 60 ID điểm liệt toàn cục.
+- [x] Sửa 20/30/60 câu liệt theo hạng trong màn hình học, luyện đề, chấm và phục hồi session; kiểm thử hồi quy.
+- [x] Hiệu đính câu 1, 2, 600 từ văn bản CSGT chính thức, giữ nguồn trong extractor.
+- [ ] Đối chiếu 600/600 câu chữ, lựa chọn, đáp án có gạch chân và từng hình ảnh theo số câu trước khi khẳng định 100% chính xác.
+- [ ] Kiểm chứng trên điện thoại và PWA đã được nâng cache lên v6.

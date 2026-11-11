@@ -71,3 +71,11 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 - Sửa trong `dist/chrome.js`: `resize` chỉ đồng bộ mốc scroll và xóa quãng đường tích lũy, không thay đổi class `chrome-hidden`; cả hai thanh vẫn dùng cùng trạng thái; chỉ cuộn lên vượt ngưỡng 14px mới hiện lại (ngoại lệ điều hướng bàn phím, modal, về đầu trang, chuyển màn hình/breakpoint).
 - Bổ sung 2 kiểm thử mô phỏng: cuộn xuống → ẩn → resize → đứng yên/tiếp tục cuộn xuống vẫn ẩn → cuộn lên mới hiện; resize không giữ lại delta ngược chiều cũ.
 - Đã cập nhật version query, imports và precache lên `gplx-shell-v5` để tránh trộn phiên bản shell cũ. QA trên Android thật vẫn chưa được xác nhận riêng.
+
+
+## Kiểm định Cục CSGT 2025 — bước 1 (11/11/2026)
+- Đối chiếu toàn bộ ID Phụ lục I (A1/A 250 câu), Phụ lục II (B1 300 câu) và Phụ lục III (60 câu điểm liệt) theo Công văn 2262/CSGT-P5: **khớp chính xác ID**.
+- Mã nguồn: phân loại 20/30/60 câu điểm liệt theo hạng, không thay cờ 60 câu toàn cục nguồn; kiểm tra hồi quy sinh 100 đề × 10 hạng, phân bổ chủ đề, chấm điểm, kiểm tra khôi phục đề.
+- Hiệu đính văn bản câu 1, 2, 600 theo PDF Cục CSGT. Câu 466, 474, 475 tiếp tục thiếu giải thích nguồn.
+- Cần phân biệt **đã xác minh ID** với **chưa xác minh đầy đủ 600/600 câu chữ/đáp án/ảnh**. Chưa chỉnh các đáp án vì PDF dùng định dạng gạch chân cần kiểm tra trực quan.
+- Nguồn: https://cuccsgt.bocongan.gov.vn/upload/services/2071319603_H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20s%E1%BB%AD%20d%E1%BB%A5ng%20b%E1%BB%99%20c%C3%A2u%20h%E1%BB%8Fi%20s%C3%A1t%20h%E1%BA%A1ch%20GPLX%20%28CV%202262.07.5.2025%29.pdf

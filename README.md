@@ -48,7 +48,7 @@ npm run check:deploy        # Chặn ZIP/APK/DB và file >25 MiB trong dist
 
 ## Dữ liệu và giới hạn
 
-Dữ liệu trích ngày **11/11/2026**, package `com.vietauto.onthigiaypheplaixe.onthigplx600cau.gplxoto`. Nội dung, đáp án, giải thích và cấu hình hạng bằng giữ theo cơ sở dữ liệu gốc. **Chưa đối chiếu độc lập với bộ đề và quy định sát hạch hiện hành.** Đề luyện được sinh từ phân bổ trong SQLite; không khẳng định là đề thi chính thức hoặc bộ đề cố định của ứng dụng.
+Dữ liệu trích ngày **11/11/2026**, package `com.vietauto.onthigiaypheplaixe.onthigplx600cau.gplxoto`. Nội dung chủ yếu giữ theo SQLite nguồn; riêng câu 1, 2 và 600 được hiệu đính theo PDF 600 câu của Cục CSGT 2025. Phạm vi câu điểm liệt theo hạng được đối chiếu với Công văn 2262/CSGT-P5. **Chưa đối chiếu đầy đủ văn bản, đáp án và hình ảnh của cả 600 câu**; không coi mọi đáp án đã được xác nhận độc lập. Đề luyện được sinh từ phân bổ trong SQLite; không khẳng định là đề thi chính thức hoặc bộ đề cố định của ứng dụng.
 
 Đây là bản dựng mới của giao diện web. Không lấy mã giao diện, quảng cáo, tài khoản hay tiến độ cá nhân trên điện thoại. Không gán giấy phép mã nguồn mở cho nội dung và hình ảnh được trích từ bên thứ ba.
 

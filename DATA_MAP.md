@@ -29,13 +29,13 @@
 | SQLite | JSON | Xử lý |
 | --- | --- | --- |
 | Z_PK | id | Giữ nguyên; khóa của tiến độ |
-| ZQUESTIONCONTENT | text | Unicode NFC, không biên tập lại |
+| ZQUESTIONCONTENT | text | Unicode NFC; riêng câu 1, 2, 600 được hiệu đính theo PDF Cục CSGT 2025 |
 | ZOPTION1…4 | options[{id,text}] | Bỏ lựa chọn rỗng, giữ số đáp án gốc |
 | ZANSWERS | answer | Số đáp án, **đánh số từ 1** |
 | ZANSWERDESC | explanation | Giữ nội dung, xuống dòng |
 | ZIMAGE | image | `assets/imageapp_600/<tên file>` hoặc null |
 | ZQUESTIONTYPE | category | ID từ ZQUESTIONTYPE |
-| ZQUESTIONDIE | critical | Đúng khi nguồn là chuỗi `"1"` |
+| ZQUESTIONDIE | critical | Cờ 60 câu toàn cục đúng khi nguồn là chuỗi `"1"`; khi hiển thị/ra đề mô tô, `poolFor` áp dụng danh sách 20/30 câu theo hạng |
 | ZINCLUDE* | included | Object giữ hậu tố cột gốc và boolean |
 
 ZLEARNED/ZMARKED/ZWRONG không được đưa vào nội dung web; tiến độ mới lưu trong trình duyệt. ZAWSA1 không có override không rỗng trong bản đã lấy. Không tự suy ra các override mới nếu chưa cập nhật nguồn.
@@ -68,7 +68,7 @@ ID 2 (Nghiệp vụ vận tải) không có câu trong ZQUESTION ở snapshot n�
 | D | DEF | 600 | 45 | 26 | 41 |
 | E | DEF | 600 | 45 | 26 | 41 |
 
-Mapping pool được cấu hình rõ trong script xuất, dựa trên cột nguồn và số lượng bộ câu; **chưa kiểm tra đối chiếu với mã chạy của ứng dụng hoặc quy định hiện hành**. Không dùng `ZINCLUDEA34` (cột di sản chứa 600 câu) cho B1. Hạng `E` là nhãn gộp trong dữ liệu, mô tả gốc gồm BE/C1E/CE/D1E/D2E/DE; web giữ nhãn nguồn.
+Mapping pool được cấu hình rõ trong script xuất; **tập 250 ID A1/A và 300 ID B1 đã đối chiếu khớp Phụ lục I/II Công văn 2262/CSGT-P5 (2025)**. Chưa đối chiếu với mã chạy của app Android nguồn; chưa xác nhận toàn bộ đáp án. Không dùng `ZINCLUDEA34` (cột di sản chứa 600 câu) cho B1. Hạng `E` là nhãn gộp trong dữ liệu, mô tả gốc gồm BE/C1E/CE/D1E/D2E/DE; web giữ nhãn nguồn.
 
 ### Sinh đề
 
@@ -103,3 +103,12 @@ npm run extract -- 'E:\CODE\GPLX\extracted\assets'
 Nếu cần lấy lại APK, dùng `scripts/pull-apk.ps1` với ADB và điện thoại đã cho phép gỡ lỗi. APK là ZIP; giải nén các thư mục assets/databases, imageapp_600, signal để tái xuất. Không đưa toàn bộ APK vào thư mục deploy.
 
 Script kiểm tra tên asset, sự tồn tại ảnh, giữ ID và ghi manifest offline. Sau thay dữ liệu, xem diff thống kê, kiểm tra ngưỡng/nhãn nguồn, tăng APP_REVISION và kiểm thử ngoại tuyến với cache cũ. Nguồn đầu vào khác schema phải được xử lý bằng adapter mới; không dùng câu SQL đoán cột rồi bỏ qua lỗi.
+
+
+## Đối chiếu pháp lý 2025 — cập nhật 11/11/2026
+- Nguồn: [Công văn 2262/CSGT-P5, Phụ lục I–III](https://cuccsgt.bocongan.gov.vn/upload/services/2071319603_H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20s%E1%BB%AD%20d%E1%BB%A5ng%20b%E1%BB%99%20c%C3%A2u%20h%E1%BB%8Fi%20s%C3%A1t%20h%E1%BA%A1ch%20GPLX%20%28CV%202262.07.5.2025%29.pdf); [PDF bộ 600 câu Cục CSGT](https://www.csgt.vn/upload/services/273963059_B%E1%BB%99%20600%20c%C3%A2u%20h%E1%BB%8Fi%20d%C3%B9ng%20cho%20s%C3%A1t%20h%E1%BA%A1ch%20l%C3%A1i%20xe%20c%C6%A1%20gi%E1%BB%9Bi%20%C4%91%C6%B0%E1%BB%9Dng%20b%E1%BB%99.pdf).
+- Tập ID hạng **A1/A: 250/250**, **B1: 300/300** khớp chính xác phụ lục. Danh sách **60/60 ID điểm liệt toàn cục** khớp Phụ lục III.
+- `questions[].critical` từ SQLite vẫn giữ cờ 60 câu **toàn cục**; `poolFor(dataset, license)` tạo cờ theo hạng A1/A **20**, B1 **30**, ô tô **60**. Câu có cờ toàn cục nhưng không thuộc điểm liệt của hạng mô tô trở thành câu thường hợp lệ; không bị xóa.
+- `examQuestions()` lấy câu hỏi theo hạng để chấm đúng; `validExamIds()` không khôi phục đề từ phiên cũ có cấu trúc sai. Tiến độ `gplx-progress-v1` giữ nguyên.
+- Câu **1, 2, 600** hiệu đính văn bản đã kiểm tra theo PDF chính thức; đáp án, ID, category và ảnh không đổi. Script trích xuất giữ các hiệu đính để tái tạo dữ liệu nhất quán.
+- **Chưa hoàn thành xác minh 600/600 câu chữ, lựa chọn, đáp án có gạch chân và hình ảnh**; xem `docs/OFFICIAL_2025_STEP1_AUDIT.md`.

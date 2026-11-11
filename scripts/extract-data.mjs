@@ -85,6 +85,8 @@ const dataset = {
   source: { package: 'com.vietauto.onthigiaypheplaixe.onthigplx600cau.gplxoto', extractedOn: '2026-11-11', databaseSha256: hash(database), note: "Dữ liệu từ APK gốc; hiệu đính câu 1, 2, 600 theo PDF Cục CSGT 2025. Cờ điểm liệt theo hạng được hiệu chỉnh tại core.js theo Công văn 2262/CSGT-P5. Chưa đối chiếu đầy đủ toàn bộ câu chữ, đáp án và hình ảnh của 600 câu.", officialCorrections: {"authority":"Cục CSGT, bộ 600 câu 2025","questionIds":[1,2,600],"reference":"https://www.csgt.vn/upload/services/273963059_B%E1%BB%99%20600%20c%C3%A2u%20h%E1%BB%8Fi%20d%C3%B9ng%20cho%20s%C3%A1t%20h%E1%BA%A1ch%20l%C3%A1i%20xe%20c%C6%A1%20gi%E1%BB%9Bi%20%C4%91%C6%B0%E1%BB%9Dng%20b%E1%BB%99.pdf"} },
   categories, licenses, questions, signs, signCategories,
 };
+dataset.source.signAudit2024 = sign2024AuditSummary(signs);
+dataset.source.note += " Thư viện biển báo: bổ sung metadata mã/nguồn QCVN 41:2024, hiệu đính các nội dung đã đối chiếu, thêm 8 mục văn bản chưa có hình; những mục khác chưa kiểm duyệt hết.";
 writeFileSync(join(dataDir, 'dataset.json'), JSON.stringify(dataset));
 const urls = ['data/dataset.json', ...new Set([...questions, ...signs].map(q => q.image).filter(Boolean))];
 const revision = createHash('sha256').update(JSON.stringify(dataset)).digest('hex').slice(0, 12);

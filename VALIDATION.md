@@ -97,3 +97,11 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 - Tình trạng 17 nội dung đã đối chiếu, 321 còn chưa review, 2 cần review mã, **340 hình chưa so trực quan**. Không nhận định toàn bộ biển đã chuẩn.
 - `tests/signs-2024.test.mjs`: tính tái lập từ script, 340 ID, hình cũ và offline manifest, UI 8 hình placeholder, link nguồn và import câu học không ảnh hưởng.
 - CSV từng mục tại `docs/SIGN_2024_AUDIT.csv`; xem `docs/SIGN_2024_AUDIT_README.md`.
+
+
+## Bỏ ghi chú nguồn ở biển báo và nút cài đặt chân trang — 11/11/2026
+
+- Bỏ khối ghi chú chung về dữ liệu ứng dụng gốc ở màn hình biển báo; bỏ nút “Nguồn dữ liệu & cài đặt” trong footer. Nguồn QCVN/trạng thái từng biển vẫn có trong chi tiết; các chức năng tiến độ/cài đặt vẫn truy cập qua menu Thêm.
+- Shell `gplx-shell-v10` đồng bộ HTML, imports và precache; không đổi dataset, ảnh hoặc khóa tiến độ. Tách khỏi PR audit #1 chưa được duyệt.
+- `npm test`: **39/39 PASS**; cú pháp app/SW, `npm run check:deploy` (657 file, lớn nhất 638.492 byte), `git diff --check`: PASS.
+- Chromium desktop 1440×1000 và mobile 390×844: không còn ghi chú nguồn chung trong biển báo hoặc nút cài đặt footer; modal biển P.124a hoạt động, không tràn ngang, 0 pageerror. Chỉ smoke test phạm vi thay đổi; chưa QA lại cài PWA/ngoại tuyến thiết bị thật. Chỉ cập nhật GitHub main theo yêu cầu, chưa triển khai lại hosting.

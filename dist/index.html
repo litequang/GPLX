@@ -21,7 +21,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=gplx-shell-v8">
+  <link rel="stylesheet" href="./styles.css?v=gplx-shell-v10">
   <title>Ôn thi GPLX · Học vững, lái an tâm</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
       <div class="header-actions"><button class="quiet-button install-button" id="install-button">Cài ứng dụng <span>↗</span></button><span class="profile" aria-label="Hồ sơ cá nhân">BẠN</span></div>
     </header>
     <main id="main" tabindex="-1"><div class="loading">Đang mở bộ câu hỏi…</div></main>
-    <footer><span>Ôn thi GPLX · Không gian học tập cá nhân</span><button class="text-button" data-action="about">Nguồn dữ liệu & cài đặt</button></footer>
+    <footer><span>Ôn thi GPLX · Không gian học tập cá nhân</span></footer>
   </div>
   <nav id="bottom-nav" class="bottom-nav" aria-label="Điều hướng nhanh"></nav>
   <dialog id="modal"><div id="modal-content"></div></dialog>
@@ -58,7 +58,7 @@
       main.replaceChildren(message, retry);
     }
     const startupTimer = setTimeout(startupError, 20000);
-    import('./app.js?v=gplx-shell-v8').catch(error => {
+    import('./app.js?v=gplx-shell-v10').catch(error => {
       console.error('GPLX startup failed:', error);
       startupError();
     }).finally(() => clearTimeout(startupTimer));

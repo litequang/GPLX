@@ -25,3 +25,8 @@ Tái hiện lỗi trộn HTML mới và app v1 trong cache, sửa bằng shell v
 ## 11/11/2026 — Cài PWA nhanh Android
 
 Capture beforeinstallprompt/appinstalled ngay trong head trước module bất đồng bộ. Android đủ điều kiện: Cài ngay → hộp xác nhận native, không modal trung gian; chặn bấm lặp và không tái dùng prompt đã tiêu thụ. Shell v4. 21/21 test PASS, 659 URL HTTP PASS, syntax/deploy PASS. Chưa cài trên thiết bị Android thật; chưa redeploy hosting.
+
+
+## 11/11/2026 — Tinh gọn biển báo và chân trang
+
+Bỏ ghi chú dữ liệu ứng dụng gốc khỏi màn hình biển báo và nút “Nguồn dữ liệu & cài đặt” ở footer theo yêu cầu. Shell v10; giữ dataset, ảnh và tiến độ. 39/39 test PASS, syntax/deploy PASS, Chromium desktop/mobile smoke PASS. Thay đổi giao diện đưa riêng lên main; PR audit #1 giữ riêng chờ duyệt, không phát hành hosting.

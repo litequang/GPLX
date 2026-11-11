@@ -19,6 +19,7 @@ npm test                    # 9 nhóm kiểm thử, gồm 1.000 đề ngẫu nhi
 node --check dist/app.js
 node --check dist/sw.js
 npm run test:http           # Chạy trong terminal khác khi npm start đang hoạt động
+npm run check:deploy        # Chặn ZIP/APK/DB và file >25 MiB trong dist
 ```
 
 ## Chức năng
@@ -62,6 +63,8 @@ Cache lưu theo origin và trình duyệt; dữ liệu đã tải ở localhost 
 ## Triển khai
 
 Toàn bộ thư mục **`dist/`** là đầu ra triển khai tĩnh, không cần build. Đường dẫn tương đối hỗ trợ cả `/` lẫn một thư mục con như `/GPLX/`.
+
+Không đặt ZIP tải về hoặc APK/DB gốc trong `dist/`. Packager có thể đóng gói cả file bị Git ignore trong thư mục này; chạy `npm run check:deploy` trước khi đóng gói. Giới hạn hosting là 25 MiB **mỗi file**, không phải tổng toàn bộ ảnh. ZIP workspace từng vượt giới hạn đã được chuyển ra `.tools` ở ngoài checkout và không thay đổi ảnh gốc.
 
 GitHub Actions kiểm thử bằng Node 22 trên mỗi push/pull request. Dự án không tự bật GitHub Pages hoặc đổi quyền truy cập repository. Hosting Sites có cấu hình trong `.openai/hosting.json`; không tạo Site mới nếu đã có `project_id`.
 

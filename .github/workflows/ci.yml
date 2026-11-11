@@ -13,3 +13,4 @@ jobs:
       - run: npm test
       - run: node --check dist/app.js
       - run: node --check dist/sw.js
+      - run: npm run check:deploy

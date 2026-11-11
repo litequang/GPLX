@@ -19,7 +19,9 @@ Ngày thực hiện: 11/11/2026, Asia/Saigon. Cập nhật khi có bằng chứn
 
 ## Kiểm tra HTTP
 
-Preview dùng `npm start` tại http://localhost:4173. Đã tải **655 tài nguyên qua HTTP**, tất cả trả 200, không rỗng, MIME ảnh hợp lệ; tổng khoảng 27,3 MiB. Đây chỉ kiểm tra tài nguyên phục vụ được, không thay thế thực thi trong trình duyệt.
+Preview dùng `npm start` tại http://localhost:4173. Đã tải **657 URL qua HTTP** (gồm root và index.html), tất cả trả 200, không rỗng, MIME ảnh hợp lệ; tổng khoảng 27,3 MiB. Đây chỉ kiểm tra tài nguyên phục vụ được, không thay thế thực thi trong trình duyệt.
+
+Lần triển khai đầu bị từ chối do `dist/index.zip` 27.804.230 byte vượt giới hạn 25 MiB mỗi file. ZIP không thuộc source Git, được giữ lại ngoài checkout trong `.tools`; không xóa hoặc thay đổi ảnh dữ liệu. `npm run check:deploy` kiểm tra lại toàn bộ output trước khi đóng gói để tránh mang theo ZIP/raw/secrets hoặc file vượt giới hạn.
 
 ## Chưa xác nhận trực tiếp
 

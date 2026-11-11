@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 const base = process.env.PREVIEW_URL || 'http://localhost:4173/';
 const manifest = JSON.parse(readFileSync(new URL('../dist/data/offline.json', import.meta.url)));
-const paths = ['', 'index.html', 'app.js', 'core.js', 'styles.css', 'sw.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', ...manifest.urls];
+const paths = ['', 'index.html', 'app.js', 'core.js', 'styles.css', 'sw.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'data/offline.json', ...manifest.urls];
 let count = 0, bytes = 0;
 for (let index = 0; index < paths.length; index += 12) {
   await Promise.all(paths.slice(index, index + 12).map(async path => {

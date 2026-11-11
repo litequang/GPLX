@@ -46,6 +46,7 @@ GPLX/                              # Repository này
 │   ├── serve.mjs                    # HTTP preview cục bộ, localhost:4173
 │   ├── extract-data.mjs             # SQLite + assets → JSON + ảnh + offline manifest
 │   ├── check-http.mjs               # Tải toàn bộ tài nguyên qua preview HTTP
+│   ├── check-deploy.mjs             # Chặn archive/raw/secret, kiểm tra giới hạn file
 │   └── pull-apk.ps1                 # Lấy APK bằng ADB, khi cần tái trích
 ├── tests/
 │   ├── data.test.mjs                # Integrity, sinh đề, chấm điểm, lưu tiến độ

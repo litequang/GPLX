@@ -23,6 +23,7 @@
 npm test
 node --check dist/app.js
 node --check dist/sw.js
+npm run check:deploy
 ```
 
 Nếu sửa UI/PWA, chạy `npm start` và kiểm tra trình duyệt khi công cụ khả dụng: desktop, mobile 390px, chọn đáp án đúng/sai, đổi bộ lọc, sinh/nộp đề, tải lại tab giữa bài, tải offline rồi tắt server và mở lại. Không đánh dấu đã kiểm tra trực quan nếu chỉ đọc code hoặc chạy HTTP. Ghi kết quả thật trong VALIDATION.md.

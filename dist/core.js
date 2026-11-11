@@ -14,9 +14,31 @@ export function parseProgress(text) {
   safe.history = p.history.filter(h => h && typeof h.license === 'string' && Number.isFinite(h.correct) && Number.isFinite(h.total) && typeof h.passed === 'boolean' && Number.isFinite(h.at)).slice(0, 50);
   return safe;
 }
+// Cong van 2262/CSGT-P5, 07/05/2025, Phu luc I/II/III: 20/30/60 critical IDs.
+// The APK's 60 global flags must not be treated as motorcycle-specific flags.
+export const MOTO_CRITICAL_2025 = Object.freeze([19,20,21,22,24,26,27,28,30,47,48,52,53,63,64,65,68,70,71,72]);
+export const B1_CRITICAL_2025 = Object.freeze([19,20,21,22,24,26,27,28,30,47,48,52,53,63,64,65,68,70,71,72,73,74,87,89,90,91,92,215,254,255]);
+const motoCritical = new Set(MOTO_CRITICAL_2025);
+const b1Critical = new Set(B1_CRITICAL_2025);
 export function poolFor(dataset, licenseName) {
   const license = dataset.licenses.find(l => l.name === licenseName) || dataset.licenses.find(l => l.name === 'B');
-  return dataset.questions.filter(q => q.included[license.pool]);
+  const criticalIds = license.name === 'A1' || license.name === 'A' ? motoCritical : license.name === 'B1' ? b1Critical : null;
+  return dataset.questions.filter(q => q.included[license.pool]).map(q => {
+    if (!criticalIds) return q;
+    const critical = criticalIds.has(q.id);
+    // A global critical question outside the class-specific annex remains
+    // a normal study/exam question; never mutate the shared raw dataset.
+    return critical === q.critical ? q : { ...q, critical };
+  });
+}
+export function validExamIds(dataset, licenseName, ids) {
+  const license = dataset.licenses.find(l => l.name === licenseName);
+  if (!license || !Array.isArray(ids) || ids.length !== license.count || new Set(ids).size !== ids.length) return false;
+  const byId = new Map(poolFor(dataset, licenseName).map(q => [q.id, q]));
+  const questions = ids.map(id => byId.get(id));
+  return questions.every(Boolean) &&
+    questions.filter(q => q.critical).length === 1 &&
+    license.allocation.every(slot => questions.filter(q => !q.critical && q.category === slot.category).length === slot.count);
 }
 export function shuffled(items, random = Math.random) {
   const out = [...items];

@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js?v=gplx-shell-v5';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js?v=gplx-shell-v5';
+import { initChrome } from './chrome.js?v=gplx-shell-v6';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds } from './core.js?v=gplx-shell-v6';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -42,7 +42,7 @@ const categoryName = id => dataset.categories.find(c => c.id === id)?.name || 'T
 const date = timestamp => new Intl.DateTimeFormat('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(timestamp);
 function licenseSelect() { return `<div class="license-control"><label for="license">Hạng bằng</label><select id="license" aria-label="Chọn hạng bằng" ${exam ? 'disabled' : ''}>${dataset.licenses.map(l => `<option value="${escape(l.name)}" ${l.name === progress.license ? 'selected' : ''}>Hạng ${escape(l.name)}</option>`).join('')}</select></div>`; }
 function heading(title, description, trailing = licenseSelect()) { return `<div class="page-heading"><div><p class="eyebrow">HỌC VỮNG · LÁI AN TÂM</p><h1>${title}</h1><p class="subtitle">${description}</p></div>${trailing}</div>`; }
-function sourceNote() { return `<p class="source-note">Bộ dữ liệu trích từ ứng dụng Android ngày 11/11/2026. Đề luyện được tạo ngẫu nhiên; nội dung và cấu trúc theo dữ liệu gốc. <button class="text-button" data-action="about">Xem nguồn dữ liệu</button></p>`; }
+function sourceNote() { return `<p class="source-note">Bộ dữ liệu trích từ ứng dụng Android ngày 11/11/2026. Đề luyện được tạo ngẫu nhiên theo ma trận 2025; điểm liệt theo hạng căn cứ Công văn 2262/CSGT-P5. Câu 1, 2, 600 được hiệu đính theo PDF Cục CSGT. <button class="text-button" data-action="about">Xem nguồn dữ liệu</button></p>`; }
 function updateNav() {
   const p = pool();
   $('#nav').innerHTML = navItems.map(([route, label, symbol], i) => `${i === 5 ? '<div class="nav-separator"></div>' : ''}<a class="nav-item ${route === state.route ? 'active' : ''}" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span>${route === 'critical' ? `<span class="count">${p.filter(q => q.critical).length}</span>` : route === 'wrong' ? `<span class="count">${p.filter(q => progress.answers[q.id]?.correct === false).length}</span>` : route === 'saved' ? `<span class="count">${p.filter(q => progress.bookmarks.includes(q.id)).length}</span>` : ''}</a>`).join('');
@@ -102,7 +102,7 @@ function renderExamSetup() {
   const l = license();
   $('#main').innerHTML = `${heading('Thử sức, tự tin hơn', 'Một khoảng thời gian tập trung. Một bước chuẩn bị vững vàng.')}<div class="exam-layout"><section class="panel exam-intro"><p class="eyebrow">ĐỀ LUYỆN NGẪU NHIÊN · HẠNG ${escape(l.name)}</p><h2>Sẵn sàng vào bài?</h2><p>Đề được tạo từ kho câu hỏi của bạn, có phân bổ theo chủ đề và một câu điểm liệt.</p><div class="exam-facts"><div><strong>${l.count}</strong><small>câu hỏi</small></div><div><strong>${l.minutes}</strong><small>phút làm bài</small></div><div><strong>${l.pass}/${l.count}</strong><small>ngưỡng đạt theo dữ liệu</small></div></div><p class="exam-note">Bạn có thể đổi đáp án trước khi nộp bài. <strong>Câu điểm liệt sai hoặc chưa trả lời sẽ làm bài luyện không đạt.</strong> Giải thích chỉ xuất hiện sau khi nộp.</p><button class="primary" data-action="start-exam" style="margin-top:23px">Bắt đầu làm bài <span>→</span></button>${sourceNote()}</section><aside class="panel"><div class="section-heading"><h3>Những lần thử sức</h3>${icon('exam')}</div>${progress.history.length ? progress.history.slice(0, 8).map(h => `<div class="history-item"><span class="history-badge ${h.passed ? '' : 'fail'}">${h.passed ? '✓' : '↻'}</span><div>Hạng ${escape(h.license)}<small>${date(h.at)}</small></div><strong>${h.correct}/${h.total}</strong></div>`).join('') : '<p class="subtitle">Chưa có bài luyện nào. Bắt đầu đề đầu tiên để theo dõi sự tiến bộ của bạn.</p>'}</aside></div>`;
 }
-function examQuestions() { return exam.ids.map(id => dataset.questions.find(q => q.id === id)); }
+function examQuestions() { const byId = new Map(poolFor(dataset, exam.license).map(q => [q.id, q])); return exam.ids.map(id => byId.get(id)); }
 function renderActiveExam() {
   const questions = examQuestions(), q = questions[exam.index];
   $('#main').innerHTML = `${heading(`Bài luyện hạng ${escape(exam.license)}`, `Câu ${exam.index + 1} / ${exam.ids.length} · Đã chọn ${Object.keys(exam.answers).length} đáp án`, '<div class="clock" id="exam-clock" aria-label="Thời gian còn lại"></div>')}<div class="study-layout">${questionMarkup(q, exam.answers[q.id], true)}${renderNumberGrid(questions, exam.index, exam.answers, true)}</div><p class="source-note">Đồng hồ vẫn tiếp tục khi bạn chuyển màn hình. Khi hết giờ, bài được nộp tự động.</p>`;
@@ -250,8 +250,10 @@ async function init() {
     if (!dataset.licenses.some(l => l.name === progress.license)) progress.license = 'B';
     try {
       const saved = JSON.parse(sessionStorage.getItem('gplx-active-exam'));
-      if (saved && dataset.licenses.some(l => l.name === saved.license) && Array.isArray(saved.ids) && saved.ids.length === dataset.licenses.find(l => l.name === saved.license).count && saved.ids.every(id => dataset.questions.some(q => q.id === id)) && new Set(saved.ids).size === saved.ids.length && Number.isFinite(saved.deadline) && saved.answers && Number.isInteger(saved.index) && saved.index >= 0 && saved.index < saved.ids.length) { exam = saved; progress.license = exam.license; }
+      if (saved && dataset.licenses.some(l => l.name === saved.license) && Array.isArray(saved.ids) && saved.ids.length === dataset.licenses.find(l => l.name === saved.license).count && validExamIds(dataset, saved.license, saved.ids) && Number.isFinite(saved.deadline) && saved.answers && Number.isInteger(saved.index) && saved.index >= 0 && saved.index < saved.ids.length) { exam = saved; progress.license = exam.license; }
     } catch {}
+    // Discard an old invalid temporary exam session but keep all learning progress.
+    if (!exam) { try { sessionStorage.removeItem('gplx-active-exam'); } catch {} }
     go(location.hash.slice(1) || (exam ? 'exams' : 'home')); timer = setInterval(updateClock, 1000); updateClock();
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', event => {

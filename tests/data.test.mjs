@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generateExam, gradeExam, poolFor, normalize, emptyProgress, parseProgress } from '../dist/core.js';
+import { generateExam, gradeExam, poolFor, normalize, emptyProgress, parseProgress, validExamIds, MOTO_CRITICAL_2025, B1_CRITICAL_2025 } from '../dist/core.js';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataset = JSON.parse(readFileSync(resolve(root, 'dist/data/dataset.json')));
 
@@ -80,4 +80,40 @@ test('offline manifest lists precisely all referenced assets and valid PWA icons
     assert.equal(bytes.readUInt32BE(16), width);
     assert.equal(bytes.readUInt32BE(20), height);
   }
+});
+
+test('2025 CSGT annexes define exactly 20 A1/A, 30 B1 and 60 global critical questions', () => {
+  const actual = name => poolFor(dataset, name).filter(q => q.critical).map(q => q.id).sort((a,b)=>a-b);
+  const ordered = ids => [...ids].sort((a,b)=>a-b);
+  assert.deepEqual(actual('A1'), ordered(MOTO_CRITICAL_2025));
+  assert.deepEqual(actual('A'), ordered(MOTO_CRITICAL_2025));
+  assert.deepEqual(actual('B1'), ordered(B1_CRITICAL_2025));
+  for (const name of ['B','C1','C','D1','D2','D','E']) assert.equal(actual(name).length, 60);
+  // IDs 32 and 215 are globally critical, but not A1/A-critical.
+  assert.equal(dataset.questions.find(q => q.id === 32).critical, true);
+  assert.equal(poolFor(dataset,'A1').find(q => q.id === 32).critical, false);
+  assert.equal(poolFor(dataset,'B1').find(q => q.id === 32).critical, false);
+  assert.equal(poolFor(dataset,'A').find(q => q.id === 215).critical, false);
+  assert.equal(poolFor(dataset,'B1').find(q => q.id === 215).critical, true);
+});
+test('exam validity and grading use class-specific critical status, preserving learning IDs', () => {
+  for (const license of dataset.licenses) {
+    const questions = generateExam(dataset, license.name);
+    assert.equal(validExamIds(dataset, license.name, questions.map(q=>q.id)), true);
+    assert.equal(validExamIds(dataset, license.name, [...questions.slice(1).map(q=>q.id), questions[1].id]), false);
+  }
+  const pool = poolFor(dataset, 'A1');
+  const official = pool.find(q=>q.id===19);
+  const extra = pool.find(q=>q.id===32);
+  assert.equal(gradeExam([official,extra], {[official.id]:official.answer,[extra.id]:0}, 1).passed, true);
+  assert.equal(gradeExam([official,extra], {[official.id]:0,[extra.id]:extra.answer}, 1).criticalFailed, true);
+});
+test('verified CSGT 2025 source text corrections remain in dataset', () => {
+  const q = id => dataset.questions.find(x=>x.id===id);
+  assert.equal(q(1).text, 'Phần của đường bộ được sử dụng cho phương tiện giao thông đường bộ đi lại là gì?');
+  assert.equal(q(2).text, 'Làn đường là gì?');
+  assert.equal(q(2).options.find(o=>o.id===2).text, 'Là một phần của phần đường xe chạy được chia theo chiều dọc của đường, có đủ chiều rộng cho xe chạy an toàn.');
+  assert.equal(q(600).text, 'Trong tình huống dưới đây, xe đầu kéo kéo rơ moóc (xe container) đang rẽ phải, xe con màu xanh và xe máy phía sau xe container đi như thế nào để bảo đảm an toàn?');
+  assert.equal(q(600).options.find(o=>o.id===2).text, 'Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.');
+  assert.equal(q(1).answer, 2); assert.equal(q(2).answer, 2); assert.equal(q(600).answer, 2);
 });

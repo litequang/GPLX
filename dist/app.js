@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js?v=gplx-shell-v4';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js?v=gplx-shell-v4';
+import { initChrome } from './chrome.js?v=gplx-shell-v5';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js?v=gplx-shell-v5';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);

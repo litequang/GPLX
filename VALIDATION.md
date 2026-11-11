@@ -64,3 +64,10 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 ## Cài nhanh Android — shell v4
 
 21/21 test PASS: bổ sung capture sự kiện trước khi module chạy, gọi prompt đồng bộ trong click đầu tiên, trạng thái chưa đủ điều kiện → có prompt, appinstalled trước UI. 659 URL HTTP 200; kiểm tra cú pháp app/chrome/SW, check:deploy và diff --check PASS. Đây là mô phỏng; chưa xác nhận cài thực tế trên Android. Trình duyệt quyết định khi nào phát beforeinstallprompt, website không ép phát hay tự xác nhận cài.
+
+## Bản vá giữ trạng thái thanh điều hướng khi cuộn — shell v5
+
+- Nguyên nhân: event `resize` gọi `show()`; Chrome Android có thể thay đổi chiều cao viewport khi thanh địa chỉ co/giãn, làm thanh header và bottom navigation tự hiện sau khi đã cuộn xuống.
+- Sửa trong `dist/chrome.js`: `resize` chỉ đồng bộ mốc scroll và xóa quãng đường tích lũy, không thay đổi class `chrome-hidden`; cả hai thanh vẫn dùng cùng trạng thái; chỉ cuộn lên vượt ngưỡng 14px mới hiện lại (ngoại lệ điều hướng bàn phím, modal, về đầu trang, chuyển màn hình/breakpoint).
+- Bổ sung 2 kiểm thử mô phỏng: cuộn xuống → ẩn → resize → đứng yên/tiếp tục cuộn xuống vẫn ẩn → cuộn lên mới hiện; resize không giữ lại delta ngược chiều cũ.
+- Đã cập nhật version query, imports và precache lên `gplx-shell-v5` để tránh trộn phiên bản shell cũ. QA trên Android thật vẫn chưa được xác nhận riêng.

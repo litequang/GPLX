@@ -25,6 +25,7 @@ function harness({ mobile = true, standalone = false, ios = false, android = fal
   });
   return { header, nav, sidebar, button, modals, toasts, events, documentEvents, document,
     hidden: () => classes.has('chrome-hidden'), modal: value => { modal = value; },
+    resize() { events.resize(); },
     scroll(y) { window.scrollY = y; events.scroll(); while (frames.length) frames.shift()(); },
     install: () => button.handlers.click(),
   };
@@ -35,6 +36,34 @@ test('chrome hides/reveals together, ignores jitter and clamps overscroll', () =
   h.scroll(146); assert(h.hidden()); h.scroll(135); assert(!h.hidden());
   h.scroll(200); assert(h.hidden()); h.scroll(3000); h.scroll(2600); assert(h.hidden());
   h.scroll(2180); assert(!h.hidden()); h.scroll(-50); assert(!h.hidden()); assert(h.sidebar.inert);
+});
+test('browser viewport resize must not reveal the header or bottom nav after a downward scroll', () => {
+  const h = harness({ mobile: true });
+  h.scroll(160);
+  assert(h.hidden());
+  assert(h.header.inert && h.nav.inert);
+  h.resize(); // Android hides the address bar while the scroll direction is still down.
+  assert(h.hidden(), 'resize must preserve hidden state');
+  assert(h.header.inert && h.nav.inert);
+  h.scroll(215); // Continue scrolling down, then stop.
+  h.scroll(215);
+  assert(h.hidden(), 'stopping must not reveal navigation');
+  h.scroll(204); // Upward jitter below the reveal threshold.
+  assert(h.hidden());
+  h.scroll(196); // Cumulative deliberate upward movement reveals both together.
+  assert(!h.hidden());
+  assert(!h.header.inert && !h.nav.inert);
+});
+test('viewport resize clears stale scroll deltas without changing visibility', () => {
+  const h = harness();
+  h.scroll(150);
+  h.scroll(140); // Partial upward movement, not enough to reveal.
+  assert(h.hidden());
+  h.resize();
+  h.scroll(136);
+  assert(h.hidden(), 'resize must not carry over old movement toward a reveal');
+  h.scroll(125);
+  assert(!h.hidden(), 'an actual upward scroll reveals navigation');
 });
 test('modal and keyboard focus keep chrome visible; pointer focus does not pin it', () => {
   const h = harness({ mobile: false });

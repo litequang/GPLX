@@ -19,7 +19,10 @@ export function initChrome({ showModal, modalHeading, toast }) {
     header.inert = nav.inert = hidden;
     sidebar.inert = hidden || mobile.matches;
   }
-  function show() { previous = position(); distance = 0; direction = 0; setHidden(false); }
+  // Mobile browser toolbars can fire resize while the user keeps scrolling down.
+  // A viewport resize updates our scroll baseline, but must not change visibility.
+  function syncPosition() { previous = position(); distance = 0; direction = 0; }
+  function show() { syncPosition(); setHidden(false); }
   function update() {
     frame = 0;
     const current = position(), delta = current - previous;
@@ -37,7 +40,7 @@ export function initChrome({ showModal, modalHeading, toast }) {
     }
   }
   addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(update); }, { passive: true });
-  addEventListener('resize', show);
+  addEventListener('resize', syncPosition);
   const onMediaChange = (media, callback) => {
     if (media.addEventListener) media.addEventListener('change', callback);
     else media.addListener?.(callback);

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generateExam, gradeExam, poolFor, normalize, emptyProgress, parseProgress, validExamIds, MOTO_CRITICAL_2025, B1_CRITICAL_2025 } from '../dist/core.js';
+import { generateExam, gradeExam, poolFor, normalize, emptyProgress, parseProgress, validExamIds, MOTO_CRITICAL_2025, B1_CRITICAL_2025, restoredStudyResponses, studyPositionKey } from '../dist/core.js';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataset = JSON.parse(readFileSync(resolve(root, 'dist/data/dataset.json')));
 
@@ -116,4 +116,21 @@ test('verified CSGT 2025 source text corrections remain in dataset', () => {
   assert.equal(q(600).text, 'Trong tình huống dưới đây, xe đầu kéo kéo rơ moóc (xe container) đang rẽ phải, xe con màu xanh và xe máy phía sau xe container đi như thế nào để bảo đảm an toàn?');
   assert.equal(q(600).options.find(o=>o.id===2).text, 'Giảm tốc độ chờ xe container rẽ xong rồi tiếp tục đi.');
   assert.equal(q(1).answer, 2); assert.equal(q(2).answer, 2); assert.equal(q(600).answer, 2);
+});
+
+test('study progress restores saved selections and per-view locations, including old v1 backups', () => {
+  const saved = emptyProgress();
+  saved.answers[1] = { selected: 1, correct: false, at: 123 };
+  saved.answers[2] = { selected: 2, correct: true, at: 456 };
+  saved.answers[3] = { selected: 0, correct: false, at: 789 };
+  saved.studyPositions[studyPositionKey('B', 'learn')] = 2;
+  saved.studyPositions[studyPositionKey('B', 'critical', '1')] = 19;
+  const parsed = parseProgress(JSON.stringify(saved));
+  assert.deepEqual(parsed, saved);
+  assert.deepEqual(restoredStudyResponses(parsed), { 1: 1, 2: 2 });
+  const legacy = { version: 1, license: 'B', answers: saved.answers, bookmarks: [], history: [], lastQuestion: 2 };
+  assert.deepEqual(parseProgress(JSON.stringify(legacy)).studyPositions, {});
+  assert.deepEqual(restoredStudyResponses(parseProgress(JSON.stringify(legacy))), { 1: 1, 2: 2 });
+  legacy.studyPositions = { 'B|learn|all': 2, 'B|wrong|all': 1, 'INVALID': 999, 'B|learn|1': 999 };
+  assert.deepEqual(parseProgress(JSON.stringify(legacy)).studyPositions, { 'B|learn|all': 2, 'B|wrong|all': 1 });
 });

@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js?v=gplx-shell-v6';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds } from './core.js?v=gplx-shell-v6';
+import { initChrome } from './chrome.js?v=gplx-shell-v7';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds, restoredStudyResponses, studyPositionKey } from './core.js?v=gplx-shell-v7';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -119,11 +119,27 @@ function render() {
   else if (state.route === 'exams') { if (exam) renderActiveExam(); else if (examResult) renderExamResult(); else renderExamSetup(); }
   else renderStudy();
 }
+const studyRoutes = new Set(['learn', 'critical', 'wrong', 'saved']);
+function rememberStudyPosition() {
+  if (!studyRoutes.has(state.route) || !state.list[state.index]) return;
+  const key = studyPositionKey(progress.license, state.route, state.category);
+  const id = state.list[state.index].id;
+  if (progress.studyPositions[key] !== id) { progress.studyPositions[key] = id; save(); }
+}
+function restoreStudyPosition(preferredId) {
+  if (!studyRoutes.has(state.route)) return;
+  const savedId = progress.studyPositions[studyPositionKey(progress.license, state.route, state.category)];
+  const id = preferredId ?? savedId ?? (state.route === 'learn' && !state.category ? progress.lastQuestion : null);
+  const index = state.list.findIndex(q => q.id === id);
+  if (index >= 0) state.index = index;
+}
 function go(route, options = {}) {
   if (!navItems.some(n => n[0] === route)) route = 'home';
-  state = { ...state, route, category: options.category || '', search: '', index: 0, list: [], responses: {}, signLimit: 32 };
+  rememberStudyPosition();
+  state = { ...state, route, category: options.category || '', search: '', index: 0, list: [],
+    responses: restoredStudyResponses(progress), signLimit: 32 };
   buildStudyList();
-  if (options.id) { const index = state.list.findIndex(q => q.id === options.id); state.index = Math.max(0, index); }
+  restoreStudyPosition(options.id);
   history.replaceState(null, '', `#${route}`);
   if ($('#modal').open) $('#modal').close();
   chrome.show();
@@ -134,7 +150,12 @@ const modalHeading = title => `<div class="modal-heading"><h2>${title}</h2><butt
 function about() {
   showModal(`${modalHeading('Góc học tập của bạn')}<div class="modal-copy"><strong>Nguồn dữ liệu</strong><p>600 câu hỏi, 60 câu điểm liệt và 332 biển báo trích từ ứng dụng Android ngày 11/11/2026.</p><p><code>${escape(dataset.source.package)}</code></p><p>${escape(dataset.source.note)}</p><p>Hạng bằng, đáp án và ngưỡng đạt được giữ theo cơ sở dữ liệu nguồn. Đây là công cụ ôn tập cá nhân. Kết quả bài luyện không thay thế kết quả sát hạch.</p><hr class="modal-divider"><strong>Tiến độ trên thiết bị</strong><p>Câu đã học, đánh dấu và lịch sử luyện đề được lưu trong trình duyệt này. Xuất tệp để sao lưu hoặc chuyển sang thiết bị khác.</p></div><div class="modal-actions"><button class="secondary" data-action="export">Xuất tiến độ ↓</button><button class="secondary" data-action="import">Nhập tiến độ ↑</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><hr class="modal-divider"><div class="modal-copy"><strong>Học ngoại tuyến & cài ứng dụng</strong><p>Bấm “Tải để học ngoại tuyến” ở trang tổng quan và chờ hoàn tất. Khi có kết nối, Chrome/Edge có thể cho phép cài ứng dụng. Trên Safari iPhone: Chia sẻ → Thêm vào Màn hình chính. Tiến độ lưu riêng theo trình duyệt và địa chỉ trang web.</p></div><div class="modal-actions"><button class="danger-button" data-action="reset-confirm">Xóa tiến độ trên thiết bị</button></div>`);
 }
-function recordAnswer(q, selected) { progress.answers[q.id] = { selected, correct: selected === q.answer, at: Date.now() }; progress.lastQuestion = q.id; save(); }
+function recordAnswer(q, selected) {
+  progress.answers[q.id] = { selected, correct: selected === q.answer, at: Date.now() };
+  progress.lastQuestion = q.id;
+  progress.studyPositions[studyPositionKey(progress.license, state.route, state.category)] = q.id;
+  save();
+}
 function startExam() {
   try {
     const questions = generateExam(dataset, progress.license);
@@ -177,7 +198,7 @@ function handleAction(action, button) {
     case 'topic': go('learn', { category: String(id) }); break;
     case 'answer': if (q && !state.responses[q.id]) { const selected = Number(button.dataset.option); state.responses[q.id] = selected; recordAnswer(q, selected); renderStudy(); updateNav(); } break;
     case 'retry-question': delete state.responses[q.id]; renderStudy(); break;
-    case 'jump': if (index >= 0 && index < state.list.length) { state.index = index; renderStudy(); if (window.innerWidth < 961) $('#main').scrollIntoView({ block: 'start' }); } break;
+    case 'jump': if (index >= 0 && index < state.list.length) { state.index = index; rememberStudyPosition(); renderStudy(); if (window.innerWidth < 961) $('#main').scrollIntoView({ block: 'start' }); } break;
     case 'bookmark': { const at = progress.bookmarks.indexOf(id); if (at >= 0) progress.bookmarks.splice(at, 1); else progress.bookmarks.push(id); save(); render(); toast(at >= 0 ? 'Đã bỏ đánh dấu câu hỏi.' : 'Đã lưu vào câu đánh dấu.'); break; }
     case 'sign': { const sign = dataset.signs.find(s => s.id === id); showModal(`${modalHeading(escape(sign.name))}<img class="sign-detail-image" src="${escape(sign.image)}" alt="${escape(sign.name)}"><div class="sign-detail-text">${escape(sign.detail)}</div><p class="source-note">Nội dung giữ theo dữ liệu ứng dụng gốc.</p>`); break; }
     case 'more-signs': state.signLimit += 32; renderSigns(); break;
@@ -205,8 +226,8 @@ document.addEventListener('click', event => {
   if (event.target === $('#modal')) $('#modal').close();
 });
 document.addEventListener('change', async event => {
-  if (event.target.id === 'license') { progress.license = event.target.value; save(); state.index = 0; state.responses = {}; buildStudyList(); render(); }
-  if (event.target.id === 'category') { state.category = event.target.value; state.index = 0; state.signLimit = 32; buildStudyList(); render(); }
+  if (event.target.id === 'license') { rememberStudyPosition(); progress.license = event.target.value; state.index = 0; state.responses = restoredStudyResponses(progress); buildStudyList(); restoreStudyPosition(); save(); render(); }
+  if (event.target.id === 'category') { rememberStudyPosition(); state.category = event.target.value; state.index = 0; state.signLimit = 32; buildStudyList(); restoreStudyPosition(); render(); }
   if (event.target.id === 'import-file' && event.target.files[0]) {
     try {
       if (event.target.files[0].size > 2e6) throw new Error('Tệp quá lớn. Chọn tệp tiến độ do ứng dụng xuất.');

@@ -1,6 +1,13 @@
 export const STORAGE_KEY = 'gplx-progress-v1';
 export const normalize = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
-export const emptyProgress = () => ({ version: 1, license: 'B', answers: {}, bookmarks: [], history: [], lastQuestion: 1 });
+// Keep the version-1 backup format. Optional per-view positions are migrated on read.
+export const emptyProgress = () => ({ version: 1, license: 'B', answers: {}, bookmarks: [], history: [], lastQuestion: 1, studyPositions: {} });
+export const studyPositionKey = (license, route, category = '') => `${license}|${route}|${category || 'all'}`;
+export function restoredStudyResponses(progress) {
+  return Object.fromEntries(Object.entries(progress?.answers || {})
+    .filter(([, answer]) => Number.isInteger(answer?.selected) && answer.selected >= 1 && answer.selected <= 4)
+    .map(([id, answer]) => [id, answer.selected]));
+}
 export function parseProgress(text) {
   const p = JSON.parse(text);
   if (p?.version !== 1 || !p.answers || typeof p.answers !== 'object' || Array.isArray(p.answers) || !Array.isArray(p.bookmarks) || !Array.isArray(p.history)) throw new Error('Tệp tiến độ không đúng định dạng.');
@@ -12,6 +19,13 @@ export function parseProgress(text) {
     if (/^\d+$/.test(id) && Number(id) > 0 && Number(id) <= 600 && a && Number.isInteger(a.selected) && a.selected >= 0 && a.selected <= 4 && typeof a.correct === 'boolean') safe.answers[id] = { selected: a.selected, correct: a.correct, at: Number(a.at) || 0 };
   }
   safe.history = p.history.filter(h => h && typeof h.license === 'string' && Number.isFinite(h.correct) && Number.isFinite(h.total) && typeof h.passed === 'boolean' && Number.isFinite(h.at)).slice(0, 50);
+  // Import old progress-v1 backups without studyPositions, and ignore malformed keys.
+  if (p.studyPositions && typeof p.studyPositions === 'object' && !Array.isArray(p.studyPositions)) {
+    for (const [key, id] of Object.entries(p.studyPositions)) {
+      if (/^(A1|A|B1|B|C1|C|D1|D2|D|E)\\|(learn|critical|wrong|saved)\\|(all|[1-7])$/.test(key) &&
+          Number.isInteger(id) && id >= 1 && id <= 600) safe.studyPositions[key] = id;
+    }
+  }
   return safe;
 }
 // Cong van 2262/CSGT-P5, 07/05/2025, Phu luc I/II/III: 20/30/60 critical IDs.

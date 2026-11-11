@@ -22,7 +22,7 @@ export function parseProgress(text) {
   // Import old progress-v1 backups without studyPositions, and ignore malformed keys.
   if (p.studyPositions && typeof p.studyPositions === 'object' && !Array.isArray(p.studyPositions)) {
     for (const [key, id] of Object.entries(p.studyPositions)) {
-      if (/^(A1|A|B1|B|C1|C|D1|D2|D|E)\\|(learn|critical|wrong|saved)\\|(all|[1-7])$/.test(key) &&
+      if (/^(A1|A|B1|B|C1|C|D1|D2|D|E)\|(learn|critical|wrong|saved)\|(all|[1-7])$/.test(key) &&
           Number.isInteger(id) && id >= 1 && id <= 600) safe.studyPositions[key] = id;
     }
   }

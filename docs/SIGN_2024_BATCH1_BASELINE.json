@@ -1,0 +1,2444 @@
+{
+  "baseCommit": "6ecb1aa47d63ede5e600b985b48cfc86d14108eb",
+  "selection": "20 pending category=1 records, ascending original ID; 54/116 investigated separately",
+  "selectedIds": [
+    3,
+    5,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53
+  ],
+  "questionsSha256": "eb8ffa1ef968d993adc3244eff28e82a7fa6889b8ee4d8e0de9d669065e9b955",
+  "nonSignDataSha256": "c929cbc0cca0de8def803c92858646d48924440ebe4823974181e2e89b3f0f99",
+  "untouchedSignsSha256": "d9b0fc9c7f1a8a31924fc7c296c6b91eac0c43ac666f39903e802cae829d20b8",
+  "before": [
+    {
+      "id": 3,
+      "category": 1,
+      "name": "Biển số P.124a \"Cấm quay đầu xe\"",
+      "detail": "Để báo cấm các loại xe quay đầu (theo kiểu chữ U). Chiều mũi tên phù hợp với chiều cấm quay đầu xe. Biển số P.124a có hiệu lực cấm các loại xe (cơ giới và thô sơ) trừ các xe được ưu tiên theo quy định. Biển không có giá trị cấm rẽ trái để đi sang hướng đường khác.",
+      "image": "assets/signal/P.124a2.png",
+      "sourceUpdated": "20191212092141",
+      "code": "P.124a",
+      "legacy": {
+        "sourceId": 3,
+        "sourceUpdated": "20191212092141"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 5,
+      "category": 1,
+      "name": "Biển số P.105 \"Cấm xe ôtô và xe máy\"",
+      "detail": "Để báo đường cấm các loại xe cơ giới và xe máy đi qua.",
+      "image": "assets/signal/P.105.png",
+      "sourceUpdated": "20191211170458",
+      "code": "P.105",
+      "legacy": {
+        "sourceId": 5,
+        "sourceUpdated": "20191211170458"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 35,
+      "category": 1,
+      "name": "Biển số P.101 \"Đường cấm\"",
+      "detail": "Để báo đường cấm các loại phương tiện đi lại cả hai hướng, trừ các xe được ưu tiên theo quy định.",
+      "image": "assets/signal/P.101.png",
+      "sourceUpdated": "20191211172619",
+      "code": "P.101",
+      "legacy": {
+        "sourceId": 35,
+        "sourceUpdated": "20191211172619"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 36,
+      "category": 1,
+      "name": "Biển số P.102 \"Cấm đi ngược chiều\"",
+      "detail": "Để báo đường cấm các loại xe (cơ giới và thô sơ) đi vào theo chiều đặt biển, trừ các xe được ưu tiên theo quy định. Người đi bộ được phép đi trên vỉa hè hoặc lề đường.\n",
+      "image": "assets/signal/P.102.png",
+      "sourceUpdated": "20191211172605",
+      "code": "P.102",
+      "legacy": {
+        "sourceId": 36,
+        "sourceUpdated": "20191211172605"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 37,
+      "category": 1,
+      "name": "Biển số P.103a \"Cấm xe ôtô\"",
+      "detail": "Để báo đường cấm các loại xe cơ giới kể cả xe máy 3 bánh có thùng đi qua, trừ xe máy 2 bánh, xe gắn máy và các xe được ưu tiên theo quy định.\n",
+      "image": "assets/signal/P.103a.png",
+      "sourceUpdated": "20191211172551",
+      "code": "P.103a",
+      "legacy": {
+        "sourceId": 37,
+        "sourceUpdated": "20191211172551"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 38,
+      "category": 1,
+      "name": "Biển số P.103b \"Cấm xe ôtô rẽ phải\" ",
+      "detail": "\"Cấm xe ôtô rẽ phải\". Để báo đường cấm các loại xe cơ giới kể cả xe máy 3 bánh có thùng rẽ phải  trừ xe máy 2 bánh, xe gắn máy và các xe được ưu tiên theo quy định.",
+      "image": "assets/signal/P.103b.png",
+      "sourceUpdated": "20191211172535",
+      "code": "P.103b",
+      "legacy": {
+        "sourceId": 38,
+        "sourceUpdated": "20191211172535"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 39,
+      "category": 1,
+      "name": "Biển số P.103c \"Cấm ôtô rẽ trái\" ",
+      "detail": "\"Cấm xe ôtô rẽ trái\" để báo đường cấm các loại xe cơ giới kể cả xe máy 3 bánh có thùng rẽ trái, trừ xe máy 2 bánh, xe gắn máy và các xe được ưu tiên theo quy định, \n",
+      "image": "assets/signal/P.103c.png",
+      "sourceUpdated": "20191211172517",
+      "code": "P.103c",
+      "legacy": {
+        "sourceId": 39,
+        "sourceUpdated": "20191211172517"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 40,
+      "category": 1,
+      "name": "Biển số P.104 \"Cấm xe máy\"",
+      "detail": "Để báo đường cấm các loại xe máy, trừ xe máy được ưu tiên theo quy định, phải đặt biển số P.104 \"Cấm xe máy\". Biển không có giá trị cấm những người dắt xe máy.",
+      "image": "assets/signal/P.104.png",
+      "sourceUpdated": "20191211170812",
+      "code": "P.104",
+      "legacy": {
+        "sourceId": 40,
+        "sourceUpdated": "20191211170812"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 42,
+      "category": 1,
+      "name": "Biển số P.106a \"Cấm xe ôtô tải\" ",
+      "detail": "Để báo đường cấm các loại xe ôtô tải trừ các xe được ưu tiên theo quy định, phải đặt biển số P.106a \"Cấm xe ôtô tải\". Biển có hiệu lực cấm đối với cả máy kéo và các xe máy chuyên dùng đi vào đoạn đường đặt biển số P.106a.",
+      "image": "assets/signal/P.106a.png",
+      "sourceUpdated": "20191211170551",
+      "code": "P.106a",
+      "legacy": {
+        "sourceId": 42,
+        "sourceUpdated": "20191211170551"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 43,
+      "category": 1,
+      "name": "Biển số P.106 b \"Cấm xe ôtô tải\" ",
+      "detail": "Để báo đường cấm các loại xe ôtô tải có khối lượng chuyên chở (theo Giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường phương tiện giao thông cơ giới đường bộ) lớn hơn một giá trị nhất định, phải đặt biển số P.106b. Biển có hiệu lực cấm các xe ô tô tải có khối lượng chuyên chở (xác định theo Giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường phương tiện giao thông cơ giới đường bộ) lớn hơn giá trị chữ số ghi trong biển (chữ số tấn ghi bằng màu trắng trên hình vẽ xe). Biển có hiệu lực cấm đối với cả máy kéo và các xe máy chuyên dùng đi vào đoạn đường đặt biển.",
+      "image": "assets/signal/P.106b.png",
+      "sourceUpdated": "20191211170531",
+      "code": "P.106b",
+      "legacy": {
+        "sourceId": 43,
+        "sourceUpdated": "20191211170531"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 44,
+      "category": 1,
+      "name": "Biển số P.106c \"Cấm xe chở hàng nguy hiểm”",
+      "detail": "Để báo đường cấm các xe chở hàng nguy hiểm.",
+      "image": "assets/signal/P.106c.png",
+      "sourceUpdated": "20191211172459",
+      "code": "P.106c",
+      "legacy": {
+        "sourceId": 44,
+        "sourceUpdated": "20191211172459"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 45,
+      "category": 1,
+      "name": "Biển số P.107 \"Cấm xe ôtô khách và xe ôtô tải\"",
+      "detail": "Để báo đường cấm xe ôtô chở khách và các loại xe ôtô tải kể cả các loại máy kéo và xe máy thi công chuyên dùng đi qua trừ các xe được ưu tiên theo quy định.",
+      "image": "assets/signal/P.107.png",
+      "sourceUpdated": "20191211172429",
+      "code": "P.107",
+      "legacy": {
+        "sourceId": 45,
+        "sourceUpdated": "20191211172429"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 46,
+      "category": 1,
+      "name": "Biển số P.107a \"Cấm xe ôtô khách\"",
+      "detail": "Để báo cấm ôtô chở khách đi qua trừ các xe ưu tiên theo quy định. Biển này không cấm xe buýt.",
+      "image": "assets/signal/P.107a.png",
+      "sourceUpdated": "20191211172444",
+      "code": "P.107a",
+      "legacy": {
+        "sourceId": 46,
+        "sourceUpdated": "20191211172444"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 47,
+      "category": 1,
+      "name": "Biển số P.107b \"Cấm xe ôtô taxi\"",
+      "detail": "Để báo cấm xe ôtô taxi đi lại. Trường hợp cấm xe ôtô taxi theo giờ thì đặt biển phụ ghi giờ cấm.",
+      "image": "assets/signal/P.107b.png",
+      "sourceUpdated": "20191211172413",
+      "code": "P.107b",
+      "legacy": {
+        "sourceId": 47,
+        "sourceUpdated": "20191211172413"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 48,
+      "category": 1,
+      "name": "Biển số P.108 \" Cấm xe kéo rơ-moóc\"",
+      "detail": "Để báo cấm các loại xe cơ giới kéo theo rơ-moóc kể cả xe máy, máy kéo, ôtô khách kéo theo rơ-moóc đi lại, trừ loại ôtô sơ-mi-rơ-moóc và các xe được ưu tiên (có kéo theo rơ-moóc) theo quy định.",
+      "image": "assets/signal/P.108.png",
+      "sourceUpdated": "20191211172358",
+      "code": "P.108",
+      "legacy": {
+        "sourceId": 48,
+        "sourceUpdated": "20191211172358"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 49,
+      "category": 1,
+      "name": "Biển số P.108a \"Cấm xe sơ-mi-rơ-moóc\"",
+      "detail": "Để báo đường cấm các loại xe sơ-mi-rơ-moóc và các xe kéo rơ- moóc trừ các xe được ưu tiên (có dạng xe sơ-mi-rơ-moóc hoặc có kéo theo rơ-moóc) theo quy định.",
+      "image": "assets/signal/P.108a.png",
+      "sourceUpdated": "20191211172345",
+      "code": "P.108a",
+      "legacy": {
+        "sourceId": 49,
+        "sourceUpdated": "20191211172345"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 50,
+      "category": 1,
+      "name": "Biển số P.109 \"Cấm máy kéo\"",
+      "detail": "Để báo đường cấm các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
+      "image": "assets/signal/P.109.png",
+      "sourceUpdated": "20191211172329",
+      "code": "P.109",
+      "legacy": {
+        "sourceId": 50,
+        "sourceUpdated": "20191211172329"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 51,
+      "category": 1,
+      "name": "Biển số P.110a \"Cấm xe đạp\" ",
+      "detail": "Để báo đường cấm xe đạp đi qua. Biển không có giá trị cấm những người dắt xe đạp.",
+      "image": "assets/signal/P.110a.png",
+      "sourceUpdated": "20191211172314",
+      "code": "P.110a",
+      "legacy": {
+        "sourceId": 51,
+        "sourceUpdated": "20191211172314"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 52,
+      "category": 1,
+      "name": "Biển số P.110b \"Cấm xe đạp thồ\"",
+      "detail": "Để báo đường cấm xe đạp thồ đi qua. Biển này không cấm người dắt loại xe này.",
+      "image": "assets/signal/P.110b.png",
+      "sourceUpdated": "20191211172255",
+      "code": "P.110b",
+      "legacy": {
+        "sourceId": 52,
+        "sourceUpdated": "20191211172255"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 53,
+      "category": 1,
+      "name": "Biển số P.111a \"Cấm xe gắn máy\"",
+      "detail": "Để báo đường cấm xe máy và xe gắn máy đi qua.",
+      "image": "assets/signal/P.111a.png",
+      "sourceUpdated": "20191211172156",
+      "code": "P.111a",
+      "legacy": {
+        "sourceId": 53,
+        "sourceUpdated": "20191211172156"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "pending",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 54,
+      "category": 1,
+      "name": "Biển số P.127d \"Biển hết hạn chế tốc độ tối đa cho phép theo biển ghép\"",
+      "detail": "Đến hết đoạn đường hạn chế tốc độ tối đa cho phép.",
+      "image": "assets/signal/P.127d1.png",
+      "sourceUpdated": "20191212092327",
+      "code": "P.127d",
+      "legacy": {
+        "sourceId": 54,
+        "sourceUpdated": "20191212092327"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "needs-code-review",
+        "imageVerification": "pending"
+      }
+    },
+    {
+      "id": 116,
+      "category": 1,
+      "name": "Biển số B.27d \"Biển hết hạn chế tốc độ tối đa cho phép theo biển ghép\"",
+      "detail": "Đến hết đoạn đường hạn chế tốc độ tối đa cho phép.",
+      "image": "assets/signal/P.127d1.png",
+      "sourceUpdated": "20200204140651",
+      "code": "P.127d",
+      "legacy": {
+        "sourceId": 116,
+        "sourceUpdated": "20200204140651"
+      },
+      "qcvn2024": {
+        "annex": "B",
+        "clause": null,
+        "verification": "needs-code-review",
+        "imageVerification": "pending"
+      }
+    }
+  ],
+  "legacyAssets": [
+    {
+      "id": 3,
+      "image": "assets/signal/P.124a2.png",
+      "sha256": "2b311be2baba4926745161bcf71784f74e3a456184cb4a66b74be5191de1e5a8",
+      "sourceUpdated": "20191212092141"
+    },
+    {
+      "id": 5,
+      "image": "assets/signal/P.105.png",
+      "sha256": "d7c8fd6a81a56599cb2668a8eea9c2bfb1daf8bc569cd1a5a238f707577016e9",
+      "sourceUpdated": "20191211170458"
+    },
+    {
+      "id": 6,
+      "image": "assets/signal/S.501.png",
+      "sha256": "d6ec9c0525f494ed399f2073c9ae7316c78811f30efb658d633449ee856940f0",
+      "sourceUpdated": "20191213095420"
+    },
+    {
+      "id": 7,
+      "image": "assets/signal/S.502.png",
+      "sha256": "b1657d38ddf1d2d7679325e1bfd8876b213b2686103f75d849f43ef3be1def12",
+      "sourceUpdated": "20191213095407"
+    },
+    {
+      "id": 8,
+      "image": "assets/signal/S.503a.png",
+      "sha256": "aa983754a21393ca10ce05bf754af1a83c3e9661f5489be8210f0f7574631565",
+      "sourceUpdated": "20191213094535"
+    },
+    {
+      "id": 9,
+      "image": "assets/signal/S.503b.png",
+      "sha256": "c83478d89fc4278b657f2796b0c0091be809053abca969b2507f4ad76f2b47a3",
+      "sourceUpdated": "20191213095234"
+    },
+    {
+      "id": 10,
+      "image": "assets/signal/S.503c.png",
+      "sha256": "b447346a2bb549e00d756fd06ac07436aa1358f797b8dabd4a0be9994078825a",
+      "sourceUpdated": "20191213095354"
+    },
+    {
+      "id": 11,
+      "image": "assets/signal/S.503d.png",
+      "sha256": "cbe90c4b179ada5efc8f5d00f0fa55729e8bdb746b4be4545aa0d92a939ce203",
+      "sourceUpdated": "20191213095326"
+    },
+    {
+      "id": 12,
+      "image": "assets/signal/S.503e.png",
+      "sha256": "c5062244397a2023a2a01a60ad816213bf268d9e976e08cb34a1220e2bbdbd3c",
+      "sourceUpdated": "20191213095309"
+    },
+    {
+      "id": 13,
+      "image": "assets/signal/S.503f.png",
+      "sha256": "fb5fd33e8acaf8930e6cc05b1f77ad1702a031850916c8bb2832170a0e2bff82",
+      "sourceUpdated": "20191213095257"
+    },
+    {
+      "id": 14,
+      "image": "assets/signal/S.504.png",
+      "sha256": "6d0ffe31858ad69da77b85b0b9196bd7ab23eb08a7683778e012224e51c76892",
+      "sourceUpdated": "20191213095218"
+    },
+    {
+      "id": 15,
+      "image": "assets/signal/S.505a.png",
+      "sha256": "af55f542128b73c2de23d5fe531dfe5b786ad556fce10a7aada6cb8a197d9916",
+      "sourceUpdated": "20191213095157"
+    },
+    {
+      "id": 16,
+      "image": "assets/signal/S.505b.png",
+      "sha256": "b049af9834d7ae7b80bf4fb9bd74d5e639c156dd5e7340db90f71f43a21032f6",
+      "sourceUpdated": "20191213095145"
+    },
+    {
+      "id": 17,
+      "image": "assets/signal/S.505c.png",
+      "sha256": "6df4e9aab296ee10fa2b014cd2223508f80bcd40d9029c8bac3ca8a3ab7c508e",
+      "sourceUpdated": "20191213095133"
+    },
+    {
+      "id": 18,
+      "image": "assets/signal/S.506a.png",
+      "sha256": "a06fd6bbc0c48324382463c6b74e6e48c34aa5f9b9c4e5930bd48961a109e689",
+      "sourceUpdated": "20191213095113"
+    },
+    {
+      "id": 19,
+      "image": "assets/signal/S.506b.png",
+      "sha256": "aeda08598edaa4f05b9c660707a247a14677089cc41493f0e31d1ec119cee28e",
+      "sourceUpdated": "20191213095100"
+    },
+    {
+      "id": 20,
+      "image": "assets/signal/S.507.png",
+      "sha256": "059230c5db670e681bf7ded3ddcdcecd1aa6edafc6cba014b7d09315712422e6",
+      "sourceUpdated": "20191213095045"
+    },
+    {
+      "id": 21,
+      "image": "assets/signal/S.508a.png",
+      "sha256": "b083b8530eb6565e8ee87a7e33b74b5024f8981cf95dc1554f1cf9e83556076f",
+      "sourceUpdated": "20191213095024"
+    },
+    {
+      "id": 22,
+      "image": "assets/signal/S.508b.png",
+      "sha256": "dacebbe62c7a1d0e1f7098b1e49ddfa4dfc40ad0fd545c1cf5ab9db7c5e3bccd",
+      "sourceUpdated": "20191213095000"
+    },
+    {
+      "id": 23,
+      "image": "assets/signal/S.509a.png",
+      "sha256": "504d92293505ffc6b4ba104dfc90f8df9c1a085055362cdcc36a360b5a3c7ab0",
+      "sourceUpdated": "20191213094944"
+    },
+    {
+      "id": 24,
+      "image": "assets/signal/S.509b.png",
+      "sha256": "4d05e07a9b8647ae391ab8175255aa82db3fa0ee158d1b265d3e489f40fb87eb",
+      "sourceUpdated": "20191213094933"
+    },
+    {
+      "id": 25,
+      "image": "assets/signal/S.510.png",
+      "sha256": "74718458daea6eb20d920d327952a01ca88ac853c31f44fb5ba794c1224a09e1",
+      "sourceUpdated": "20191213094858"
+    },
+    {
+      "id": 26,
+      "image": "assets/signal/S.H,3c.png",
+      "sha256": "b2e145ada55a57f1b594bc7bc7af7977cabd4fcb585b8956280163b7a1f6556f",
+      "sourceUpdated": "20191213100422"
+    },
+    {
+      "id": 27,
+      "image": "assets/signal/S.G,7.png",
+      "sha256": "703686c985aafdd17773ca0d156dfa2846d1d72a729b6db2bd94b572c5a2c3f9",
+      "sourceUpdated": "20191213094845"
+    },
+    {
+      "id": 28,
+      "image": "assets/signal/S.G,8.png",
+      "sha256": "e8b9c03994afc30c308b78ce95eb66a1c2e70932e25ab03716eee42b12ecd0f8",
+      "sourceUpdated": "20191213094829"
+    },
+    {
+      "id": 29,
+      "image": "assets/signal/S.G,9b.png",
+      "sha256": "1794c65f1b00dab1ea267df96923279db3d24a252ca74340413a2aa97f994d4d",
+      "sourceUpdated": "20191213094813"
+    },
+    {
+      "id": 30,
+      "image": "assets/signal/S.G,11a.png",
+      "sha256": "9128cf401a1185cbb595845d0456067650519ed1cfcf6dd9f341a3bc594c5eb6",
+      "sourceUpdated": "20191213094758"
+    },
+    {
+      "id": 31,
+      "image": "assets/signal/S.G,11c.png",
+      "sha256": "25fcc1f46bd9e47b3ba01f5b4b573ddd427adec97dcb73a2dd7a93b20aec9625",
+      "sourceUpdated": "20191213094747"
+    },
+    {
+      "id": 32,
+      "image": "assets/signal/S.G,12a.png",
+      "sha256": "17bdfc6f199400ccae509253c72780be956d004ca4fedf1094b456d6a410f5e4",
+      "sourceUpdated": "20191213094726"
+    },
+    {
+      "id": 33,
+      "image": "assets/signal/S.G,12b.png",
+      "sha256": "4149c443c4058a9eb0d98c19d97498446a6b0f501548821c1681893006252fde",
+      "sourceUpdated": "20191213094630"
+    },
+    {
+      "id": 34,
+      "image": "assets/signal/S.H,6.png",
+      "sha256": "b246d0dacf5733198d60194f126be79797de4b284fcd970fc418a426e1b0504f",
+      "sourceUpdated": "20191213094608"
+    },
+    {
+      "id": 35,
+      "image": "assets/signal/P.101.png",
+      "sha256": "8399f2b0425eeb78ee4ec521dd293c326d1d6b5b5b890398c06f67e7d760f7aa",
+      "sourceUpdated": "20191211172619"
+    },
+    {
+      "id": 36,
+      "image": "assets/signal/P.102.png",
+      "sha256": "1b511358954d581c8068cbd64fdb20f0e159532450bf1cd69da6d054b7558de9",
+      "sourceUpdated": "20191211172605"
+    },
+    {
+      "id": 37,
+      "image": "assets/signal/P.103a.png",
+      "sha256": "f466051cb7cf7a4a024818360fbac1d6b2aa40551f57aa96c00062fb12b693a1",
+      "sourceUpdated": "20191211172551"
+    },
+    {
+      "id": 38,
+      "image": "assets/signal/P.103b.png",
+      "sha256": "52c40d439029053ee89cf4fd8a780b8bcec83dd6027e46fdfda1cc2f501204cc",
+      "sourceUpdated": "20191211172535"
+    },
+    {
+      "id": 39,
+      "image": "assets/signal/P.103c.png",
+      "sha256": "75bf5b63ba6cab034555279b7b9fca835c793f276b1f1f1a9c8b99e3363b133b",
+      "sourceUpdated": "20191211172517"
+    },
+    {
+      "id": 40,
+      "image": "assets/signal/P.104.png",
+      "sha256": "b856dbb3f8d5e86d8116afbee2f8d5650a6e987c0811baf67345eb74ef15e904",
+      "sourceUpdated": "20191211170812"
+    },
+    {
+      "id": 41,
+      "image": "assets/signal/P.124b2.png",
+      "sha256": "9916708005507c72e6e9dd4b7dfd801727a4869bca8b2a65e94b059e0b098957",
+      "sourceUpdated": "20191212092527"
+    },
+    {
+      "id": 42,
+      "image": "assets/signal/P.106a.png",
+      "sha256": "5ef52361e501dd30148b029e7299e7db9322e841b0a07e36f45edf8d32169651",
+      "sourceUpdated": "20191211170551"
+    },
+    {
+      "id": 43,
+      "image": "assets/signal/P.106b.png",
+      "sha256": "186c7a8dca603fe0c046999adefbcc43619ff1370197a0e475d9c66d4ee64eaf",
+      "sourceUpdated": "20191211170531"
+    },
+    {
+      "id": 44,
+      "image": "assets/signal/P.106c.png",
+      "sha256": "ca5141eeba7fe2efd37d5b69d602ac112bbe4e08312405157ea7fb835f4505ed",
+      "sourceUpdated": "20191211172459"
+    },
+    {
+      "id": 45,
+      "image": "assets/signal/P.107.png",
+      "sha256": "e7e6942c6e351676d29a2637bd08403b1c5ff9b920fa8a5419a49b95988ebd54",
+      "sourceUpdated": "20191211172429"
+    },
+    {
+      "id": 46,
+      "image": "assets/signal/P.107a.png",
+      "sha256": "5205222ef52d212e879e449562ce9166373f0d80a4a1dee4a61886c50d59680e",
+      "sourceUpdated": "20191211172444"
+    },
+    {
+      "id": 47,
+      "image": "assets/signal/P.107b.png",
+      "sha256": "158afafee82abab4911386f9149ebeb8fd7db40f140881a8cf57e759bc8418e8",
+      "sourceUpdated": "20191211172413"
+    },
+    {
+      "id": 48,
+      "image": "assets/signal/P.108.png",
+      "sha256": "9ea7a937abc26d46205565e6ac10bd924593eda16992cf09be73753afe703275",
+      "sourceUpdated": "20191211172358"
+    },
+    {
+      "id": 49,
+      "image": "assets/signal/P.108a.png",
+      "sha256": "b7139ddb462b31d4cc2affde21caeffcc9475063cf2cc5aee42ce16c3812930a",
+      "sourceUpdated": "20191211172345"
+    },
+    {
+      "id": 50,
+      "image": "assets/signal/P.109.png",
+      "sha256": "7eb79257ba89104db03b3c23bce083012a83828ec9b1ab96d03629930ef2d349",
+      "sourceUpdated": "20191211172329"
+    },
+    {
+      "id": 51,
+      "image": "assets/signal/P.110a.png",
+      "sha256": "69f12fdadb1d23bc234bd8a828fafbf2579aaf04cd4526ed864e677e1878964a",
+      "sourceUpdated": "20191211172314"
+    },
+    {
+      "id": 52,
+      "image": "assets/signal/P.110b.png",
+      "sha256": "bd443332db28c921fa2c5d7b928af23fe7b1cabf488e7df38cafe61785aaa185",
+      "sourceUpdated": "20191211172255"
+    },
+    {
+      "id": 53,
+      "image": "assets/signal/P.111a.png",
+      "sha256": "148545f23db7367d740080f0663ddf1064e754ba93ebe7cbd2cd8795cabe74a0",
+      "sourceUpdated": "20191211172156"
+    },
+    {
+      "id": 54,
+      "image": "assets/signal/P.127d1.png",
+      "sha256": "3300c521ab3fb8d0373d67d5a3c7d21ba3b26fd640d5c530a02f5a63872f89a3",
+      "sourceUpdated": "20191212092327"
+    },
+    {
+      "id": 55,
+      "image": "assets/signal/P.111b.png",
+      "sha256": "b31acd420c2f22a85aecd25bb2eb22a7eef638c8d0a355a42bcb1ed8551894a7",
+      "sourceUpdated": "20191211172016"
+    },
+    {
+      "id": 56,
+      "image": "assets/signal/P.111d.png",
+      "sha256": "26c2c3a8db04ca1cb3914bfd4723e090665a01c3a40feb644195a4349ff09c18",
+      "sourceUpdated": "20191211171956"
+    },
+    {
+      "id": 57,
+      "image": "assets/signal/P.112.png",
+      "sha256": "507d55ac594ed1ee6ecda0f88eaa4c80777f4a1456811af242001ec19d805042",
+      "sourceUpdated": "20191211171940"
+    },
+    {
+      "id": 58,
+      "image": "assets/signal/R.122.png",
+      "sha256": "843f93da02264a1889e319648199ba2d6cae39dc2b2b66898a96b6005e9eab74",
+      "sourceUpdated": "20191212102905"
+    },
+    {
+      "id": 59,
+      "image": "assets/signal/P.113.png",
+      "sha256": "2e391687e37a534f53996cc040d6f17587447548b95ff8674a8e7b7e445ac28d",
+      "sourceUpdated": "20191211171915"
+    },
+    {
+      "id": 60,
+      "image": "assets/signal/R.301a.png",
+      "sha256": "2adb3f96a1a7f620eb6cca9b785ca3a9b5911b95543ed3e82f4513b9fb7cb642",
+      "sourceUpdated": "20191212102647"
+    },
+    {
+      "id": 61,
+      "image": "assets/signal/P.114.png",
+      "sha256": "82284a51f2a6e0e5639ceaac0e2a84c60fd4021ef1985b4e3d49432b86e3ef65",
+      "sourceUpdated": "20191211171859"
+    },
+    {
+      "id": 62,
+      "image": "assets/signal/P.115.png",
+      "sha256": "e702eff53f0778a9975c8255f53c77bd0c124794b4f1c0e3df89938006932331",
+      "sourceUpdated": "20191211171847"
+    },
+    {
+      "id": 63,
+      "image": "assets/signal/R.301b.png",
+      "sha256": "f0b612ef0c7d3e555519a4b28395da2649aee6ec52ec126bacbc8c7c692515c6",
+      "sourceUpdated": "20191212105407"
+    },
+    {
+      "id": 64,
+      "image": "assets/signal/P.116.png",
+      "sha256": "58a6a4584364040a90f4ad56ceb414362a5ac2e3555844307c9f8b3a14a53b38",
+      "sourceUpdated": "20191211171831"
+    },
+    {
+      "id": 65,
+      "image": "assets/signal/R.301c.png",
+      "sha256": "bf145437f9e9fb20722c776b0b3347038ca1de6fc2c902bc4ce7e72c7a6ca178",
+      "sourceUpdated": "20191212105343"
+    },
+    {
+      "id": 66,
+      "image": "assets/signal/P.117.png",
+      "sha256": "64940c862bf824f0e78d869a4fbfd9dffdb3423cc92b2368ee877538c274989b",
+      "sourceUpdated": "20191211171819"
+    },
+    {
+      "id": 67,
+      "image": "assets/signal/R.301d.png",
+      "sha256": "649d124bd40bdb0bcf1a84df462ffec22e81072d7b069716079bf073cefe28f8",
+      "sourceUpdated": "20191212105321"
+    },
+    {
+      "id": 68,
+      "image": "assets/signal/P.118.png",
+      "sha256": "509731e236d982cae82fc987236e62852ddb850915b3cbb33776fae75af70152",
+      "sourceUpdated": "20191211171801"
+    },
+    {
+      "id": 69,
+      "image": "assets/signal/P.119.png",
+      "sha256": "97624a1875504ddcf59fd15d6ec6ec8a4e377eb3c28b20fbfa335ab0aa91f747",
+      "sourceUpdated": "20191211171744"
+    },
+    {
+      "id": 70,
+      "image": "assets/signal/R.301e.png",
+      "sha256": "6640b01dcb1c9c1ad92f4995bcc4640e63ab74e3682eab731c56ba25029fb261",
+      "sourceUpdated": "20191212105306"
+    },
+    {
+      "id": 71,
+      "image": "assets/signal/P.120.png",
+      "sha256": "bee482186b752c204d5b3817d330e6621d658dc7048ae75801b227fa20b00fcb",
+      "sourceUpdated": "20191211171726"
+    },
+    {
+      "id": 72,
+      "image": "assets/signal/R.301h.png",
+      "sha256": "45dc6aeb0f26d10c9bb277198a45faeb92e71fa0e5a9736b3b3d2203a3113a8c",
+      "sourceUpdated": "20191212162153"
+    },
+    {
+      "id": 73,
+      "image": "assets/signal/R.301i.png",
+      "sha256": "30d3d90c97ecccfb689399bd224ab2b1a5c31da6269fbec8129a38744ca91712",
+      "sourceUpdated": "20191212105132"
+    },
+    {
+      "id": 74,
+      "image": "assets/signal/R.302a.png",
+      "sha256": "c4a72b8cb05bb3fa3866ba2fd91488327bbded07ddb0065a9a09cf8f12c747af",
+      "sourceUpdated": "20191212102852"
+    },
+    {
+      "id": 75,
+      "image": "assets/signal/R.302b.png",
+      "sha256": "c9af2129cc6220288b39c4f2c3df15fcf9438a2da2d65ea0107ed742a5c35b02",
+      "sourceUpdated": "20191212102839"
+    },
+    {
+      "id": 76,
+      "image": "assets/signal/R.302c.png",
+      "sha256": "c4a837fb2c2423bbd43eef4b0f354a4129f10eece5813fa2b660de22c19a407b",
+      "sourceUpdated": "20191212102827"
+    },
+    {
+      "id": 77,
+      "image": "assets/signal/R.303.png",
+      "sha256": "37d5c8f163cd14b32fe21d40c29be920be57ee84ffde987f07901d7a2516ebeb",
+      "sourceUpdated": "20191212102812"
+    },
+    {
+      "id": 78,
+      "image": "assets/signal/R.304.png",
+      "sha256": "9cd62e255ebe7bd71f8c1d48040eb708fd15dae51e342e991ad9f85f4f54aaa1",
+      "sourceUpdated": "20191212102754"
+    },
+    {
+      "id": 79,
+      "image": "assets/signal/R.305.png",
+      "sha256": "e37879de1b9851f5b437a0ef128becd2e8fde769003ccf3a2444864e3618f2dc",
+      "sourceUpdated": "20191212102701"
+    },
+    {
+      "id": 80,
+      "image": "assets/signal/R.306.png",
+      "sha256": "1261e66788e0a5db47d530dcae60dc934603c4c4f2e74a86c646dc898a6cce54",
+      "sourceUpdated": "20191212102734"
+    },
+    {
+      "id": 81,
+      "image": "assets/signal/R.307.png",
+      "sha256": "ca8de023dd6b9a24a063c845d4111910cc0a168da87fbacf3daa1821c4bc81b6",
+      "sourceUpdated": "20191212102715"
+    },
+    {
+      "id": 82,
+      "image": "assets/signal/R.308a.png",
+      "sha256": "2daded0d02181417d60b7bcb42d9365fb4b67104c73f0442c40a58c686d861ce",
+      "sourceUpdated": "20191212105104"
+    },
+    {
+      "id": 83,
+      "image": "assets/signal/R.308b.png",
+      "sha256": "275e4f78750217108cab7aac1c603b326c009e8f2c95af4be5873ca7a0d72c65",
+      "sourceUpdated": "20191212105052"
+    },
+    {
+      "id": 84,
+      "image": "assets/signal/R.309.png",
+      "sha256": "bfcd1617b612452a676f32e01328b5f07077a1b75a209a425370cd18acbb34a6",
+      "sourceUpdated": "20191212105034"
+    },
+    {
+      "id": 85,
+      "image": "assets/signal/R.310a.png",
+      "sha256": "75b4d641d31ffe3d7880288c817740fa0bcbcc90ded020782525d76e0df31a45",
+      "sourceUpdated": "20191212105016"
+    },
+    {
+      "id": 86,
+      "image": "assets/signal/R.310b.png",
+      "sha256": "9b55c0dd8748b7c485ef1ad0f786f48147599e547ed47f061a4bc496d3c0c13f",
+      "sourceUpdated": "20191212105005"
+    },
+    {
+      "id": 87,
+      "image": "assets/signal/R.310c.png",
+      "sha256": "33cea7ec19c08881e5006b0dae16f4e4589f4ab79cb61dec78b0e377dbc2b4a9",
+      "sourceUpdated": "20191212104913"
+    },
+    {
+      "id": 88,
+      "image": "assets/signal/P.121.png",
+      "sha256": "0e9a18098308280f81d1b8081c7914a6de495f9db7fc7a82085026ba616b94c0",
+      "sourceUpdated": "20191211171714"
+    },
+    {
+      "id": 89,
+      "image": "assets/signal/R.403a.png",
+      "sha256": "8e313f8f68a514532d633f43ab90a6063f51a6aa2b6b341e8e9afe55e519bfe4",
+      "sourceUpdated": "20191212104830"
+    },
+    {
+      "id": 90,
+      "image": "assets/signal/R.403b.png",
+      "sha256": "02ba4a9d466fe645c9971a37232689a9cd8f6db8e8b5e48f1c6d8bdb0c5be83d",
+      "sourceUpdated": "20191212104703"
+    },
+    {
+      "id": 91,
+      "image": "assets/signal/P.123a.png",
+      "sha256": "b181df4c0e1d348a57b6a761bf21902553222fc32bac5dbe45b3998ff4630bf0",
+      "sourceUpdated": "20191211171701"
+    },
+    {
+      "id": 92,
+      "image": "assets/signal/P.123b.png",
+      "sha256": "5f9fc83332a5e7db165255030f7f996ade08d9cacc3dd06b3a169b132a591ee8",
+      "sourceUpdated": "20191211171648"
+    },
+    {
+      "id": 93,
+      "image": "assets/signal/R.403c.png",
+      "sha256": "3f847d1228ada9cedd440dfac5a31f23b2373215a06d57ef09a40fcc2f3f7877",
+      "sourceUpdated": "20191212104531"
+    },
+    {
+      "id": 94,
+      "image": "assets/signal/P.124a1.png",
+      "sha256": "1def5cccad3d2bb49c4b38a4b158fe60602b75abf0eda18c9a0491624ac55ab9",
+      "sourceUpdated": "20191211171507"
+    },
+    {
+      "id": 95,
+      "image": "assets/signal/P.124b1.png",
+      "sha256": "130759ffce58daf9bb64ae345fd31b8aecdd138398d00b0c41e752bd15b21449",
+      "sourceUpdated": "20191211171445"
+    },
+    {
+      "id": 96,
+      "image": "assets/signal/P.124c.png",
+      "sha256": "d46e7250e66a2f7e6f39c754900bb61305d04dfeb33ec352665160b00b87211d",
+      "sourceUpdated": "20191211171628"
+    },
+    {
+      "id": 97,
+      "image": "assets/signal/P.124d.png",
+      "sha256": "bcfd2e2ae2e348ea03b012686a3de8a260fdc4bf8279ead475b44726d1f5ebb6",
+      "sourceUpdated": "20191211171611"
+    },
+    {
+      "id": 98,
+      "image": "assets/signal/P.124e.png",
+      "sha256": "ed3003bbf924d641d399ee66bb5c13b1fe8b803696a814df34550e7eecaaba90",
+      "sourceUpdated": "20191211171541"
+    },
+    {
+      "id": 99,
+      "image": "assets/signal/P.124f.png",
+      "sha256": "8b3b0b953c47047b6a7787ff9b213b1877f8c3b8a9db7b1188e6314d5537da9c",
+      "sourceUpdated": "20191211171526"
+    },
+    {
+      "id": 100,
+      "image": "assets/signal/P.125.png",
+      "sha256": "5d7aaffbf7dc12457d70b88c778299fab36efa9e7c3303f722b00e6c3958c724",
+      "sourceUpdated": "20191211171418"
+    },
+    {
+      "id": 101,
+      "image": "assets/signal/P.126.png",
+      "sha256": "25a80232e072f303d10b4375d40fcf9ea214786a028bd00aa69aa79ade7c06af",
+      "sourceUpdated": "20191211171407"
+    },
+    {
+      "id": 102,
+      "image": "assets/signal/R.403d.png",
+      "sha256": "2c56e501ce11ab6b13d74a15b001cfb9abcc0f57b7a423f4749cb302ce623280",
+      "sourceUpdated": "20191212104507"
+    },
+    {
+      "id": 103,
+      "image": "assets/signal/P.127.png",
+      "sha256": "c6415579e2173829cd1591edbfa9112ca15892849b1e4bf614eb06b3c561d9e6",
+      "sourceUpdated": "20191211171352"
+    },
+    {
+      "id": 104,
+      "image": "assets/signal/P.127a.png",
+      "sha256": "588c7d9fe35e04ca4db02dbc0bcc714e11d52cea441257a9bb942c288af38958",
+      "sourceUpdated": "20191211171339"
+    },
+    {
+      "id": 105,
+      "image": "assets/signal/R.403e.png",
+      "sha256": "3179b185d10b86b16dcf3ff6a85c38bed99e60e80a1ca9da1d8cc99f80d22ea3",
+      "sourceUpdated": "20191212104447"
+    },
+    {
+      "id": 106,
+      "image": "assets/signal/R.403f.png",
+      "sha256": "2d10bc140e83e1bdcd5295bff31ba35f086a2043fe315218156c82469e80538c",
+      "sourceUpdated": "20191212104428"
+    },
+    {
+      "id": 107,
+      "image": "assets/signal/P.127b.png",
+      "sha256": "1e92df98f57ebbceb6a330df8c88dc3d08ecb0ef9d0e8925eadaa98bbae32ae2",
+      "sourceUpdated": "20191211171328"
+    },
+    {
+      "id": 108,
+      "image": "assets/signal/R.404a.png",
+      "sha256": "59727e4b08cb8bba4b3a6a21f16ab11cb047758c7f3b3f47a65244d3bd908b85",
+      "sourceUpdated": "20191212104412"
+    },
+    {
+      "id": 109,
+      "image": "assets/signal/R.404b.png",
+      "sha256": "ae46c7bf7bb95102095c545b7aaca7285aea043d63255b89c7cc22f9491e5241",
+      "sourceUpdated": "20191212104358"
+    },
+    {
+      "id": 110,
+      "image": "assets/signal/R.404c.png",
+      "sha256": "5074837982d8dd139a43f96bd09ba2c92bf0da80c01dbb5c2dea02659a6c7724",
+      "sourceUpdated": "20191212104332"
+    },
+    {
+      "id": 111,
+      "image": "assets/signal/R.404d.png",
+      "sha256": "e2efee776eb1e74bec6bdb4889ea9864794d44f8bf3de4e9d1f0755476ae361b",
+      "sourceUpdated": "20191212104309"
+    },
+    {
+      "id": 112,
+      "image": "assets/signal/R.404e.png",
+      "sha256": "09d0847aad962eca78d330b5c7673a931542e251fe77f11d67139a016bf209ac",
+      "sourceUpdated": "20191212104252"
+    },
+    {
+      "id": 114,
+      "image": "assets/signal/R.404f.png",
+      "sha256": "df45266b3eef5ec6d03bf765e5337dec37020e15a3b842bb055d3cd5d46dad93",
+      "sourceUpdated": "20191212104214"
+    },
+    {
+      "id": 115,
+      "image": "assets/signal/R.411.png",
+      "sha256": "2366575e0268e62232d4fc1315e01c670a15b8005132cdb958dd1163601cd728",
+      "sourceUpdated": "20191212104004"
+    },
+    {
+      "id": 116,
+      "image": "assets/signal/P.127d1.png",
+      "sha256": "3300c521ab3fb8d0373d67d5a3c7d21ba3b26fd640d5c530a02f5a63872f89a3",
+      "sourceUpdated": "20200204140651"
+    },
+    {
+      "id": 117,
+      "image": "assets/signal/P.128.png",
+      "sha256": "e2ff7660137b3fd7d40bed2d6f09e25e379d9af3e8bac43edff114ed4252c8a3",
+      "sourceUpdated": "20191211171257"
+    },
+    {
+      "id": 118,
+      "image": "assets/signal/P.129.png",
+      "sha256": "2906cb1876deed8a0115646c50a7b998f177f3ace5ce5ffb0918b4f20be343f9",
+      "sourceUpdated": "20191211171202"
+    },
+    {
+      "id": 119,
+      "image": "assets/signal/P.130.png",
+      "sha256": "738b259c6522f99f33237db814e0decba5fce5a1efeb34fe36c25cb634390546",
+      "sourceUpdated": "20191211171145"
+    },
+    {
+      "id": 120,
+      "image": "assets/signal/P.131a.png",
+      "sha256": "c513163b247e0f2c6b7f3006725722b974cc773eaece92c1149f0ed82970ef49",
+      "sourceUpdated": "20191211171133"
+    },
+    {
+      "id": 121,
+      "image": "assets/signal/P.131b.png",
+      "sha256": "2f5dbe64a90b874818fb63e6ef92defad923ff69df1bffdca49a1bfb49a454e1",
+      "sourceUpdated": "20191211171117"
+    },
+    {
+      "id": 122,
+      "image": "assets/signal/P.131c.png",
+      "sha256": "08766ed34bdd70e2b851befcfcfdbcaa7632ed9596ec5512656e9f03b6710c87",
+      "sourceUpdated": "20191211171101"
+    },
+    {
+      "id": 123,
+      "image": "assets/signal/R.412a.png",
+      "sha256": "ec3afbb94cd88764ffd2ef4d529a2436f5b7b29329d553d792883dca5c0d6afb",
+      "sourceUpdated": "20191212103948"
+    },
+    {
+      "id": 124,
+      "image": "assets/signal/R.412b.png",
+      "sha256": "cf3575ac9419d602364c0d36e4189e25eb745ab87c68000a6945ba648ffab63e",
+      "sourceUpdated": "20191212103927"
+    },
+    {
+      "id": 125,
+      "image": "assets/signal/R.412c.png",
+      "sha256": "2a9ba86b9ea5e39d490bbf05480c63865e86385026e3696690420229b28f6fe6",
+      "sourceUpdated": "20191212103840"
+    },
+    {
+      "id": 126,
+      "image": "assets/signal/R.412d.png",
+      "sha256": "ebeb3cbbc6e060587498f2bcfa9bae8122d0ebcf75feaf61bc55af3afb3011ea",
+      "sourceUpdated": "20191212103816"
+    },
+    {
+      "id": 127,
+      "image": "assets/signal/R.412e.png",
+      "sha256": "873c607d7cb8b8845f4e1a992d8debda882eee53893332e55a53d8b3b6d30a7a",
+      "sourceUpdated": "20191212103802"
+    },
+    {
+      "id": 128,
+      "image": "assets/signal/R.412f.png",
+      "sha256": "a78f562dd9a0e3d44fafd66d25808663a91f8f1835cef57b570eec5736c3e785",
+      "sourceUpdated": "20191212103728"
+    },
+    {
+      "id": 129,
+      "image": "assets/signal/R.412g.png",
+      "sha256": "796d94da47f93c3e129b8f672f46d70942ca0fffdd3426ae33c7f105337b1c7e",
+      "sourceUpdated": "20191212103710"
+    },
+    {
+      "id": 130,
+      "image": "assets/signal/P.132.png",
+      "sha256": "5e86e275768bab08aae0de8bcc230c759692f68c8f28db74e4810284a4eee8c4",
+      "sourceUpdated": "20191211171041"
+    },
+    {
+      "id": 131,
+      "image": "assets/signal/R.412h.png",
+      "sha256": "9ec00907a396d7289684783eb2d70c2dcc936df81b6c63262eec1e17fba7a920",
+      "sourceUpdated": "20191212103626"
+    },
+    {
+      "id": 132,
+      "image": "assets/signal/W.201a.png",
+      "sha256": "fc7b82c5193a5b35b36d819c923afe60fbe96aa28576a22605d8335813d16b07",
+      "sourceUpdated": "20191212085910"
+    },
+    {
+      "id": 133,
+      "image": "assets/signal/W.201b.png",
+      "sha256": "fe2a8ea248df419445d529b3907a6f35f00f0cdf975094c956435761f640783a",
+      "sourceUpdated": "20191212085856"
+    },
+    {
+      "id": 134,
+      "image": "assets/signal/W.201c.png",
+      "sha256": "acc5f6b0de0797213ada90b4f076c535a26be511f771a8030cf6ca3735063d18",
+      "sourceUpdated": "20191212085843"
+    },
+    {
+      "id": 135,
+      "image": "assets/signal/W.201d.png",
+      "sha256": "d760bd6ba6a6accb368d29954edb254bdc0a74e897479d4ed13c9f60f1153260",
+      "sourceUpdated": "20191212085818"
+    },
+    {
+      "id": 136,
+      "image": "assets/signal/W.202a.png",
+      "sha256": "5ae15e236447073dfee411b526fc1791a948643bfdf86ec398fe2457ba0d5484",
+      "sourceUpdated": "20191212085759"
+    },
+    {
+      "id": 137,
+      "image": "assets/signal/W.202b.png",
+      "sha256": "fda1a0c8460b716a392ea16d15a3d5633e497595eadf4af5d6e8ecbb7e476953",
+      "sourceUpdated": "20191212085746"
+    },
+    {
+      "id": 138,
+      "image": "assets/signal/W.203a.png",
+      "sha256": "b1afc48e8a9c8b7fbc8282843822abee3e95a215bc09e9971e7324c6a3bb39de",
+      "sourceUpdated": "20191212084813"
+    },
+    {
+      "id": 139,
+      "image": "assets/signal/W.203b.png",
+      "sha256": "cf4e6a56321c7388a52e65f43fff9c7f6412ec630c176ec1bd4b657a2675dcea",
+      "sourceUpdated": "20191212085731"
+    },
+    {
+      "id": 140,
+      "image": "assets/signal/W.203c.png",
+      "sha256": "9830ce15d9c0755ac75e38feca107b8f3e14166ad06d0088a70ecb0ba5f42a68",
+      "sourceUpdated": "20191212084802"
+    },
+    {
+      "id": 141,
+      "image": "assets/signal/DP.133.png",
+      "sha256": "184a20c6c2e7865c2c46d9428c68cc04dae839332c240605bccb5f2d3d78a789",
+      "sourceUpdated": "20191211171024"
+    },
+    {
+      "id": 142,
+      "image": "assets/signal/W.204.png",
+      "sha256": "4b04f97233ebda6653ea59fbec4f680694d3433a3c6faf3a7b41566a26953b20",
+      "sourceUpdated": "20191212085712"
+    },
+    {
+      "id": 143,
+      "image": "assets/signal/DP.134.png",
+      "sha256": "9bd62f5e380cec60f92af25957b75f6908ed18c62b112b8003d5910f1de7a253",
+      "sourceUpdated": "20191211171011"
+    },
+    {
+      "id": 144,
+      "image": "assets/signal/W.205a.png",
+      "sha256": "ca2f9dc8f76624624329903d1db145d240726912b8999cd873b9b9fc8751bd0a",
+      "sourceUpdated": "20191212085652"
+    },
+    {
+      "id": 145,
+      "image": "assets/signal/DP.135.png",
+      "sha256": "fe3cb2ecbc24edbea11fbfeaab1797b57570ce4e449d58a30983fb2db40325a4",
+      "sourceUpdated": "20191211170959"
+    },
+    {
+      "id": 146,
+      "image": "assets/signal/W.205b.png",
+      "sha256": "13af450800ca0affcc200dde5e96064a9c88fd2b9202a0225bae0f411d58309b",
+      "sourceUpdated": "20191212085639"
+    },
+    {
+      "id": 147,
+      "image": "assets/signal/P.136.png",
+      "sha256": "1cf305c7da971386791f3885c81ab4375643abb88fe86e21a866d3f819dda1a4",
+      "sourceUpdated": "20191211170944"
+    },
+    {
+      "id": 148,
+      "image": "assets/signal/P.137.png",
+      "sha256": "957fe109c055266cf333cbe2496ea2d5989991d00098344527840950bbdf319b",
+      "sourceUpdated": "20191211170924"
+    },
+    {
+      "id": 149,
+      "image": "assets/signal/W.205c.png",
+      "sha256": "ba3d118c3324cc5466ee7e061d330a0140dd4ad83363674a0976d3a974b30672",
+      "sourceUpdated": "20191212085611"
+    },
+    {
+      "id": 150,
+      "image": "assets/signal/P.138.png",
+      "sha256": "c9546dbf213dd5c0eebe7ea29cea396e8bdf61ecd752bdf06c87fc83d8900f3a",
+      "sourceUpdated": "20191211170906"
+    },
+    {
+      "id": 151,
+      "image": "assets/signal/W.205d.png",
+      "sha256": "b65759e49eede028f86e607962e6813632eee44f61edd4eca022ade032ef9967",
+      "sourceUpdated": "20191212085554"
+    },
+    {
+      "id": 152,
+      "image": "assets/signal/P.139.png",
+      "sha256": "3ff275e73b2e606d540a2cccc040cbf3d8e3fe6c94f84d4af53196465bffc0cf",
+      "sourceUpdated": "20191211170848"
+    },
+    {
+      "id": 153,
+      "image": "assets/signal/P.140.png",
+      "sha256": "1d9e2c65cf59b820d861a0220f529179830c519ad809a28a5ed22ba618ab1327",
+      "sourceUpdated": "20191211170832"
+    },
+    {
+      "id": 154,
+      "image": "assets/signal/W.205e.png",
+      "sha256": "d95edf0d2aef69b1b0422c30994f4d5432054f62b7a6003c7db15c524a6edd57",
+      "sourceUpdated": "20191212084742"
+    },
+    {
+      "id": 155,
+      "image": "assets/signal/W.206.png",
+      "sha256": "2e5051226acae6d06e9caf777191a7ff46ed3b945be1c2c728ba2c9ec3f3ff45",
+      "sourceUpdated": "20191212085538"
+    },
+    {
+      "id": 156,
+      "image": "assets/signal/W.207a.png",
+      "sha256": "65f19fab1018d84c6a3e29dd887771b50bda09fcc5fcd546b9da63b78d847cf3",
+      "sourceUpdated": "20191212085518"
+    },
+    {
+      "id": 157,
+      "image": "assets/signal/W.207b.png",
+      "sha256": "97fa6a1b9b818ca7b7f6db999e1cf5fa826fa8eb4fb81db8360ccdc1827c4b4c",
+      "sourceUpdated": "20191212085458"
+    },
+    {
+      "id": 158,
+      "image": "assets/signal/W.207c.png",
+      "sha256": "8d86bd6b863b5a2a28045f2ef45d8bcc69d3481a71b5ba4ece4b427e68ded188",
+      "sourceUpdated": "20191212085435"
+    },
+    {
+      "id": 159,
+      "image": "assets/signal/W.207d.png",
+      "sha256": "de544d798cc33e521c88a07e6221cf17f755114d48e96d5271186cc3235d5b06",
+      "sourceUpdated": "20191212085416"
+    },
+    {
+      "id": 160,
+      "image": "assets/signal/W.207e.png",
+      "sha256": "0d5430de77717febe2b5b46e8f751613adead2088ea0bacce54741acf97493c3",
+      "sourceUpdated": "20191212085403"
+    },
+    {
+      "id": 161,
+      "image": "assets/signal/W.207f.png",
+      "sha256": "7d1b4fdbf4d6a2433d5164f16139de448164f7c5e80d5150ada2a52d0ced6fb4",
+      "sourceUpdated": "20191212085349"
+    },
+    {
+      "id": 162,
+      "image": "assets/signal/W.207g.png",
+      "sha256": "5f739dd31825471672f7b72b1b26f55d9e91697724ac37004d395b4f2ac38a9c",
+      "sourceUpdated": "20191212084657"
+    },
+    {
+      "id": 163,
+      "image": "assets/signal/W.207h.png",
+      "sha256": "295803462c03f7365546b88e09bc4bfa6e9111e0978e24e8d4de9efc9e93a234",
+      "sourceUpdated": "20191212085334"
+    },
+    {
+      "id": 164,
+      "image": "assets/signal/W.207i.png",
+      "sha256": "a1a1209ef94c9f2a6f3bdb28d107d5d2f8640e865f107b979162fbbf1336a9d5",
+      "sourceUpdated": "20191212084844"
+    },
+    {
+      "id": 165,
+      "image": "assets/signal/R.412i.png",
+      "sha256": "6da42afb2c28d9fa34e29d55f0f5e17a6c3e73c7ba84a3be684370893bade33f",
+      "sourceUpdated": "20191212103603"
+    },
+    {
+      "id": 166,
+      "image": "assets/signal/R.412j.png",
+      "sha256": "d711ce4b420338fbb85696bb18fe526e641db967a866996492632e497edf31b2",
+      "sourceUpdated": "20191212103533"
+    },
+    {
+      "id": 167,
+      "image": "assets/signal/R.412k.png",
+      "sha256": "8b962fe1517a75167ef9a47d8ad8071a38ef561836de3f2a32eb0bb6d330f18e",
+      "sourceUpdated": "20191212103549"
+    },
+    {
+      "id": 168,
+      "image": "assets/signal/R.412l.png",
+      "sha256": "2c240f1ebb1e0300fbf60106b4943e4d82fbf0aea1d6c0b48396d6270bc76de9",
+      "sourceUpdated": "20191212103513"
+    },
+    {
+      "id": 169,
+      "image": "assets/signal/R.412m.png",
+      "sha256": "a2a5beec329f09beb85f28e0d27a06c0741df6689d039e3890690b3f2f1d3851",
+      "sourceUpdated": "20191212103459"
+    },
+    {
+      "id": 170,
+      "image": "assets/signal/R.412n.png",
+      "sha256": "8c7cdac238bca85c1098f07fde956bc0e0c41ffe8fbc7bf277da4a1f5ba0befc",
+      "sourceUpdated": "20191212103447"
+    },
+    {
+      "id": 171,
+      "image": "assets/signal/R.412o.png",
+      "sha256": "885d53e34bd83ffc9ffc30e9935ef120c232b4d5fdec4545b62a90b18586702b",
+      "sourceUpdated": "20191212103418"
+    },
+    {
+      "id": 172,
+      "image": "assets/signal/R.412p.png",
+      "sha256": "04c1ea064db13d4f40cc146b8f53c0f6c95ef480e4592b7e7f04b35154e38128",
+      "sourceUpdated": "20191212103326"
+    },
+    {
+      "id": 173,
+      "image": "assets/signal/R.415.png",
+      "sha256": "681989e7b829e8cd6dd8ad49f42ae93c7b952f2ed033acb4dfefb4b0423d5832",
+      "sourceUpdated": "20191212103254"
+    },
+    {
+      "id": 174,
+      "image": "assets/signal/R.420.png",
+      "sha256": "ef576c2dc7e10f4066ddbfb39599cc4e68f691799212ca5b56c07709ed47e911",
+      "sourceUpdated": "20191212103239"
+    },
+    {
+      "id": 175,
+      "image": "assets/signal/W.207k.png",
+      "sha256": "669e30cb04bd5d5d8694bca6c90681f052083376f34396137a9aad609ada2f4b",
+      "sourceUpdated": "20191212084640"
+    },
+    {
+      "id": 176,
+      "image": "assets/signal/W.207l.png",
+      "sha256": "df43dac1e6259ed9e3cfaee6ed32c2be8d8d8c9e8782839fbeacc1a15e0e7404",
+      "sourceUpdated": "20191212084625"
+    },
+    {
+      "id": 177,
+      "image": "assets/signal/W.208.png",
+      "sha256": "3f01f64a35ab29dd3fb552652f37beb71b32d0f2dab84dee726001d49838c6eb",
+      "sourceUpdated": "20191212084608"
+    },
+    {
+      "id": 178,
+      "image": "assets/signal/W.209.png",
+      "sha256": "6d583931d323dcf8c1b48b0d6b07a962274f37431a5a44b692211d9f7d2c0ec1",
+      "sourceUpdated": "20191212084549"
+    },
+    {
+      "id": 179,
+      "image": "assets/signal/R.421.png",
+      "sha256": "c5bc501bba596fbd4ad037388978fb195e6614087387031c2432de5e593ac0ed",
+      "sourceUpdated": "20191212104149"
+    },
+    {
+      "id": 180,
+      "image": "assets/signal/R.E,9a.png",
+      "sha256": "18aeba3e4ab435940d439e2f820c0c217cf1f3eb9797bf257ad1ec11db4f9fcc",
+      "sourceUpdated": "20191212103217"
+    },
+    {
+      "id": 181,
+      "image": "assets/signal/W.210.png",
+      "sha256": "031ab5683399ad8097449f038eb6adaab648f1cdc7bfc98b47658dd76abd313f",
+      "sourceUpdated": "20191212084535"
+    },
+    {
+      "id": 182,
+      "image": "assets/signal/W.211a.png",
+      "sha256": "bdc3e9f8bf3100126bf3351822a3449d848059bbd212d855b710af28211e356b",
+      "sourceUpdated": "20191212084512"
+    },
+    {
+      "id": 183,
+      "image": "assets/signal/R.E,9b.png",
+      "sha256": "640f96e053739cf3b98265e8e2403dd9a88bba266d6232df34b06d8f3deb93d8",
+      "sourceUpdated": "20191212103201"
+    },
+    {
+      "id": 184,
+      "image": "assets/signal/R.E,9c.png",
+      "sha256": "da3505ab2d4f9c3338f622f2ac3d46c6f9ee775040628ec81806ba3d59669692",
+      "sourceUpdated": "20191212103133"
+    },
+    {
+      "id": 185,
+      "image": "assets/signal/R.E,9d.png",
+      "sha256": "df0cd80d703a744ca5a97a561f273bd1f9e4381a702096e09f354b917d42f6a6",
+      "sourceUpdated": "20191212103112"
+    },
+    {
+      "id": 186,
+      "image": "assets/signal/R.E,10a.png",
+      "sha256": "9094cf50e49a055a6b5d2249269d5ca62fdee912fe81f02d85a20a3ec9862426",
+      "sourceUpdated": "20191212103056"
+    },
+    {
+      "id": 187,
+      "image": "assets/signal/R.E,10b.png",
+      "sha256": "9724b40c7287c5ac70508c9a8a11b021eec1f6b77dadaf29c9385d0698ddc99e",
+      "sourceUpdated": "20191212103041"
+    },
+    {
+      "id": 188,
+      "image": "assets/signal/R.E,10c.png",
+      "sha256": "d336f2cc48f25d805d4faad97364de97a2bce74f9d468c953de8208bfd6af78d",
+      "sourceUpdated": "20191212103021"
+    },
+    {
+      "id": 189,
+      "image": "assets/signal/R.E,10d.png",
+      "sha256": "58cd514ba44161ca292230cc42b9feb334656e7d3a8525e74743bf32b2299d15",
+      "sourceUpdated": "20191212103006"
+    },
+    {
+      "id": 190,
+      "image": "assets/signal/W.211b.png",
+      "sha256": "48519bf8120651c88bf7d66f57748fbf64e4ff8a28c42220df809dbfbbbfb79d",
+      "sourceUpdated": "20191212084453"
+    },
+    {
+      "id": 191,
+      "image": "assets/signal/R.E,11a.png",
+      "sha256": "35f1efc5e741472c5c42d617087c004b872c73dc694e7575aa237cae4cfeb0cd",
+      "sourceUpdated": "20191212102952"
+    },
+    {
+      "id": 192,
+      "image": "assets/signal/R.E,11b.png",
+      "sha256": "3b7136290a3290701197f5f337668c26118d9fe0110835a8c9eacebf70f54a94",
+      "sourceUpdated": "20191212102934"
+    },
+    {
+      "id": 193,
+      "image": "assets/signal/W.212.png",
+      "sha256": "7f6212507374419a72c53fd54896ed905a07198fa6550be6e9483d443bf67932",
+      "sourceUpdated": "20191212084249"
+    },
+    {
+      "id": 194,
+      "image": "assets/signal/W.213.png",
+      "sha256": "9ed3ea8e6d46561721f5575e683aa4c72aa81834272bfb8c197e4c9a1a63d904",
+      "sourceUpdated": "20191212084212"
+    },
+    {
+      "id": 195,
+      "image": "assets/signal/W.214.png",
+      "sha256": "1de2c823180f9ab3a79931f96d2bd3859d22001353ff13bacef81bcf89ec2c08",
+      "sourceUpdated": "20191212084103"
+    },
+    {
+      "id": 196,
+      "image": "assets/signal/W.215a.png",
+      "sha256": "6e6741fb785f68ec6857fee46c820f5c2e82ec261d4c6ba3bc74bf1017d0a961",
+      "sourceUpdated": "20191212084041"
+    },
+    {
+      "id": 197,
+      "image": "assets/signal/W.215b.png",
+      "sha256": "7c4fe936c0945c573cff0a78556354f7992f659a3ff4e7f33c4f5b2724b34e78",
+      "sourceUpdated": "20191212084016"
+    },
+    {
+      "id": 198,
+      "image": "assets/signal/W.215c.png",
+      "sha256": "fb055b9d886e46ca94d418a9b6726a65eb2b51d7ec03bc6f39cfbee6e624249b",
+      "sourceUpdated": "20191212084000"
+    },
+    {
+      "id": 199,
+      "image": "assets/signal/R.301f.png",
+      "sha256": "3c21d4cf169684d6b032df16eac2947d0ca543a0aa0ad75d50ca8dc2a0dbf0df",
+      "sourceUpdated": "20191212105248"
+    },
+    {
+      "id": 200,
+      "image": "assets/signal/W.216a.png",
+      "sha256": "bab54b64f8ff511f22fe30f798e6338a191a6eb423c14503b8a649f8ceebe135",
+      "sourceUpdated": "20191212083945"
+    },
+    {
+      "id": 201,
+      "image": "assets/signal/W.216b.png",
+      "sha256": "dc02d839183bb1afcff628a7c19560e8c29999b52f0311c5ee0fa47c3732cebc",
+      "sourceUpdated": "20191212083932"
+    },
+    {
+      "id": 202,
+      "image": "assets/signal/W.217.png",
+      "sha256": "a9af2a70e98e96cc18529ad8c01f34e6a8aad2dea167a22e2f38021a022bab55",
+      "sourceUpdated": "20191212083808"
+    },
+    {
+      "id": 203,
+      "image": "assets/signal/W.218.png",
+      "sha256": "8de7e5c42bd2c188d8f1b575c8e1eb0a3c30730a5a45bfde09ebb3db73e02529",
+      "sourceUpdated": "20191212083753"
+    },
+    {
+      "id": 204,
+      "image": "assets/signal/W.219.png",
+      "sha256": "45f496ccd71a3cbe5caa6019c1fdcbaadd372031ce4ede3b0ef60ad1ee29e1df",
+      "sourceUpdated": "20191212083741"
+    },
+    {
+      "id": 205,
+      "image": "assets/signal/W.220.png",
+      "sha256": "0815f88a9b9a7eef3995599d6d919812ed9d701cc0100f476fbab7e28247fb24",
+      "sourceUpdated": "20191212083722"
+    },
+    {
+      "id": 206,
+      "image": "assets/signal/W.221a.png",
+      "sha256": "21771d79c1bc5e35e0f9b03fb0a7a3ac76c00348a45def4f4b0f06c01e63efc5",
+      "sourceUpdated": "20191212083644"
+    },
+    {
+      "id": 207,
+      "image": "assets/signal/W.221b.png",
+      "sha256": "b6d92800cbd10c0880387935d5a664eb1dc75a33c6bcbcac630a8ca07e5c8c01",
+      "sourceUpdated": "20191212083632"
+    },
+    {
+      "id": 208,
+      "image": "assets/signal/W.222a.png",
+      "sha256": "b69ac2db7e641120bdade90d6294cb51e542b9dd1aa483f666e9808f39bb32ce",
+      "sourceUpdated": "20191212083529"
+    },
+    {
+      "id": 209,
+      "image": "assets/signal/W.222b.png",
+      "sha256": "4cf82e234a0b1aa24d265b1d480a38fefc3f8317bf94215a53c423144fc83b6c",
+      "sourceUpdated": "20191212083515"
+    },
+    {
+      "id": 210,
+      "image": "assets/signal/W.223a.png",
+      "sha256": "7d30d2b89f4d6519ca685441e11bbee790bb987c94e06b978657159a8c7c7d21",
+      "sourceUpdated": "20191212083454"
+    },
+    {
+      "id": 211,
+      "image": "assets/signal/W.223b.png",
+      "sha256": "2a2a125c8785f08e6f1854626a1e8698162d56f439b1533a193dfd47f618bafe",
+      "sourceUpdated": "20191212083411"
+    },
+    {
+      "id": 212,
+      "image": "assets/signal/W.224.png",
+      "sha256": "5acb5d9194a629611f4ce4ec229725439e67c035e5366dca96bdb5edeaa35eb4",
+      "sourceUpdated": "20191212083356"
+    },
+    {
+      "id": 213,
+      "image": "assets/signal/W.225.png",
+      "sha256": "4fcc873cb2f0b631d97f4f908ffa3fca98d2791526d184ab576ebd1b03a86564",
+      "sourceUpdated": "20191212083337"
+    },
+    {
+      "id": 214,
+      "image": "assets/signal/W.226.png",
+      "sha256": "0a4c5e889df3e9e63d4c55351a763f4016d93fc84638295b20a4a24e272329f1",
+      "sourceUpdated": "20191212083305"
+    },
+    {
+      "id": 215,
+      "image": "assets/signal/W.227.png",
+      "sha256": "c457e7248779d906ef482e31465a6e293661cfb71649dfb0460c70d1d14d66ef",
+      "sourceUpdated": "20191212083138"
+    },
+    {
+      "id": 216,
+      "image": "assets/signal/W.228a.png",
+      "sha256": "b32b1da1d3ff90de4a5df803472deced260f4903c0f420577feaf428295e55e5",
+      "sourceUpdated": "20191212083029"
+    },
+    {
+      "id": 217,
+      "image": "assets/signal/W.228b.png",
+      "sha256": "61d2e4758b0a5381f83beee30b902fdaed92b65298ab90e586eb7005858260bd",
+      "sourceUpdated": "20191212083004"
+    },
+    {
+      "id": 218,
+      "image": "assets/signal/W.228c.png",
+      "sha256": "0b0545dc6cb89ee6c16c8c5714a3ea48cb93cb6e314322f8d5dd1855d348c234",
+      "sourceUpdated": "20191212082854"
+    },
+    {
+      "id": 219,
+      "image": "assets/signal/W.228d.png",
+      "sha256": "f9b2a49a06e8d591cf38b8d9d881b99e532305d0d360a2ec84fa26e09a3ee287",
+      "sourceUpdated": "20191212082838"
+    },
+    {
+      "id": 220,
+      "image": "assets/signal/W.229.png",
+      "sha256": "03895172c9568f5ecd3358b4c9e34f6ae998b0668ccc7929267ace4285e1dc70",
+      "sourceUpdated": "20191212082824"
+    },
+    {
+      "id": 221,
+      "image": "assets/signal/W.230.png",
+      "sha256": "e5c4ecfe28087cfe0c5331e4bedcb1e3ee5cb1de17ca71dc1893aa23bc068814",
+      "sourceUpdated": "20191212082812"
+    },
+    {
+      "id": 222,
+      "image": "assets/signal/W.231.png",
+      "sha256": "26912524ac799cccfca24b545ef930c6124f0c8b463d2715ce98df6a2ee73e11",
+      "sourceUpdated": "20191212082801"
+    },
+    {
+      "id": 223,
+      "image": "assets/signal/W.232.png",
+      "sha256": "d630659638feb501bb8a8f69a3a8f78088ce5622cafaf8b05a484e1fdb7b7042",
+      "sourceUpdated": "20191212082748"
+    },
+    {
+      "id": 224,
+      "image": "assets/signal/W.233.png",
+      "sha256": "b54a698cdfd5dd9ddce42b08ec458d5d5507fb342a4a2584faef089d23a0a009",
+      "sourceUpdated": "20191212082617"
+    },
+    {
+      "id": 225,
+      "image": "assets/signal/W.234.png",
+      "sha256": "c3ac39725cdb275e6e444e0739a3206cf106724b17028a2bab7756478038da60",
+      "sourceUpdated": "20191212082601"
+    },
+    {
+      "id": 226,
+      "image": "assets/signal/W.235.png",
+      "sha256": "e6ba83bc6294b1a97345105a0c58a07b4df08cff2fa9ac10ef541eced668c3be",
+      "sourceUpdated": "20191212082544"
+    },
+    {
+      "id": 227,
+      "image": "assets/signal/W.236.png",
+      "sha256": "c422f602724547e424cbd31f7d194ff8535ce11141bdf79fd4d5caf31888058f",
+      "sourceUpdated": "20191212082520"
+    },
+    {
+      "id": 228,
+      "image": "assets/signal/W.237.png",
+      "sha256": "4059f58e3c290dca67f53fb433e96aabd4fa8dff8e864d28e3dd66f5158b64c2",
+      "sourceUpdated": "20191212082453"
+    },
+    {
+      "id": 229,
+      "image": "assets/signal/W.238.png",
+      "sha256": "07bde212f31e793014be31948a1e83823de4976b1cc2680eab0cf938c05e36f8",
+      "sourceUpdated": "20191212082432"
+    },
+    {
+      "id": 230,
+      "image": "assets/signal/W.239.png",
+      "sha256": "5c7922c1939b67e51b2ddbfd716008ecef38965e0acb106b61014bc76314909f",
+      "sourceUpdated": "20191212082405"
+    },
+    {
+      "id": 231,
+      "image": "assets/signal/W.240.png",
+      "sha256": "83c2e1161c9bf9c3a99318b7083eaf95b84a1d1489720b98ed0834fc693cb9e1",
+      "sourceUpdated": "20191212082345"
+    },
+    {
+      "id": 232,
+      "image": "assets/signal/W.241.png",
+      "sha256": "558d4b8f9f38bb5a0d905de7f56624d86070e10f293aeef85b865b00726e050f",
+      "sourceUpdated": "20191212082328"
+    },
+    {
+      "id": 233,
+      "image": "assets/signal/W.242a.png",
+      "sha256": "7d02cf439ede64ffdf84d2dfcf1d0c9a3fb813b510f181a129b4738dc27739d4",
+      "sourceUpdated": "20191212082308"
+    },
+    {
+      "id": 234,
+      "image": "assets/signal/W.242b.png",
+      "sha256": "c9c8955f6f6136844cdade12ba52e4b9f2f9309e5bb8021863472fd0003eac2b",
+      "sourceUpdated": "20191212082157"
+    },
+    {
+      "id": 235,
+      "image": "assets/signal/W.243a.png",
+      "sha256": "969f5e796618b92520b100860b57760c948534ae3a3e292fbd93b0f0cd7c809f",
+      "sourceUpdated": "20191212082141"
+    },
+    {
+      "id": 236,
+      "image": "assets/signal/W.243b.png",
+      "sha256": "7eaed6a8bb91712bb58fc9975907d3a0bfb568bc6b15c0e8352e93f09a9119bc",
+      "sourceUpdated": "20191212082127"
+    },
+    {
+      "id": 237,
+      "image": "assets/signal/W.243c.png",
+      "sha256": "5568b4671a40985cca87faca4fba8c5dff0d409f80c83298f5ff86b568e45619",
+      "sourceUpdated": "20191212082102"
+    },
+    {
+      "id": 238,
+      "image": "assets/signal/W.244.png",
+      "sha256": "b0de15bcd2ff170b82a871d38c52740f30b1bb424637eaa16c2f09dd0a86e0a5",
+      "sourceUpdated": "20191212082042"
+    },
+    {
+      "id": 239,
+      "image": "assets/signal/W.245a.png",
+      "sha256": "e5c85987dfc73d1afc6087e3e6fd573d50aa5985d8de345bbf090415edaa6dc5",
+      "sourceUpdated": "20191212082024"
+    },
+    {
+      "id": 240,
+      "image": "assets/signal/W.245b.png",
+      "sha256": "7e1d450917a75754c31739c15b95ba6d0973293b59eddbc91348da3632641e44",
+      "sourceUpdated": "20191212082005"
+    },
+    {
+      "id": 241,
+      "image": "assets/signal/W.246a.png",
+      "sha256": "6b90310fc360fd6ebb39db826917f38ba0c20cd75e7589e1236cb798fd8f0d46",
+      "sourceUpdated": "20191212081930"
+    },
+    {
+      "id": 242,
+      "image": "assets/signal/W.246b.png",
+      "sha256": "bd070fa4a9546656028fa6c119f9741c2c35413257075092996601b987071980",
+      "sourceUpdated": "20191212081949"
+    },
+    {
+      "id": 243,
+      "image": "assets/signal/W.246c.png",
+      "sha256": "3fec20d85ee7bc58cf39f3716b07dea32a9bde7c703d36e0c40fe9be681e0eaf",
+      "sourceUpdated": "20191212081841"
+    },
+    {
+      "id": 244,
+      "image": "assets/signal/W.247.png",
+      "sha256": "20deaa32c67cd49550ea28705ad3230b05987f23f6fe16994c67436f777db1ee",
+      "sourceUpdated": "20191212081822"
+    },
+    {
+      "id": 245,
+      "image": "assets/signal/I.401.png",
+      "sha256": "7626b57e2f9bf5c9d084cd4895640aee4d405e8eb5690309454f98a2a67a6ba4",
+      "sourceUpdated": "20191212173128"
+    },
+    {
+      "id": 246,
+      "image": "assets/signal/I.402.png",
+      "sha256": "7ca2dfc3edb372c3e802e9d3ebca44ca49f6c12d48ee4aba4ed21915a0a4b49b",
+      "sourceUpdated": "20191212173118"
+    },
+    {
+      "id": 247,
+      "image": "assets/signal/I.405a.png",
+      "sha256": "1d3fd5eb4b0388d07359120401b4af688d5ad1a8e87debb6fc1358b75d402c5e",
+      "sourceUpdated": "20191212173106"
+    },
+    {
+      "id": 248,
+      "image": "assets/signal/I.405b.png",
+      "sha256": "54d84fd9558dfaf6bcd19947c4064657b011dad4b7e95ff265a6e6635b1b7f04",
+      "sourceUpdated": "20191212173048"
+    },
+    {
+      "id": 249,
+      "image": "assets/signal/I.405c.png",
+      "sha256": "6c11dd95022a1ca74b2a17dadc8433f51dd927512e71bcf285e1b8bc627691d1",
+      "sourceUpdated": "20191212173033"
+    },
+    {
+      "id": 250,
+      "image": "assets/signal/I.406.png",
+      "sha256": "0871ab8afe2fb26f267fb85dd548d2e4a77dbdc150813905cc107b4941c8416d",
+      "sourceUpdated": "20191212173022"
+    },
+    {
+      "id": 251,
+      "image": "assets/signal/I.407a.png",
+      "sha256": "603c0e619f9e713034451a1071e552c0151bd142e019269d8197d2e84986a552",
+      "sourceUpdated": "20191212173011"
+    },
+    {
+      "id": 252,
+      "image": "assets/signal/I.407b.png",
+      "sha256": "0466c44233f68e8b98c118f65fa05c872ed90c611542b6f3edcaba7f22515ce5",
+      "sourceUpdated": "20191212172959"
+    },
+    {
+      "id": 253,
+      "image": "assets/signal/I.407c.png",
+      "sha256": "7f7d658ecfb77c5bf0c025cc603ce19b5e19544842cfe57ae67e74b9ffca9bad",
+      "sourceUpdated": "20191212172945"
+    },
+    {
+      "id": 254,
+      "image": "assets/signal/I.408.png",
+      "sha256": "c5750b027cc2ea32cd9888a0df0dd17227d6b40ca331852af51c6329f5b51de6",
+      "sourceUpdated": "20191212172655"
+    },
+    {
+      "id": 255,
+      "image": "assets/signal/I.408a.png",
+      "sha256": "949085c4e714f78906e3c238c9bf434c25715baffa4e3266fdfb2add5f1c8728",
+      "sourceUpdated": "20191212172640"
+    },
+    {
+      "id": 256,
+      "image": "assets/signal/I.409.png",
+      "sha256": "b49cfc2c396adef97bdf177a6bcbe5436bce8bec32c708d8f4d3b5c698ef11b4",
+      "sourceUpdated": "20191212172547"
+    },
+    {
+      "id": 257,
+      "image": "assets/signal/I.410.png",
+      "sha256": "8647e7333e9621afc71ae635e81288298e1438957a47f9263c525f894b3a99ca",
+      "sourceUpdated": "20191212172531"
+    },
+    {
+      "id": 258,
+      "image": "assets/signal/I.413a.png",
+      "sha256": "87d3a1587d3f689cda52a5ecec4e12104031829ad670c981dd38e56f03b13bc6",
+      "sourceUpdated": "20191212172517"
+    },
+    {
+      "id": 259,
+      "image": "assets/signal/I.413b.png",
+      "sha256": "8858a32fc0895b0c84a4542ae76215e63cf58b37c5f79bf251b2ae65c4193f15",
+      "sourceUpdated": "20191212172503"
+    },
+    {
+      "id": 260,
+      "image": "assets/signal/I.413c.png",
+      "sha256": "3c71db23cfb2439bd7cfb482ba2890de05c45c9a725f1bc6bf09dbe5a2a78f5e",
+      "sourceUpdated": "20191212172442"
+    },
+    {
+      "id": 261,
+      "image": "assets/signal/I.414a.png",
+      "sha256": "a9d160e2019a78fdb25cdf134f0581c6f0ef00584d07495e511742aa3bdd72e2",
+      "sourceUpdated": "20191212172426"
+    },
+    {
+      "id": 262,
+      "image": "assets/signal/I.414b.png",
+      "sha256": "d1a4a520714f39bc6969541111b653c2e1a3c3df547b226fd62427a339f69873",
+      "sourceUpdated": "20191212172415"
+    },
+    {
+      "id": 263,
+      "image": "assets/signal/I.414c.png",
+      "sha256": "340c26cdbb30fa6fab4abac0d89d5fc383980475607068fb79c1aea719f580e7",
+      "sourceUpdated": "20191212172402"
+    },
+    {
+      "id": 264,
+      "image": "assets/signal/I.414d.png",
+      "sha256": "cde3e9573deb28bd72db85d477240690a5b11c46fb5ba0c542cbfe299a7a80e3",
+      "sourceUpdated": "20191212172351"
+    },
+    {
+      "id": 265,
+      "image": "assets/signal/I.415.png",
+      "sha256": "cbe3d370ddc4b36498fec4e6efd8a070ac45221db3d9487301d1b05bf9334db7",
+      "sourceUpdated": "20191212172338"
+    },
+    {
+      "id": 266,
+      "image": "assets/signal/I.416.png",
+      "sha256": "3f5a462c287f9af7326912147afbaf5d80c6e1be3de54b14010beea977306b41",
+      "sourceUpdated": "20191212172326"
+    },
+    {
+      "id": 267,
+      "image": "assets/signal/I.417a.png",
+      "sha256": "2344f805fd1457b74ab5b41a43011f376e2032ad920988a56ae6dc963dc742e8",
+      "sourceUpdated": "20191212172308"
+    },
+    {
+      "id": 268,
+      "image": "assets/signal/I.417b.png",
+      "sha256": "3c22a9474d051a4cfed898b501cbbd91392078c08a050dbd17984dc7f2f5884e",
+      "sourceUpdated": "20191212172257"
+    },
+    {
+      "id": 269,
+      "image": "assets/signal/I.417c.png",
+      "sha256": "487dc71939e497c0fdac7634e7e13c43e8f09181a1bcdce0ce6a36b4ceeb4352",
+      "sourceUpdated": "20191212172243"
+    },
+    {
+      "id": 270,
+      "image": "assets/signal/I.418.png",
+      "sha256": "2ff09124e9589c84402295cb039b919e26c0941a380ff48723fd1cb0d0ec5e3a",
+      "sourceUpdated": "20191212172231"
+    },
+    {
+      "id": 271,
+      "image": "assets/signal/I.419a.png",
+      "sha256": "e108db157069750a542d70d2a51757d37249fe977ae035caa568a621c2c1c59d",
+      "sourceUpdated": "20191212172220"
+    },
+    {
+      "id": 272,
+      "image": "assets/signal/I.419b.png",
+      "sha256": "19ccb128383783f8c8c95b8cca5c12704a5539bdf0cbe6e99c2f1f4fce0d40ee",
+      "sourceUpdated": "20191212172206"
+    },
+    {
+      "id": 273,
+      "image": "assets/signal/I.422a.png",
+      "sha256": "2361312c18c797b5cbb386038563d0ce323d525631cba33864f7fbcb2b987e8f",
+      "sourceUpdated": "20191212172146"
+    },
+    {
+      "id": 274,
+      "image": "assets/signal/I.422b.png",
+      "sha256": "1010fa08c57c6a141476edfcb5fb54ae0a639e759fcb04fbd8740c217cb621be",
+      "sourceUpdated": "20191212172135"
+    },
+    {
+      "id": 275,
+      "image": "assets/signal/I.423a.png",
+      "sha256": "7b668eee6610ec77c5c431468d01efeb0af35db5d04b01b575a0272605fd70dd",
+      "sourceUpdated": "20191212172120"
+    },
+    {
+      "id": 276,
+      "image": "assets/signal/I.423b.png",
+      "sha256": "a7052f00936ec27a1867e2841f4d1f3133f0ca9206afa60e429a87043a76c176",
+      "sourceUpdated": "20191212172108"
+    },
+    {
+      "id": 277,
+      "image": "assets/signal/I.423c.png",
+      "sha256": "97d9ebc107317ca44e5e86d5bb950188771179f82ae3e571fb5728f3c2b6a08a",
+      "sourceUpdated": "20191212172055"
+    },
+    {
+      "id": 278,
+      "image": "assets/signal/I.424a.png",
+      "sha256": "025f4a4c2d1198a2d343df16870e83af8bea8a0ff15144eb4c981b05fb953654",
+      "sourceUpdated": "20191212172039"
+    },
+    {
+      "id": 279,
+      "image": "assets/signal/I.424b.png",
+      "sha256": "53ff0a3cdf230bb4d74fd14385e89c167e10d79f16675ca75362c60bea146a78",
+      "sourceUpdated": "20191212172028"
+    },
+    {
+      "id": 280,
+      "image": "assets/signal/I.424c.png",
+      "sha256": "e9f538c6215769abc5fe4df36ce950e0d362c1073f60513fbd2367b44255dba7",
+      "sourceUpdated": "20191212172018"
+    },
+    {
+      "id": 281,
+      "image": "assets/signal/I.424d.png",
+      "sha256": "772b13fe4b51c296d5a4f40a7c1519f4e1de3d5fa90709851cf164a60b0cce7b",
+      "sourceUpdated": "20191212172002"
+    },
+    {
+      "id": 282,
+      "image": "assets/signal/I.425.png",
+      "sha256": "245479116c4c268634d80cfe95dc402f73a336e86f9465a17db1a9a3dfa4fcd3",
+      "sourceUpdated": "20191212171946"
+    },
+    {
+      "id": 283,
+      "image": "assets/signal/I.426.png",
+      "sha256": "155294790f6a945224695d694d6fd090de9ff1e4ce8148e8cdc27728d6fc1f56",
+      "sourceUpdated": "20191212171928"
+    },
+    {
+      "id": 284,
+      "image": "assets/signal/I.427a.png",
+      "sha256": "3da3aebed581abac926d7ca69a6fee75f38ededc3fc8df3b5194e7853900e145",
+      "sourceUpdated": "20191212171856"
+    },
+    {
+      "id": 285,
+      "image": "assets/signal/I.427b.png",
+      "sha256": "22472ba34c69c186deff146c48e26a290d8636b7148e59bd1b4c734580579490",
+      "sourceUpdated": "20191212171841"
+    },
+    {
+      "id": 286,
+      "image": "assets/signal/I.428.png",
+      "sha256": "da29f97df33f4b8ed8bcc0d106fc4c1cb60be788f81f5c64fdeb29d7d92b3d58",
+      "sourceUpdated": "20191212171829"
+    },
+    {
+      "id": 287,
+      "image": "assets/signal/I.429.png",
+      "sha256": "8e5dec79247f7e7b4c8119b55311c8d70718095c7782d36cce34cfa3d544a533",
+      "sourceUpdated": "20191212171818"
+    },
+    {
+      "id": 288,
+      "image": "assets/signal/I.430.png",
+      "sha256": "ec276209f82e60db5fb6a9d793f6af6d44232e85c6fe9f6244fd1b24d0ee8bce",
+      "sourceUpdated": "20191212171808"
+    },
+    {
+      "id": 289,
+      "image": "assets/signal/I.431.png",
+      "sha256": "ab3b8dba26aab899984875c7870c95dab0a629b73db96013206c567585c9f9c5",
+      "sourceUpdated": "20191212171756"
+    },
+    {
+      "id": 290,
+      "image": "assets/signal/I.432.png",
+      "sha256": "f833c78a1f989f1f398edce3ae3c80953b3ad86cc10d060b3b4096486bfb4c3a",
+      "sourceUpdated": "20191212171740"
+    },
+    {
+      "id": 291,
+      "image": "assets/signal/I.433a.png",
+      "sha256": "ef902903af8debd8cd49eca137065d9a2cc1e16bf5280c4dc1cc08cc8cb5dc75",
+      "sourceUpdated": "20191212171719"
+    },
+    {
+      "id": 292,
+      "image": "assets/signal/I.433b.png",
+      "sha256": "8352c279917b4ed31b8c128dca64a926c0aa116ee6eb4e2db39004b6e31fbacf",
+      "sourceUpdated": "20191212171706"
+    },
+    {
+      "id": 293,
+      "image": "assets/signal/I.433c.png",
+      "sha256": "62af7baa89904e5abbcc3f788e5e0cac368fee9df573a253f5e97dfd2f2e3cd5",
+      "sourceUpdated": "20191212171653"
+    },
+    {
+      "id": 294,
+      "image": "assets/signal/I.433d.png",
+      "sha256": "bd45c67b0bf2ba6dfd3d53bbec32a348220cf23b1576fe643805a7af12343364",
+      "sourceUpdated": "20191212171642"
+    },
+    {
+      "id": 295,
+      "image": "assets/signal/I.433e.png",
+      "sha256": "c3b20ff7247c777279f59916e4a6800fe85ff86c4bf3ac594efe0cf21c44ab4f",
+      "sourceUpdated": "20191212171627"
+    },
+    {
+      "id": 296,
+      "image": "assets/signal/I.434a.png",
+      "sha256": "1e8226f4b25d02d4a574a3a512859fa68f6bce9a4d6ec25b9adad1aca3845002",
+      "sourceUpdated": "20191212171612"
+    },
+    {
+      "id": 297,
+      "image": "assets/signal/I.434b.png",
+      "sha256": "c74fc64009dc2aa02b2db32237ceecb81a7ce51358971480e0e752a63516c821",
+      "sourceUpdated": "20191212171559"
+    },
+    {
+      "id": 298,
+      "image": "assets/signal/I.435.png",
+      "sha256": "98f163989cb8396ace556268bd820ea7ca6810eea466f001b84bee5b15ba5fc9",
+      "sourceUpdated": "20191212171536"
+    },
+    {
+      "id": 299,
+      "image": "assets/signal/I.436.png",
+      "sha256": "332f0d026776e693aed047065c41ed37b24a0d7a33255d53e6ed38a3ead1558a",
+      "sourceUpdated": "20191212171346"
+    },
+    {
+      "id": 300,
+      "image": "assets/signal/I.439.png",
+      "sha256": "d3e1201423869a559d27441f8d8aff1bf8b6cd0423c6b42857f9cc02d7aece13",
+      "sourceUpdated": "20191212171332"
+    },
+    {
+      "id": 301,
+      "image": "assets/signal/I.440.png",
+      "sha256": "8da9537b75c220899ece681184a51240165b12d331f45525fb2edc6a023002bd",
+      "sourceUpdated": "20191212171256"
+    },
+    {
+      "id": 302,
+      "image": "assets/signal/I.441a.png",
+      "sha256": "28f1cfa6cda494df8de4db2275ed4a666f611014c265b0c94a78d0c98f5df16f",
+      "sourceUpdated": "20191212171242"
+    },
+    {
+      "id": 303,
+      "image": "assets/signal/I.441b.png",
+      "sha256": "e9750944851b94065623ddb5caefb6965f9bea388c05cb873bb8fcedb76da0b6",
+      "sourceUpdated": "20191212171017"
+    },
+    {
+      "id": 304,
+      "image": "assets/signal/I.441c.png",
+      "sha256": "70e554fc5525b360f64870e5ce739d68ffe07fca2e691739a33ade1024d87159",
+      "sourceUpdated": "20191212171001"
+    },
+    {
+      "id": 305,
+      "image": "assets/signal/I.442.png",
+      "sha256": "0b7d888e9faa916a916a2631acc7600305566e496fd163368dd8e22b65ed6532",
+      "sourceUpdated": "20191212170951"
+    },
+    {
+      "id": 306,
+      "image": "assets/signal/I.443.png",
+      "sha256": "746b021785d27b7c16878d672919f310e68cb7fecaa5b06dc2ea040d3bdad77a",
+      "sourceUpdated": "20191212170940"
+    },
+    {
+      "id": 307,
+      "image": "assets/signal/I.444a.png",
+      "sha256": "4ee79a8d9b09397800735b26c619d840854b97c8ea9a3b2815f8bdcb94dea34a",
+      "sourceUpdated": "20191212170732"
+    },
+    {
+      "id": 308,
+      "image": "assets/signal/I.444b.png",
+      "sha256": "13a31ea6aeb7b35052dca960c442e64075218e66dd4920858beaed4e5ee512fc",
+      "sourceUpdated": "20191212170703"
+    },
+    {
+      "id": 309,
+      "image": "assets/signal/I.444c.png",
+      "sha256": "fbbc7e53ed02c80c4e910add7726bd99db50194233698a9ee6f9eb9a140343de",
+      "sourceUpdated": "20191212170645"
+    },
+    {
+      "id": 310,
+      "image": "assets/signal/I.444d.png",
+      "sha256": "9ac6b3788e5de0cafcfa363e998f8df8bf721e6b7258c826d34b29fa722dc298",
+      "sourceUpdated": "20191212170615"
+    },
+    {
+      "id": 311,
+      "image": "assets/signal/I.444e.png",
+      "sha256": "2172544ec0875980d36448cd40417a6849c939017bdf67d271544046f6ee83bc",
+      "sourceUpdated": "20191212170603"
+    },
+    {
+      "id": 312,
+      "image": "assets/signal/I.444f.png",
+      "sha256": "5d36f9b05b26beaa1bc4be8a42a6e9dd6ef170e2ccb3ddc49b85871724d311f8",
+      "sourceUpdated": "20191212170546"
+    },
+    {
+      "id": 313,
+      "image": "assets/signal/I.444g.png",
+      "sha256": "1ebf5c5832a3d4f503d90e6856a3337d07ad1e934f2a813e1eb22dfc9acb7e30",
+      "sourceUpdated": "20191212170528"
+    },
+    {
+      "id": 314,
+      "image": "assets/signal/I.444h.png",
+      "sha256": "b0cd8623879f11672d0cafeb8c67fa20fda16ff8a8d8aa5c4485ca90fc873920",
+      "sourceUpdated": "20191212170513"
+    },
+    {
+      "id": 315,
+      "image": "assets/signal/I.444i.png",
+      "sha256": "0113d0915339efd00c3d5c93714827df60dac7b8be9b57af3907e4500fee7113",
+      "sourceUpdated": "20191212170441"
+    },
+    {
+      "id": 316,
+      "image": "assets/signal/I.444j.png",
+      "sha256": "51d35046c012a2a280df97a4e55d72b818bdc8838c45278cab58378caf0e7965",
+      "sourceUpdated": "20191212170224"
+    },
+    {
+      "id": 317,
+      "image": "assets/signal/I.444k.png",
+      "sha256": "0e1667c29299397aa9b41be849c489bc4392d7e6cf752d692afc26662c706530",
+      "sourceUpdated": "20191212170209"
+    },
+    {
+      "id": 318,
+      "image": "assets/signal/I.444l.png",
+      "sha256": "a057697add22e37a299e9b1a04739b221239d822e1d2a4e1cdaa1516bc2280bb",
+      "sourceUpdated": "20191212170153"
+    },
+    {
+      "id": 319,
+      "image": "assets/signal/I.444m.png",
+      "sha256": "8aebf4b2f816a79f84de1b497e63ad7661a18b34bd01fd9d5a90603491f4d0f8",
+      "sourceUpdated": "20191212170052"
+    },
+    {
+      "id": 320,
+      "image": "assets/signal/I.445a.png",
+      "sha256": "d81a12fef77c01496da3dd643afa86d857039285c7a31f73fbf8541e238c60b0",
+      "sourceUpdated": "20191212165628"
+    },
+    {
+      "id": 321,
+      "image": "assets/signal/I.445b.png",
+      "sha256": "abef19b8a4249971ee333c92d5a298c5233945300ae2142d3e59eeb005642643",
+      "sourceUpdated": "20191212165419"
+    },
+    {
+      "id": 322,
+      "image": "assets/signal/I.445c.png",
+      "sha256": "96ec07c5a05974a721c72df0928120adb39e0c9a0cc4f9a5e1e4e69810f31ead",
+      "sourceUpdated": "20191212165200"
+    },
+    {
+      "id": 323,
+      "image": "assets/signal/I.445d.png",
+      "sha256": "5cd44afb2deaf684831f9fc0a90a9182bd86243df5f325ec24f7503a5e540668",
+      "sourceUpdated": "20191212165137"
+    },
+    {
+      "id": 324,
+      "image": "assets/signal/I.445e.png",
+      "sha256": "ab448deda1fb277893129337a09405f6c30ccf75f04c9f32ba9600dcccdc26e6",
+      "sourceUpdated": "20191212165116"
+    },
+    {
+      "id": 325,
+      "image": "assets/signal/I.445f.png",
+      "sha256": "64867ff58f947bc79f24594738416a6c628a792b970fdf79811c8fb60947049f",
+      "sourceUpdated": "20191212165059"
+    },
+    {
+      "id": 326,
+      "image": "assets/signal/I.445g.png",
+      "sha256": "09c8971e1c260b00e0bbe379cc90d013a73763c0bf0bf2806387ab5fc54ed956",
+      "sourceUpdated": "20191212164924"
+    },
+    {
+      "id": 327,
+      "image": "assets/signal/I.445h.png",
+      "sha256": "0dd7750941e13692cd1e00638cee945140656c237159de32d1269ba5b77eeaf1",
+      "sourceUpdated": "20191212164907"
+    },
+    {
+      "id": 328,
+      "image": "assets/signal/I.446.png",
+      "sha256": "7c696adc20d266fc555422c9981f0deccdda62da9833dd272f22706c5b531011",
+      "sourceUpdated": "20191212164846"
+    },
+    {
+      "id": 329,
+      "image": "assets/signal/I.447a.png",
+      "sha256": "56ac1b941b76f30a7e419e48bbd6da617ea6510f0ed78f738e68ef559fa1256c",
+      "sourceUpdated": "20191212164830"
+    },
+    {
+      "id": 330,
+      "image": "assets/signal/I.447b.png",
+      "sha256": "04bacbc3dbd3f813bbbfb5ee847ad6b9bd7ed893ca7a15fd91b00d440c837f7d",
+      "sourceUpdated": "20191212164728"
+    },
+    {
+      "id": 331,
+      "image": "assets/signal/I.447c.png",
+      "sha256": "b696ced09ad575fc454e3c1c114b5b388c391b9b36d801dfdb0787654d95c8e1",
+      "sourceUpdated": "20191212164715"
+    },
+    {
+      "id": 332,
+      "image": "assets/signal/I.447d.png",
+      "sha256": "f9558b9cd9758dbaa74fbf6900abb9fe37ea9235336f8f46012d9825e25dab2f",
+      "sourceUpdated": "20191212164659"
+    },
+    {
+      "id": 333,
+      "image": "assets/signal/I.448.png",
+      "sha256": "aed947ccb5e1de7a02578cd0f1d1fe8bdb838316dceb090d7a46c1a28d61b909",
+      "sourceUpdated": "20191212164643"
+    },
+    {
+      "id": 334,
+      "image": "assets/signal/I.449.png",
+      "sha256": "af5ff0d0312f5b24eed18b4fc9d99ff2c6e568ef8b027c7ff0752c75919cce6a",
+      "sourceUpdated": "20191212164628"
+    },
+    {
+      "id": 335,
+      "image": "assets/signal/S.H,3a.png",
+      "sha256": "8aec946fc933981a0a29f78272702ede7c94960c2a09085abefa6fca3391a6f3",
+      "sourceUpdated": "20191213100146"
+    },
+    {
+      "id": 336,
+      "image": "assets/signal/S.H,3b.png",
+      "sha256": "c07627fb521d120549ae63e60ceeea5c2f9d551087d9bb62d715db4cf9c70ded",
+      "sourceUpdated": "20200204141223"
+    }
+  ],
+  "sourceOutsideSignAuditSha256": "bc0485007880491f3df65bcf590b340112c3b5230af056eb7dd703acf0fdbbc7"
+}

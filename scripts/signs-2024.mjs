@@ -1,6 +1,8 @@
 // Evidence-backed, reversible sign-library update for QCVN 41:2024/BGTVT.
 // This does NOT claim all legacy texts or images are fully verified.
 // Source: Ministry of Transport Circular 51/2024/TT-BGTVT, effective 2025-01-01.
+import prohibitionBatch1 from './signs-2024-batch1.json' with { type: 'json' };
+export const SIGN_PROHIBITION_BATCH1 = prohibitionBatch1;
 export const SIGN_STANDARD_2024 = Object.freeze({
   code: 'QCVN 41:2024/BGTVT',
   circular: '51/2024/TT-BGTVT',
@@ -8,6 +10,8 @@ export const SIGN_STANDARD_2024 = Object.freeze({
   officialPdf: 'https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/11/51-bgtvt-kem.pdf',
   governmentRecord: 'https://vanban.chinhphu.vn/?classid=1&docid=211908&orggroupid=4&pageid=27160',
   reviewedOn: '2026-11-11',
+  pdfSha256: 'b6b99d0a0aeb13fe79072831857ece15bb254d8fb7817e80e4a2739a0d2145ce',
+  pdfPageCount: 403,
 });
 const corrections = Object.freeze({
   25: { code: 'S.510a', name: 'Biển số S.510a "Chú ý đường trơn có băng tuyết"', detail: 'Cảnh báo đường trơn, có tuyết trong những ngày trời có tuyết.', clause: 'F.12' },
@@ -40,21 +44,22 @@ export function extractSignCode(sign) {
 }
 export function applySign2024Updates(legacySigns) {
   if (!Array.isArray(legacySigns)) throw new TypeError('Sign list required');
-  // Source-ID 54 and 116 use old ambiguous P.127d/B.27d naming.
-  // QCVN 2024 now uses DP.127; do not reassign either old image blindly.
+  // Batch 1 maps 54/116 only after visually identifying DP.127a on PDF p.92.
+  const reviewed = new Map(prohibitionBatch1.map(item => [item.id, item]));
   const mapped = legacySigns.map(sign => {
     const update = corrections[sign.id];
-    const { code: overrideCode, clause = null, ...fields } = update || {};
+    const review = reviewed.get(sign.id);
+    const { code: overrideCode, clause = null, ...fields } = { ...update, ...review?.patch };
     const code = overrideCode || extractSignCode(sign);
-    const needsCodeReview = sign.id === 54 || sign.id === 116;
     const annex = annexFor(sign.category);
     return {
       ...sign, ...fields, code,
       legacy: { sourceId: sign.id, sourceUpdated: sign.sourceUpdated },
       qcvn2024: {
-        annex, clause,
-        verification: needsCodeReview ? 'needs-code-review' : update ? 'text-verified' : 'pending',
+        annex, clause: review?.clause || clause,
+        verification: review || update ? 'text-verified' : 'pending',
         imageVerification: 'pending',
+        ...(review ? { audit: structuredClone(review.audit) } : {}),
       },
     };
   });
@@ -81,7 +86,21 @@ export function sign2024AuditSummary(signs) {
     pendingText: signs.filter(s => s.qcvn2024?.verification === 'pending').length,
     needsCodeReview: signs.filter(s => s.qcvn2024?.verification === 'needs-code-review').map(s => s.id),
     imageVerificationPending: signs.filter(s => s.qcvn2024?.imageVerification === 'pending').length,
+    imageVisuallyCompared: signs.filter(s => s.qcvn2024?.audit?.imageComparison).length,
     noImage: signs.filter(s => !s.image).map(s => s.code),
     preserveLegacyIds: 332,
   };
+}
+export function sign2024AuditCsv(signs) {
+  const columns = ['id','code','category','name','verification','imageVerification','annex','clause','image','legacyId','sourceUpdated',
+    'decision','pdfPages','figurePage','figure','evidence','imageComparison','imageSha256','imageReview','imageReviewReason','sourcePdf','sourcePdfSha256'];
+  const quote = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
+  return columns.join(',') + '\n' + signs.map(sign => {
+    const { verification, imageVerification, annex, clause, audit = {} } = sign.qcvn2024;
+    const row = { ...sign, verification, imageVerification, annex, clause, legacyId: sign.legacy?.sourceId,
+      ...audit, pdfPages: audit.pdfPages?.join(';'),
+      sourcePdf: audit.pdfPages ? SIGN_STANDARD_2024.officialPdf : '',
+      sourcePdfSha256: audit.pdfPages ? SIGN_STANDARD_2024.pdfSha256 : '' };
+    return columns.map(key => quote(row[key])).join(',');
+  }).join('\n') + '\n';
 }

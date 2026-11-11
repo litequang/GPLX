@@ -81,3 +81,11 @@ Không coi một thư viện hình ảnh bên thứ ba là nguồn pháp lý, v�
 
 ## Triển khai bước kiểm kê và hiệu đính 11/11/2026
 Đã triển khai giai đoạn metadata và một phần P1/P3: chuẩn hóa mã và phụ lục cho 332 bản ghi cũ, 9 hiệu đính văn bản có căn cứ, bổ sung 8 mục text-only, giữ nguyên ảnh cũ và trạng thái kiểm tra. **Chưa hoàn thành P2 và nghiệm thu 100% P4.** Báo cáo tại `docs/SIGN_2024_AUDIT_README.md` và CSV kiểm kê 340 mục.
+
+
+## Đợt 1 biển cấm — 11/11/2026 (chờ duyệt PR)
+
+- Hoàn thành P0/P1 trong phạm vi **20 pending nhóm cấm** và điều tra riêng **54/116**: khóa PDF Chính phủ (403 trang, SHA-256 trong metadata), snapshot BEFORE, hash ảnh và trang nguồn từng quyết định.
+- [BEFORE/AFTER, dẫn nguồn và phần chưa chắc chắn](./SIGN_2024_PROHIBITION_BATCH1.md): 5 MATCH, 15 EDIT_TEXT, 2 REMAP_CODE thành DP.127a. Trang PDF 80–84, 87–88, 92–93 trùng số in. Không đổi ID hoặc byte ảnh.
+- P2 mới so ký hiệu/biến thể **22 ảnh**, chưa nghiệm thu thiết kế phụ lục M; `imageReview=NEEDS_REVIEW`. Không thay hình hoặc suy đoán hình mới. ID 43 có khác dấu thập phân; 54/116 chưa rõ lịch sử trùng dòng.
+- 39 text-verified, 301 pending; 340 ảnh chưa được chứng nhận thông số thiết kế. P4 toàn thư viện **chưa hoàn thành**. Kết quả test tại VALIDATION.md; dừng ở PR, không merge/triển khai.

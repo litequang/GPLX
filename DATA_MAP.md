@@ -120,3 +120,13 @@ Script kiểm tra tên asset, sự tồn tại ảnh, giữ ID và ghi manifest 
 - `restoredStudyResponses()` lấy đáp án đã lưu (`selected=1..4`) vào trạng thái học khi vào màn hình, loại câu bỏ trống (`selected=0`), không dùng để tự điền đáp án trong bài thi mới.
 - Bấm `Làm lại câu này` tạm ẩn phần phản hồi hiện tại, chỉ ghi đè record khi trả lời lại; F5 trước khi chọn sẽ vẫn khôi phục câu trả lời đã lưu.
 - `answers` đang lưu **lần trả lời gần nhất** cho mỗi câu, không phải nhật ký không giới hạn các lần thử. `history` bài thi là tóm tắt, chưa lưu chi tiết từng đề đã nộp.
+
+
+## Audit biển cấm đợt 1 — QCVN 41:2024 (11/11/2026)
+
+- `signs[].qcvn2024` giữ `annex`, `clause`, `verification`, `imageVerification`. Thêm `audit` tùy chọn cho 22 bản ghi: `batch`, `decision` (MATCH/EDIT_TEXT/REMAP_CODE), `pdfPages` (1-based), `figurePage`, `figure`, `evidence`, `imageComparison`, `imageSha256`, `imageReview`, `imageReviewReason`.
+- `text-verified` xác nhận bản tóm lược văn bản; `imageComparison` chỉ so ký hiệu/biến thể, không đồng nghĩa nghiệm thu hình. `imageReview=NEEDS_REVIEW` và `imageVerification=pending` còn giữ cho thông số thiết kế phụ lục M. 318 ảnh chưa có đối chiếu trực quan.
+- `source.signAudit2024.standard` thêm `pdfSha256` và `pdfPageCount`; `source.signAudit2024.imageVisuallyCompared=22`. Tổng 340, 39 text-verified, 301 pending, 0 needs-code-review, 340 hình chưa nghiệm thu.
+- ID 54 và 116 cùng asset cũ `P.127d1.png`, nay mã DP.127a theo chú thích PDF 92; không gộp, xóa hoặc đổi ID. Tên nguồn P.127d/B.27d lưu tại `docs/SIGN_2024_BATCH1_BASELINE.json`; B.27d là số mục, không phải mã biển.
+- `scripts/signs-2024-batch1.json` là nguồn quyết định. `npm run audit:signs` áp lại từ dataset có sẵn và xuất đồng bộ JSON/CSV/báo cáo, không cần SQLite riêng; sau khi tái trích APK, chạy lệnh này để làm mới tài liệu audit. Dùng `-- --check` cho CI. Baseline lưu 22 BEFORE, hash toàn bộ questions/phần không đổi, danh sách 332 ID/đường dẫn/hash ảnh.
+- SchemaVersion dataset và tiến độ v1 giữ nguyên vì chỉ thêm metadata tùy chọn; không sửa câu hỏi/đáp án, khóa lưu trữ hoặc migration. Offline manifest tăng revision theo byte dataset; PWA shell v9 đồng bộ URL để cập nhật dữ liệu cache.

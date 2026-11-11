@@ -75,5 +75,5 @@ Khi sửa shell JS/CSS/HTML, tăng `APP_REVISION` trong `dist/sw.js` cùng query
 
 ## Thư viện biển báo QCVN 41:2024
 - 340 mục, trong đó 332 hình từ nguồn APK cũ và 8 mục văn bản bổ sung theo QCVN 41:2024; hình cho 8 mục này **đang chờ kiểm duyệt** (không thay bằng hình suy đoán).
-- Đã chỉnh 9 bản ghi có bằng chứng điều khoản; mã tra cứu và trạng thái kiểm tra được hiển thị trong chi tiết. **321 mục còn chờ review nội dung và 340 hình chưa được xác minh trực quan**.
+- Đã chỉnh 9 bản ghi có bằng chứng điều khoản; mã tra cứu và trạng thái kiểm tra được hiển thị trong chi tiết. **301 mục còn chờ review nội dung; 22 hình đã so ký hiệu/biến thể, cả 340 hình còn chờ nghiệm thu thiết kế**. Đợt tiếp theo đã review 20 biển cấm và xác định ID 54/116 là DP.127a; [BEFORE/AFTER và nguồn PDF](docs/SIGN_2024_PROHIBITION_BATCH1.md).
 - [Báo cáo tình trạng audit](docs/SIGN_2024_AUDIT_README.md) · [bảng CSV 340 mục](docs/SIGN_2024_AUDIT.csv).

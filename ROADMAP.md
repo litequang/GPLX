@@ -57,5 +57,6 @@
 - [x] Chuẩn hóa mã/phụ lục và phân trạng thái đủ 332 bản ghi gốc.
 - [x] Sửa 9 mục văn bản có bằng chứng; thêm 8 mã chưa có hình (không hiển thị ảnh sai).
 - [x] Gắn dẫn nguồn/trạng thái theo mục, giữ nguyên ID tiến độ và ảnh gốc, cập nhật PWA cache.
-- [ ] Đối chiếu 321 phần mô tả còn lại, 2 mã nguồn không rõ, 340 hình; trích hình chính thức và hoàn tất kiểm duyệt ảnh.
+- [x] Đối chiếu đợt 1: 20 biển cấm pending, xác định ID 54/116 là DP.127a; ghi trang PDF, hình và hash asset.
+- [ ] Đối chiếu 301 nội dung pending còn lại; nâng bằng chứng trang cho 17 nội dung đợt trước; nghiệm thu thiết kế 340 hình (22 đã so ký hiệu). ID 43 cần review dấu thập phân; lịch sử dòng trùng 54/116 còn chưa rõ.
 - [ ] Xây bộ mã toàn bộ QCVN 41:2024 để đánh giá các mục còn thiếu so với quy chuẩn.

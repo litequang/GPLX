@@ -25,3 +25,7 @@ Tái hiện lỗi trộn HTML mới và app v1 trong cache, sửa bằng shell v
 ## 11/11/2026 — Cài PWA nhanh Android
 
 Capture beforeinstallprompt/appinstalled ngay trong head trước module bất đồng bộ. Android đủ điều kiện: Cài ngay → hộp xác nhận native, không modal trung gian; chặn bấm lặp và không tái dùng prompt đã tiêu thụ. Shell v4. 21/21 test PASS, 659 URL HTTP PASS, syntax/deploy PASS. Chưa cài trên thiết bị Android thật; chưa redeploy hosting.
+
+## 11/11/2026 — Audit biển cấm đợt 1 (chờ duyệt PR)
+
+20 bản ghi pending nhóm cấm: 5 MATCH, 15 EDIT_TEXT; điều tra riêng ID 54/116 và xác định DP.127a theo B.27d/PDF 92. Khóa hash PDF và 332 ảnh cũ, giữ mọi ID/600 câu/đáp án/tiến độ. Nguồn script, dataset, offline revision, CSV và bảng BEFORE/AFTER đồng bộ, có lệnh tái sinh/kiểm tra. 42/42 test PASS, syntax/deploy/check-generated PASS, 659 URL HTTP 200; Chromium desktop/mobile smoke PASS. 22 ảnh mới chỉ so ký hiệu, còn NEEDS_REVIEW thiết kế; ID 43 khác dấu thập phân, lịch sử dòng trùng 54/116 chưa rõ. Shell v9; không merge hoặc redeploy hosting. Nhánh `audit/qcvn41-2024-prohibition-batch1`; commit/PR xác nhận trong bàn giao, báo cáo tại `docs/SIGN_2024_PROHIBITION_BATCH1.md`.

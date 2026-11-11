@@ -160,3 +160,8 @@ HTML tải CSS và entry module qua URL có `?v=gplx-shell-v3`; app import core/
 ## Cài nhanh Android — shell v4
 
 Classic script #pwa-install-capture trong head giữ sự kiện ở window.gplxInstall trước khi tải async modules; chrome.js nhận cả sự kiện sớm và muộn. Khi có prompt, Cài ngay gọi prompt() trực tiếp trong handler click, không await trước đó. Android Chromium chưa có prompt hiện toast trạng thái thay vì modal hướng dẫn; iOS/trình duyệt khác giữ hướng dẫn dự phòng. Accepted ẩn nút trong phiên, appinstalled đánh dấu đã cài. Các URL shell/import đồng bộ v4.
+
+
+## Nguồn audit biển cấm đợt 1 — shell v9
+
+`scripts/signs-2024.mjs` áp các quyết định trong `scripts/signs-2024-batch1.json` khi extract APK hoặc chạy `scripts/update-signs-2024.mjs`. `npm run audit:signs` sinh dataset/offline revision, `docs/SIGN_2024_AUDIT.csv` và `docs/SIGN_2024_PROHIBITION_BATCH1.md`; `-- --check` phát hiện sai lệch. `docs/SIGN_2024_BATCH1_BASELINE.json` khóa BEFORE và các phạm vi cần bảo toàn bằng hash. Modal biển báo hiển thị trang PDF cho mục có bằng chứng; nhãn phân biệt so ký hiệu với kiểm định thông số thiết kế. Hợp đồng tiến độ không đổi.

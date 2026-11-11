@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js?v=gplx-shell-v8';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds, restoredStudyResponses, studyPositionKey } from './core.js?v=gplx-shell-v8';
+import { initChrome } from './chrome.js?v=gplx-shell-v9';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam, validExamIds, restoredStudyResponses, studyPositionKey } from './core.js?v=gplx-shell-v9';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -98,6 +98,7 @@ function signFigure(s, detail = false) {
   return `<div class="sign-no-image ${detail ? 'detail' : ''}" role="img" aria-label="Biển ${escape(s.code)} chưa có hình đã kiểm duyệt"><strong>${escape(s.code)}</strong><span>Hình minh họa đang đối chiếu với quy chuẩn</span></div>`;
 }
 function signVerification(s) {
+  if (s.qcvn2024?.verification === 'text-verified' && s.qcvn2024?.audit?.imageComparison) return 'Tên và ý nghĩa đã đối chiếu với QCVN 41:2024. Ký hiệu và biến thể hình đã so trực quan; thông số thiết kế hình vẫn cần kiểm duyệt.';
   if (s.qcvn2024?.verification === 'text-verified') return 'Tên và ý nghĩa đã đối chiếu với QCVN 41:2024. Hình ảnh chưa được kiểm duyệt trực quan.';
   if (s.qcvn2024?.verification === 'needs-code-review') return 'Mã và hình từ nguồn cũ chưa thể ánh xạ chắc chắn sang mã của QCVN 41:2024; đang chờ đối chiếu.';
   return 'Tên, ý nghĩa và hình từ dữ liệu gốc chưa được kiểm duyệt đầy đủ theo QCVN 41:2024.';
@@ -218,9 +219,11 @@ function handleAction(action, button) {
     case 'sign': {
       const sign = dataset.signs.find(s => s.id === id);
       if (!sign) break;
-      const source = dataset.source.signAudit2024?.standard?.officialPdf;
+      const pdf = dataset.source.signAudit2024?.standard?.officialPdf;
+      const pages = sign.qcvn2024?.audit?.pdfPages;
+      const source = pdf && (pages?.length ? pdf + '#page=' + pages[0] : pdf);
       showModal(`${modalHeading(escape(sign.name))}${signFigure(sign, true)}<div class="sign-detail-text">${escape(sign.detail)}</div>
-        <p class="source-note">Mã: ${escape(sign.code || 'Chưa xác định')} · Phụ lục ${escape(sign.qcvn2024?.annex || '?')}${sign.qcvn2024?.clause ? ', mục ' + escape(sign.qcvn2024.clause) : ''}</p>
+        <p class="source-note">Mã: ${escape(sign.code || 'Chưa xác định')} · Phụ lục ${escape(sign.qcvn2024?.annex || '?')}${sign.qcvn2024?.clause ? ', mục ' + escape(sign.qcvn2024.clause) : ''}${pages?.length ? ', trang PDF ' + escape(pages.join(', ')) : ''}</p>
         <p class="source-note">${escape(signVerification(sign))}</p>
         ${source ? `<p class="source-note"><a href="${escape(source)}" target="_blank" rel="noopener noreferrer">Đọc PDF quy chuẩn chính thức ↗</a></p>` : ''}`);
       break;

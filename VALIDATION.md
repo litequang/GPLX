@@ -97,3 +97,13 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 - Tình trạng 17 nội dung đã đối chiếu, 321 còn chưa review, 2 cần review mã, **340 hình chưa so trực quan**. Không nhận định toàn bộ biển đã chuẩn.
 - `tests/signs-2024.test.mjs`: tính tái lập từ script, 340 ID, hình cũ và offline manifest, UI 8 hình placeholder, link nguồn và import câu học không ảnh hưởng.
 - CSV từng mục tại `docs/SIGN_2024_AUDIT.csv`; xem `docs/SIGN_2024_AUDIT_README.md`.
+
+## Biển cấm đợt 1 — 11/11/2026 (Asia/Saigon), chờ duyệt PR
+
+- PDF Chính phủ đã tải và so SHA-256 với bản sao cổng pháp luật Hải Phòng: cùng `b6b99d0a0aeb13fe79072831857ece15bb254d8fb7817e80e4a2739a0d2145ce`, 403 trang. Đọc văn bản và xem bản render màu trang 80–84, 87–88, 92–93, đối chiếu với PNG gốc. [BEFORE/AFTER và bằng chứng từng ID](docs/SIGN_2024_PROHIBITION_BATCH1.md).
+- 20 pending: 5 MATCH, 15 EDIT_TEXT. ID 54/116: REMAP_CODE thành **DP.127a**, mẫu có từng vạch xóa riêng trên ba vòng tốc độ trang 92; khác DP.127c có vạch xóa xuyên bảng trang 93. Giữ hai ID trùng ảnh.
+- `npm test` chạy ngoài sandbox bằng Node **v24.22.1**: **42/42 PASS**, 0 fail/skip. Lần chạy trong sandbox chỉ báo 7 file, nên không dùng số đó làm số kiểm thử thực tế. Test mới khóa hash cả 600 câu/đáp án, phần ngoài signs/source.signAudit2024, 332 ID/đường dẫn/byte ảnh và các biển ngoài phạm vi; áp lại từ BEFORE và từ shape SQLite thô; CSV/metadata/ngoại lệ/phạm vi xe gắn máy/trang nguồn/UI.
+- `node --check dist/app.js`, `node --check dist/sw.js`, `npm run check:deploy`: PASS. Deploy check: **657 file**, file lớn nhất dưới 1 MiB, không APK/DB/archive/secret trong dist. `npm run audit:signs -- --check` và `git diff --check`: PASS.
+- HTTP preview: **659 URL**, tất cả 200. Chromium hệ thống qua Playwright: desktop **1440×1000**, mobile **390×844**, ảnh modal ID 54/116 tải thành công, tìm DP.127a trả đúng hai dòng, link PDF mở tại `#page=92`, modal P.111a đúng phạm vi và ngoại lệ xe đạp, không tràn ngang mobile, 0 pageerror. Đã xem screenshot desktop ID 54 và mobile ID 53. Tiến độ giả lập v1 trong localStorage giữ nguyên qua mở modal/tìm kiếm/reload; không dùng tiến độ thật.
+- Chỉ smoke test luồng biển báo trên Chromium; chưa QA lại toàn bộ luồng luyện đề/cài PWA trên Android/iOS hay offline thật ở hosting. Cache update/offline được kiểm bằng test worker; shell v9 đồng bộ entry/import/SHELL và manifest tăng revision, không đổi khóa tiến độ.
+- **NEEDS_REVIEW**: thông số thiết kế 22 ảnh (đặc biệt dấu “2.5t” của ID 43 so với “2,5 t” trong PDF), quyền tái xuất bản và lịch sử nguồn trùng ID 54/116. Không thay/vẽ hình. Còn 301 nội dung pending; đợt trước 17 nội dung chưa bổ sung bằng chứng trang trong đợt này. Dừng tại PR; chưa merge hoặc redeploy hosting.

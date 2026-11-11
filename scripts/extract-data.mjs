@@ -2,6 +2,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join, basename } from 'node:path';
+import { applySign2024Updates, sign2024AuditSummary } from './signs-2024.mjs';
 import { fileURLToPath } from 'node:url';
 
 // Usage: npm run extract -- /absolute/path/to/extracted/assets
@@ -75,9 +76,9 @@ const licenses = rows('ZLICENSE').map(l => ({
   pool: pools[l.ZNAME],
   allocation: allocations.filter(a => a.ZLICENSE === l.Z_PK).map(a => ({ category: a.ZQUESTIONTYPE, count: a.ZCOUNT })),
 }));
-const signs = rows('TABLE_NOTICE_BOARD').filter(s => !s.isDelete).map(s => ({
+const signs = applySign2024Updates(rows('TABLE_NOTICE_BOARD').filter(s => !s.isDelete).map(s => ({
   id: s.ID, category: s.Type_ID, name: s.Name, detail: s.Detail || '', image: copyAsset('signal', s.Icon), sourceUpdated: s.UpdateDay,
-}));
+})));
 const signCategories = rows('TABLE_NOTICE_BOARD_TYPE').map(c => ({ id: c.Type_ID, name: c.Type_Name }));
 const dataset = {
   schemaVersion: 1,

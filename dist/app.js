@@ -194,7 +194,7 @@ function handleAction(action, button) {
   switch (action) {
     case 'more-nav': showModal(`${modalHeading('Góc học tập')}<nav class="more-nav" aria-label="Các mục khác">${navItems.slice(2).filter(([route]) => !['exams', 'signs'].includes(route)).map(([route, label, symbol]) => `<a class="nav-item" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span></a>`).join('')}</nav><button class="secondary" data-action="about">Nguồn dữ liệu & cài đặt</button>`); break;
     case 'route': go(button.dataset.route); break;
-    case 'continue': go('learn', { id: pool().find(q => !progress.answers[q.id])?.id || progress.lastQuestion }); break;
+    case 'continue': go('learn', { id: pool().find(q => !progress.answers[q.id]?.selected)?.id || progress.lastQuestion }); break;
     case 'topic': go('learn', { category: String(id) }); break;
     case 'answer': if (q && !state.responses[q.id]) { const selected = Number(button.dataset.option); state.responses[q.id] = selected; recordAnswer(q, selected); renderStudy(); updateNav(); } break;
     case 'retry-question': delete state.responses[q.id]; renderStudy(); break;
@@ -214,7 +214,7 @@ function handleAction(action, button) {
     case 'export': { const url = URL.createObjectURL(new Blob([JSON.stringify(progress, null, 2)], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'gplx-tien-do.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); break; }
     case 'import': $('#import-file').click(); break;
     case 'reset-confirm': showModal(`${modalHeading('Xóa tiến độ đã lưu?')}<p class="modal-copy">Thao tác sẽ xóa câu đã học, đánh dấu và lịch sử luyện đề trong trình duyệt này. Hãy xuất tiến độ trước nếu bạn cần giữ lại.</p><div class="modal-actions"><button class="secondary" data-action="close-modal">Giữ tiến độ</button><button class="danger-button" data-action="reset">Xóa toàn bộ tiến độ</button></div>`); break;
-    case 'reset': progress = emptyProgress(); exam = null; examResult = null; save(); saveExam(); $('#modal').close(); go('home'); toast('Đã xóa tiến độ trên thiết bị.'); break;
+    case 'reset': progress = emptyProgress(); state.list = []; exam = null; examResult = null; save(); saveExam(); $('#modal').close(); go('home'); toast('Đã xóa tiến độ trên thiết bị.'); break;
   }
 }
 
@@ -234,7 +234,7 @@ document.addEventListener('change', async event => {
       const imported = parseProgress(await event.target.files[0].text());
       for (const [id, answer] of Object.entries(imported.answers)) { const q = dataset.questions.find(q => q.id === Number(id)); if (q) answer.correct = answer.selected === q.answer; else delete imported.answers[id]; }
       if (!dataset.licenses.some(l => l.name === imported.license)) imported.license = 'B';
-      progress = imported; save(); $('#modal').close(); go('home'); toast('Đã nhập tiến độ.');
+      progress = imported; state.list = []; save(); $('#modal').close(); go('home'); toast('Đã nhập tiến độ.');
     } catch (error) { toast(error.message); }
   }
 });

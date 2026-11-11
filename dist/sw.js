@@ -1,7 +1,7 @@
 // Bump APP_REVISION after changing shell files. Offline data revision comes from offline.json.
-const APP_REVISION = 'gplx-shell-v6';
+const APP_REVISION = 'gplx-shell-v7';
 const DATA_CACHE = 'gplx-offline-data-v1';
-const SHELL = ['./', './index.html', './styles.css?v=gplx-shell-v6', './app.js?v=gplx-shell-v6', './core.js?v=gplx-shell-v6', './chrome.js?v=gplx-shell-v6', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './data/dataset.json', './data/offline.json'];
+const SHELL = ['./', './index.html', './styles.css?v=gplx-shell-v7', './app.js?v=gplx-shell-v7', './core.js?v=gplx-shell-v7', './chrome.js?v=gplx-shell-v7', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './data/dataset.json', './data/offline.json'];
 let downloadTask;
 self.addEventListener('install', event => {
   event.waitUntil((async () => {

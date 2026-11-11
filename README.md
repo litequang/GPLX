@@ -32,7 +32,7 @@ npm run check:deploy        # Chặn ZIP/APK/DB và file >25 MiB trong dist
 - Thư viện biển báo có tìm kiếm và nội dung chi tiết.
 - Sinh đề ngẫu nhiên cho 10 hạng trong dữ liệu nguồn, có đồng hồ, nộp bài, kiểm tra câu điểm liệt và xem lại đáp án.
 - Bài đang làm lưu trong `sessionStorage`; tải lại tab vẫn tiếp tục với thời hạn cũ.
-- Tiến độ lưu trong `localStorage`; xuất/nhập JSON để sao lưu và chuyển thiết bị.
+- Tiến độ lưu trong `localStorage`: khôi phục đáp án đúng/sai, giải thích, câu đang học theo hạng và mục học sau F5/chuyển tab; xuất/nhập JSON để sao lưu và chuyển thiết bị. Bản sao lưu v1 cũ được tự động hỗ trợ.
 - Manifest PWA, biểu tượng 192/512, service worker, nút tải toàn bộ dữ liệu để học ngoại tuyến.
 - CSS responsive, thanh điều hướng glass cùng ẩn/hiện với header theo chiều cuộn, điều hướng bàn phím, trạng thái đúng/sai có chữ và biểu tượng.
 

@@ -18,7 +18,10 @@ test('full dataset preserves question IDs, valid answers, explanations and every
     assert.ok(dataset.categories.some(c => c.id === q.category));
     if (q.image) assert.ok(existsSync(resolve(root, 'dist', q.image)), q.image);
   }
-  for (const sign of dataset.signs) assert.ok(existsSync(resolve(root, 'dist', sign.image)), sign.image);
+  for (const sign of dataset.signs) {
+    if (sign.image) assert.ok(existsSync(resolve(root, 'dist', sign.image)), sign.image);
+    else assert.equal(sign.qcvn2024?.imageVerification, 'pending', `unillustrated sign ${sign.id} must be labeled as pending`);
+  }
 });
 test('every license generates 100 complete, unique exams matching source allocation and exactly one critical question', () => {
   for (const l of dataset.licenses) {

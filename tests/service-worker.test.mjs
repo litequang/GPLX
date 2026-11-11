@@ -100,3 +100,20 @@ test('versioned entry and imports bypass legacy shell cache and remain available
   }
   assert(!(await h.caches.keys()).includes('gplx-shell-v1'));
 });
+
+test('updating QCVN signs never serves an older dataset from offline-data cache', async () => {
+  const h = workerHarness();
+  const dataUrl = new URL('data/dataset.json', h.scope);
+  const dataCache = await h.caches.open('gplx-offline-data-v1');
+  await dataCache.put(dataUrl, Response.json({ revision: 'old-2019-signs' }));
+  // Existing cache is older than the newly installed shell.
+  await h.dispatch('install');
+  await h.dispatch('activate');
+  const request = { request: { url: dataUrl.href, method: 'GET', mode: 'cors' } };
+  h.offline(true);
+  const current = await h.dispatch('fetch', request);
+  assert.deepEqual(await current.json(), {}, 'active shell dataset must override stale offline-data copy');
+  h.offline(false);
+  await h.dispatch('message', { data: { type: 'download-offline' } });
+  assert.deepEqual(await (await dataCache.match(dataUrl)).json(), {}, 'offline download must replace stale dataset');
+});

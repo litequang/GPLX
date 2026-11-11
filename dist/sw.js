@@ -33,6 +33,13 @@ self.addEventListener('fetch', event => {
       try { const response = await fetch(event.request); if (safe(response)) return response; } catch {}
       return (await caches.match(new URL('./index.html', self.registration.scope))) || Response.error();
     }
+    // Always prefer the active shell's verified dataset over a data-cache copy
+    // created by a previous app revision. Otherwise users can see old signs
+    // indefinitely after an offline download on a previously installed PWA.
+    if (url.pathname.endsWith('/data/dataset.json') || url.pathname.endsWith('/data/offline.json')) {
+      const currentShell = await (await caches.open(APP_REVISION)).match(event.request);
+      if (currentShell) return currentShell;
+    }
     const cached = await caches.match(event.request);
     if (cached) return cached;
     const response = await fetch(event.request);
@@ -52,9 +59,16 @@ async function cacheDataset() {
   for (let index = 0; index < manifest.urls.length; index += 6) {
     await Promise.all(manifest.urls.slice(index, index + 6).map(async path => {
       const url = new URL(path, self.registration.scope);
-      if (!await cache.match(url)) {
+      if (path === 'data/dataset.json') {
+        // A previous offline pack may contain the old dataset. Replace it
+        // with the dataset downloaded and verified by the active shell.
+        let response = await (await caches.open(APP_REVISION)).match(url);
+        if (!response) response = await fetch(url, { cache: 'reload' });
+        if (!response.ok || response.redirected || !response.headers.get('content-type')?.includes('json')) throw new Error('Không tải được bộ dữ liệu mới.');
+        await cache.put(url, response);
+      } else if (!await cache.match(url)) {
         const response = await fetch(url);
-        if (!response.ok || response.redirected || (path !== 'data/dataset.json' && !response.headers.get('content-type')?.startsWith('image/'))) throw new Error(`Không tải được ${path}`);
+        if (!response.ok || response.redirected || !response.headers.get('content-type')?.startsWith('image/')) throw new Error(`Không tải được ${path}`);
         await cache.put(url, response);
       }
       completed++;

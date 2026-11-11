@@ -42,3 +42,13 @@ Vì vậy chưa khẳng định: layout đẹp/không tràn ở mọi viewport, 
 9. Kiểm tra cài PWA và cập nhật revision từ bản cũ. Nếu chạy trên origin mới, nhập lại progress đã xuất.
 
 Không đánh dấu các mục trên đã hoàn thành cho tới khi thực hiện và ghi kết quả.
+
+## Bổ sung điều hướng glass/PWA — 11/11/2026
+
+- Node v24.22.1: `npm test` **14/14 PASS** (9 nhóm cũ + 5 nhóm chrome/PWA).
+- Mô phỏng xác nhận: ẩn/hiện đồng bộ, ngưỡng chống rung, overscroll, modal/focus bàn phím, focus do chạm không giữ thanh cố định, iOS fallback, standalone, prompt dùng một lần/chặn bấm lặp, dismiss/error/appinstalled. Đây không phải test trình duyệt thật.
+- `node --check` cho app.js, chrome.js, sw.js: PASS. `git diff --check`: PASS.
+- `npm run check:deploy`: PASS, 657 file; file lớn nhất 577.405 byte.
+- HTTP preview và check-http chạy trong cùng tiến trình kiểm tra: **657 URL trả 200**. Không có bước build vì dist là source runtime.
+- Đã thử Playwright Chromium: không khởi chạy được vì `socket() failed: Operation not permitted` (process singleton). Shared browser không truy cập được preview (`ERR_CONNECTION_REFUSED`). Vì vậy chưa xác nhận trực quan 390px/desktop, thao tác học/luyện đề, cuộn trên thiết bị, offline/cài PWA thật. Các mục QA thực tế vẫn mở trong ROADMAP.
+- Shell tăng v2 và precache chrome.js. Không triển khai lại hosting trong thay đổi này; phạm vi là mã GitHub.

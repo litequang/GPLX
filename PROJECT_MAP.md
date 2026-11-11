@@ -56,6 +56,7 @@ GPLX/                              # Repository này
     ├── index.html                  # Shell, navigation, modal, toast
     ├── styles.css                  # Tokens + components + responsive
     ├── app.js                      # UI, router, session, sự kiện
+    ├── chrome.js                   # Header/menu cuộn đồng bộ + cài PWA/hướng dẫn
     ├── core.js                     # Hàm thuần có thể unit test
     ├── sw.js                       # Service worker + offline download
     ├── manifest.webmanifest        # PWA identity/install
@@ -123,7 +124,7 @@ Shell được cache khi cài worker. Ảnh đã xem được cache theo yêu c�
 | --- | --- | --- |
 | localStorage | `gplx-progress-v1` | version, license, answers, bookmarks, history, lastQuestion |
 | sessionStorage | `gplx-active-exam` | Bài đang làm, tồn tại khi tải lại trong cùng tab |
-| Cache Storage | `gplx-shell-v1` | Shell + dataset cần để khởi động offline |
+| Cache Storage | `gplx-shell-v2` | Shell + dataset cần để khởi động offline |
 | Cache Storage | `gplx-offline-data-v1` | JSON và ảnh, marker revision |
 
 Tiến độ theo origin và trình duyệt. Không tự đồng bộ nhiều thiết bị. Export/import thay thế tiến độ hiện có; import tính lại tính đúng/sai từ dataset đang dùng.
@@ -145,3 +146,9 @@ Tiến độ theo origin và trình duyệt. Không tự đồng bộ nhiều th
 ## 7. Quy trình hoàn tất một thay đổi
 
 Đọc hướng dẫn → sửa đúng module → chạy kiểm thử thích hợp → kiểm tra UI khi công cụ hỗ trợ → cập nhật bản đồ/roadmap → tăng revision shell nếu cần → commit → push đúng remote → xác nhận URL hoặc commit. Những gì chưa kiểm tra phải ghi rõ trong VALIDATION.md.
+
+## Điều hướng glass và PWA (11/11/2026)
+
+`updateNav()` render sidebar và thanh dưới (Tổng quan, Học câu hỏi, Luyện đề, Biển báo, Thêm). Mục Thêm mở dialog tới điểm liệt/câu sai/đánh dấu/cài đặt; sidebar chỉ hiển thị trên desktop/tablet. `chrome.js` dùng một class `chrome-hidden` cho header, thanh dưới và sidebar, passive scroll + requestAnimationFrame, ngưỡng xuống 36px/lên 14px và chặn overscroll. Route mới, đầu trang, modal hoặc điều hướng bàn phím khôi phục thanh. Controls ẩn dùng inert. CSS có safe-area, giảm chuyển động, backdrop-filter và nền đặc dự phòng.
+
+Nút cài luôn có trong browser: dùng beforeinstallprompt khi có, còn lại mở hướng dẫn; ẩn khi standalone/appinstalled. Prompt chỉ dùng một lần và chặn bấm lặp. `chrome.js` được precache cùng shell v2; không đổi schema tiến độ hay dữ liệu. Kiểm thử mô phỏng nằm ở `tests/chrome.test.mjs`.

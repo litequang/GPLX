@@ -17,7 +17,7 @@ npm start
 Mở **http://localhost:4173**. Không cần `npm install` vì dự án không có dependency. Không mở `index.html` bằng `file://`: ES modules và service worker cần HTTP/HTTPS.
 
 ```sh
-npm test                    # 9 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
+npm test                    # 14 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
 node --check dist/app.js
 node --check dist/sw.js
 npm run test:http           # Chạy trong terminal khác khi npm start đang hoạt động
@@ -34,7 +34,7 @@ npm run check:deploy        # Chặn ZIP/APK/DB và file >25 MiB trong dist
 - Bài đang làm lưu trong `sessionStorage`; tải lại tab vẫn tiếp tục với thời hạn cũ.
 - Tiến độ lưu trong `localStorage`; xuất/nhập JSON để sao lưu và chuyển thiết bị.
 - Manifest PWA, biểu tượng 192/512, service worker, nút tải toàn bộ dữ liệu để học ngoại tuyến.
-- CSS responsive, menu màn hình nhỏ, điều hướng bàn phím, trạng thái đúng/sai có chữ và biểu tượng.
+- CSS responsive, thanh điều hướng glass cùng ẩn/hiện với header theo chiều cuộn, điều hướng bàn phím, trạng thái đúng/sai có chữ và biểu tượng.
 
 ## Đọc tiếp theo thứ tự
 
@@ -58,7 +58,7 @@ APK và SQLite gốc được giữ trong workspace máy thực hiện, bên ngo
 
 1. Mở ứng dụng qua HTTPS hoặc localhost.
 2. Ở Tổng quan, chọn **Tải để học ngoại tuyến** và chờ thông báo hoàn tất.
-3. Trình duyệt có thể cho phép cài PWA bằng nút cài đặt hoặc menu của trình duyệt.
+3. Chọn **Cài ứng dụng** trên header. Nếu trình duyệt cho phép, cửa sổ cài PWA sẽ mở; nếu chưa hỗ trợ, ứng dụng hiện hướng dẫn (Safari iPhone/iPad: Chia sẻ → Thêm vào Màn hình chính). Nút cài ẩn khi đang chạy ở chế độ ứng dụng.
 
 Cache lưu theo origin và trình duyệt; dữ liệu đã tải ở localhost không chuyển sang domain khác. Tiến độ cũng lưu riêng theo origin. Xóa dữ liệu trình duyệt có thể xóa cả tiến độ lẫn cache; dùng Xuất tiến độ để sao lưu. Website được bảo vệ đăng nhập có thể cần kết nối khi xác thực lại; khả năng offline đầy đủ của hosting đó cần được kiểm tra riêng.
 

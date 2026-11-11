@@ -26,7 +26,7 @@ Font hệ thống hỗ trợ tiếng Việt: Inter nếu máy có, rồi Segoe U
 
 - Desktop: sidebar cố định, header, nội dung tối đa 1560px; dashboard chủ đề + mục tiêu.
 - Màn hình học: câu hỏi rộng + bộ điều hướng câu; dưới 960px chuyển thành một cột.
-- Dưới 700px: sidebar thành menu trượt, header sticky, thống kê 2 cột, biển báo 2 cột.
+- Dưới 700px: dùng thanh điều hướng dưới 5 mục, mục Thêm mở dialog; header sticky có safe-area, thống kê 2 cột, biển báo 2 cột.
 - Nhịp khoảng cách chính: 8/12/16/24/32px; card bo 13–18px; nút 9–10px.
 - Dữ liệu thật quyết định số đếm; không tạo tỷ lệ học, lịch sử hoặc thành tích giả.
 
@@ -52,3 +52,7 @@ Font hệ thống hỗ trợ tiếng Việt: Inter nếu máy có, rồi Segoe U
 ## Khi phát triển tiếp
 
 Ưu tiên dùng component và token sẵn có. Nếu chuyển framework hoặc bổ sung thư viện (ví dụ shadcn/ui), tạo kế hoạch migration và giữ nguyên schema tiến độ/data; không cài dependency chỉ để thay màu hoặc bo góc. Ghi thay đổi thiết kế có chủ đích vào đây và kiểm tra lại mobile/offline.
+
+## Glass chrome
+
+Header và thanh dưới dùng nền sáng 78% opacity, blur 20–22px, viền sáng và bóng nhẹ. Active tab xanh chanh, giữ chữ tối. Cả header/menu cùng ẩn khi cuộn xuống, cùng hiện khi cuộn lên; không đổi chiều cao bố cục. Giữ khoảng trống dưới nội dung và safe-area cho thiết bị có tai thỏ/home indicator. Khi reduced-motion bật, vẫn ẩn/hiện nhưng không chuyển động.

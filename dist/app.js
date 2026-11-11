@@ -1,3 +1,4 @@
+import { initChrome } from './chrome.js';
 import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js';
 
 const $ = selector => document.querySelector(selector);
@@ -23,7 +24,7 @@ const icon = name => `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="
 const navItems = [['home', 'Tổng quan', 'home'], ['learn', 'Học theo chủ đề', 'book'], ['critical', 'Câu điểm liệt', 'shield'], ['exams', 'Luyện đề', 'exam'], ['signs', 'Biển báo đường bộ', 'sign'], ['wrong', 'Câu cần ôn lại', 'wrong'], ['saved', 'Câu đã đánh dấu', 'bookmark']];
 let dataset, progress, storageAvailable = true;
 let state = { route: 'home', category: '', search: '', index: 0, list: [], responses: {}, signLimit: 32 };
-let exam = null, examResult = null, timer, installPrompt, toastTimer;
+let exam = null, examResult = null, timer, toastTimer;
 let offline = { status: 'idle', completed: 0, total: 0 };
 let serviceWorkerRegistration;
 
@@ -45,6 +46,7 @@ function sourceNote() { return `<p class="source-note">Bộ dữ liệu trích t
 function updateNav() {
   const p = pool();
   $('#nav').innerHTML = navItems.map(([route, label, symbol], i) => `${i === 5 ? '<div class="nav-separator"></div>' : ''}<a class="nav-item ${route === state.route ? 'active' : ''}" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span>${route === 'critical' ? `<span class="count">${p.filter(q => q.critical).length}</span>` : route === 'wrong' ? `<span class="count">${p.filter(q => progress.answers[q.id]?.correct === false).length}</span>` : route === 'saved' ? `<span class="count">${p.filter(q => progress.bookmarks.includes(q.id)).length}</span>` : ''}</a>`).join('');
+  $('#bottom-nav').innerHTML = [['home', 'Tổng quan', 'home'], ['learn', 'Học câu hỏi', 'book'], ['exams', 'Luyện đề', 'exam'], ['signs', 'Biển báo', 'sign']].map(([route, label, symbol]) => `<a class="bottom-item ${route === state.route ? 'active' : ''}" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span></a>`).join('') + `<button class="bottom-item ${['critical', 'wrong', 'saved'].includes(state.route) ? 'active' : ''}" data-action="more-nav" aria-haspopup="dialog">${icon('bookmark')}<span>Thêm</span></button>`;
   $('#page-label').textContent = navItems.find(n => n[0] === state.route)?.[1] || 'Tổng quan';
 }
 function offlinePanel() {
@@ -123,10 +125,11 @@ function go(route, options = {}) {
   buildStudyList();
   if (options.id) { const index = state.list.findIndex(q => q.id === options.id); state.index = Math.max(0, index); }
   history.replaceState(null, '', `#${route}`);
-  $('#sidebar').classList.remove('open'); document.body.classList.remove('menu-open'); $('#menu-button').setAttribute('aria-expanded', 'false');
+  if ($('#modal').open) $('#modal').close();
+  chrome.show();
   render(); window.scrollTo({ top: 0, behavior: 'instant' });
 }
-function showModal(markup) { $('#modal-content').innerHTML = markup; if (!$('#modal').open) $('#modal').showModal(); }
+function showModal(markup) { chrome.show(); $('#modal-content').innerHTML = markup; if (!$('#modal').open) $('#modal').showModal(); }
 const modalHeading = title => `<div class="modal-heading"><h2>${title}</h2><button class="icon-button" data-action="close-modal" aria-label="Đóng">×</button></div>`;
 function about() {
   showModal(`${modalHeading('Góc học tập của bạn')}<div class="modal-copy"><strong>Nguồn dữ liệu</strong><p>600 câu hỏi, 60 câu điểm liệt và 332 biển báo trích từ ứng dụng Android ngày 11/11/2026.</p><p><code>${escape(dataset.source.package)}</code></p><p>${escape(dataset.source.note)}</p><p>Hạng bằng, đáp án và ngưỡng đạt được giữ theo cơ sở dữ liệu nguồn. Đây là công cụ ôn tập cá nhân. Kết quả bài luyện không thay thế kết quả sát hạch.</p><hr class="modal-divider"><strong>Tiến độ trên thiết bị</strong><p>Câu đã học, đánh dấu và lịch sử luyện đề được lưu trong trình duyệt này. Xuất tệp để sao lưu hoặc chuyển sang thiết bị khác.</p></div><div class="modal-actions"><button class="secondary" data-action="export">Xuất tiến độ ↓</button><button class="secondary" data-action="import">Nhập tiến độ ↑</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><hr class="modal-divider"><div class="modal-copy"><strong>Học ngoại tuyến & cài ứng dụng</strong><p>Bấm “Tải để học ngoại tuyến” ở trang tổng quan và chờ hoàn tất. Khi có kết nối, Chrome/Edge có thể cho phép cài ứng dụng. Trên Safari iPhone: Chia sẻ → Thêm vào Màn hình chính. Tiến độ lưu riêng theo trình duyệt và địa chỉ trang web.</p></div><div class="modal-actions"><button class="danger-button" data-action="reset-confirm">Xóa tiến độ trên thiết bị</button></div>`);
@@ -168,6 +171,7 @@ async function downloadOffline() {
 function handleAction(action, button) {
   const id = Number(button.dataset.id), index = Number(button.dataset.index), q = state.list[state.index];
   switch (action) {
+    case 'more-nav': showModal(`${modalHeading('Góc học tập')}<nav class="more-nav" aria-label="Các mục khác">${navItems.slice(2).filter(([route]) => !['exams', 'signs'].includes(route)).map(([route, label, symbol]) => `<a class="nav-item" href="#${route}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span>${label}</span></a>`).join('')}</nav><button class="secondary" data-action="about">Nguồn dữ liệu & cài đặt</button>`); break;
     case 'route': go(button.dataset.route); break;
     case 'continue': go('learn', { id: pool().find(q => !progress.answers[q.id])?.id || progress.lastQuestion }); break;
     case 'topic': go('learn', { category: String(id) }); break;
@@ -194,12 +198,11 @@ function handleAction(action, button) {
 }
 
 document.addEventListener('click', event => {
-  const nav = event.target.closest('.nav-item, .brand');
+  const nav = event.target.closest('.nav-item, .bottom-item[href], .brand');
   if (nav) { event.preventDefault(); go(nav.hash.slice(1)); return; }
   const button = event.target.closest('[data-action]');
   if (button) handleAction(button.dataset.action, button);
   if (event.target === $('#modal')) $('#modal').close();
-  if (document.body.classList.contains('menu-open') && !event.target.closest('#sidebar, #menu-button')) { document.body.classList.remove('menu-open'); $('#sidebar').classList.remove('open'); $('#menu-button').setAttribute('aria-expanded', 'false'); }
 });
 document.addEventListener('change', async event => {
   if (event.target.id === 'license') { progress.license = event.target.value; save(); state.index = 0; state.responses = {}; buildStudyList(); render(); }
@@ -227,13 +230,11 @@ document.addEventListener('keydown', event => {
   if (/^[1-4]$/.test(event.key)) { const button = document.querySelector(`[data-action="${isExam ? 'exam-answer' : 'answer'}"][data-option="${event.key}"]`); if (button && !button.disabled) { event.preventDefault(); button.click(); } }
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { const target = (isExam ? exam.index : state.index) + (event.key === 'ArrowLeft' ? -1 : 1); event.preventDefault(); handleAction(isExam ? 'exam-jump' : 'jump', { dataset: { index: target } }); }
 });
-$('#menu-button').addEventListener('click', () => { const open = $('#sidebar').classList.toggle('open'); document.body.classList.toggle('menu-open', open); $('#menu-button').setAttribute('aria-expanded', String(open)); });
 function updateConnection() { $('#connection-label').textContent = navigator.onLine ? 'Đang trực tuyến' : 'Đang ngoại tuyến'; }
 addEventListener('online', updateConnection); addEventListener('offline', updateConnection); updateConnection();
 addEventListener('hashchange', () => { if (dataset) go(location.hash.slice(1)); });
-addEventListener('beforeinstallprompt', event => { event.preventDefault(); installPrompt = event; $('#install-button').hidden = false; });
-$('#install-button').addEventListener('click', async () => { if (installPrompt) { await installPrompt.prompt(); installPrompt = null; $('#install-button').hidden = true; } });
-addEventListener('appinstalled', () => { $('#install-button').hidden = true; toast('Đã cài ứng dụng. Chúc bạn học tốt!'); });
+
+const chrome = initChrome({ showModal, modalHeading, toast });
 
 async function init() {
   try {

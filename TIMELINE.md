@@ -13,3 +13,7 @@ Ngày thực hiện: 11/11/2026 (Asia/Saigon).
 | 7. Hosting riêng tư | Hoàn thành | Công cụ trả succeeded kèm URL; xem DEPLOYMENT.md. QA trực quan vẫn nằm trong ROADMAP |
 
 Cập nhật trạng thái sau mỗi chặng. Phần chưa hoàn thành phải ghi rõ ở ROADMAP.md; không đánh dấu hoàn thành khi chưa kiểm tra.
+
+## 11/11/2026 — Điều hướng glass và nút cài PWA
+
+Hoàn thành mã: thanh dưới 5 mục, menu phụ, header/menu đồng bộ cuộn, safe-area và giảm chuyển động, cài PWA với hướng dẫn dự phòng iPhone/iPad. Tăng shell v2; không đổi dữ liệu/tiến độ. 14 test PASS, kiểm tra cú pháp/deploy/HTTP PASS. QA trực quan và cài thiết bị thật còn chờ do lỗi môi trường trình duyệt (VALIDATION.md). Commit bàn giao mang tên `Add synchronized glass navigation and PWA install flow`; không phát hành lại hosting.

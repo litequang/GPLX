@@ -71,3 +71,9 @@ Không đặt ZIP tải về hoặc APK/DB gốc trong `dist/`. Packager có th�
 GitHub Actions kiểm thử bằng Node 22 trên mỗi push/pull request. Dự án không tự bật GitHub Pages hoặc đổi quyền truy cập repository. Hosting Sites có cấu hình trong `.openai/hosting.json`; không tạo Site mới nếu đã có `project_id`.
 
 Khi sửa shell JS/CSS/HTML, tăng `APP_REVISION` trong `dist/sw.js` cùng query `?v=` của CSS/entry/imports trong `index.html`, `app.js` và danh sách `SHELL`, rồi chạy kiểm thử. Khi thay dữ liệu, chạy lại script xuất để cập nhật `data/offline.json`, đồng thời tăng revision shell.
+
+
+## Thư viện biển báo QCVN 41:2024
+- 340 mục, trong đó 332 hình từ nguồn APK cũ và 8 mục văn bản bổ sung theo QCVN 41:2024; hình cho 8 mục này **đang chờ kiểm duyệt** (không thay bằng hình suy đoán).
+- Đã chỉnh 9 bản ghi có bằng chứng điều khoản; mã tra cứu và trạng thái kiểm tra được hiển thị trong chi tiết. **321 mục còn chờ review nội dung và 340 hình chưa được xác minh trực quan**.
+- [Báo cáo tình trạng audit](docs/SIGN_2024_AUDIT_README.md) · [bảng CSV 340 mục](docs/SIGN_2024_AUDIT.csv).

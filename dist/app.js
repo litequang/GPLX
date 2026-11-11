@@ -111,7 +111,7 @@ function renderSigns() {
     <p class="results-count">${signs.length} mục${state.category ? ' trong nhóm đã chọn' : ' trong thư viện'} · ${dataset.signs.length - missingImage.length} mục có hình nguồn cũ · ${missingImage.length} mục bổ sung đang chờ hình</p>
     ${!state.category && !state.search && missingImage.length ? `<section class="sign-new-panel" aria-label="Mã biển bổ sung theo quy chuẩn"><strong>Các mã được bổ sung theo QCVN 41:2024 (chưa có hình kiểm duyệt)</strong><div class="sign-new-codes">${missingImage.map(s => `<button class="text-button" data-action="sign" data-id="${s.id}">${escape(s.code)}</button>`).join('')}</div></section>` : ''}
     ${signs.length ? `<div class="sign-grid">${signs.slice(0, state.signLimit).map(s => `<button class="sign-card" data-action="sign" data-id="${s.id}">${signFigure(s)}<h3>${escape(s.name)}</h3><small>${s.qcvn2024?.verification === 'text-verified' ? 'Nội dung đã đối chiếu' : 'Đang kiểm duyệt'} · Xem ý nghĩa →</small></button>`).join('')}</div>${signs.length > state.signLimit ? `<div class="show-more"><button class="secondary" data-action="more-signs">Xem thêm biển báo (${signs.length - state.signLimit} còn lại)</button></div>` : ''}` : emptyState('Không tìm thấy biển báo', 'Thử từ khóa ngắn hơn hoặc một nhóm biển báo khác.', 'sign')}
-    <p class="source-note">Nguồn đối chiếu: QCVN 41:2024/BGTVT, Thông tư 51/2024/TT-BGTVT. Các mục chưa kiểm duyệt được ghi rõ; không dùng hình tạm cho biển mới. ${sourceNote()}</p>`;
+    <p class="source-note">Nguồn đối chiếu: QCVN 41:2024/BGTVT, Thông tư 51/2024/TT-BGTVT. Các mục chưa kiểm duyệt được ghi rõ; không dùng hình tạm cho biển mới.</p>${sourceNote()}`;
 }
 function renderExamSetup() {
   const l = license();

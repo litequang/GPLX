@@ -10,7 +10,7 @@ const dataset = JSON.parse(readFileSync(resolve(root, 'dist/data/dataset.json'))
 test('full dataset preserves question IDs, valid answers, explanations and every referenced image', () => {
   assert.equal(dataset.questions.length, 600);
   assert.equal(dataset.questions.filter(q => q.critical).length, 60);
-  assert.equal(dataset.signs.length, 332);
+  assert.equal(dataset.signs.length, 340);
   assert.deepEqual(dataset.questions.map(q => q.id).sort((a, b) => a - b), Array.from({ length: 600 }, (_, i) => i + 1));
   for (const q of dataset.questions) {
     assert.ok(q.text.trim(), `question ${q.id}`);

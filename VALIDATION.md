@@ -88,3 +88,12 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 - Test trong `tests/study-progress.test.mjs`: trả lời sai/đúng → chuyển tab → F5 → khôi phục vị trí, xem lại giải thích, legacy backup, nhóm câu cần ôn; cộng thêm test lõi migration.
 - Nút Xóa tiến độ không mang lại vị trí cũ khi reset; nhập backup không bị trộn vị trí phiên trước.
 - CI Node mô phỏng không thay thế xác nhận trực tiếp Android/iPhone và trình duyệt thật.
+
+
+## Audit biển báo QCVN 41:2024/BGTVT — 11/11/2026
+- Giữ 332 ID cũ; thêm 8 mã dưới dạng văn bản (`image: null`); tổng 340.
+- 9 hiệu đính văn bản được gắn điều khoản trong phụ lục B/D/E/F; không chỉnh ảnh chưa có bằng chứng.
+- Toàn bộ bản ghi có mã chuẩn hóa, phụ lục và trạng thái `qcvn2024.verification`; hai mục nguồn mơ hồ 54 và 116 có `needs-code-review`.
+- Tình trạng 17 nội dung đã đối chiếu, 321 còn chưa review, 2 cần review mã, **340 hình chưa so trực quan**. Không nhận định toàn bộ biển đã chuẩn.
+- `tests/signs-2024.test.mjs`: tính tái lập từ script, 340 ID, hình cũ và offline manifest, UI 8 hình placeholder, link nguồn và import câu học không ảnh hưởng.
+- CSV từng mục tại `docs/SIGN_2024_AUDIT.csv`; xem `docs/SIGN_2024_AUDIT_README.md`.

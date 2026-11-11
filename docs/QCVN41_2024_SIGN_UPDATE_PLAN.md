@@ -77,3 +77,7 @@ Không coi một thư viện hình ảnh bên thứ ba là nguồn pháp lý, v�
 5. CI audit/QA + kế hoạch rollback + tài liệu hướng dẫn người học.
 
 **Điều kiện khởi động cập nhật nội dung**: hoàn thành P0/P1 ít nhất cho nhóm định cập nhật, có hình và trích dẫn theo mã biển. Kế hoạch này **không** tự xác nhận tất cả 332 biển đã được kiểm duyệt.
+
+
+## Triển khai bước kiểm kê và hiệu đính 11/11/2026
+Đã triển khai giai đoạn metadata và một phần P1/P3: chuẩn hóa mã và phụ lục cho 332 bản ghi cũ, 9 hiệu đính văn bản có căn cứ, bổ sung 8 mục text-only, giữ nguyên ảnh cũ và trạng thái kiểm tra. **Chưa hoàn thành P2 và nghiệm thu 100% P4.** Báo cáo tại `docs/SIGN_2024_AUDIT_README.md` và CSV kiểm kê 340 mục.

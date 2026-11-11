@@ -51,3 +51,11 @@
 - [ ] QA trực tiếp học → đổi tab → F5 trên trình duyệt Android/iOS và PWA.
 - [ ] Cập nhật thư viện 332 biển báo theo **QCVN 41:2024/BGTVT**, bắt đầu từ kiểm kê/đối chiếu theo phụ lục B–F, theo quy trình `docs/QCVN41_2024_SIGN_UPDATE_PLAN.md`.
 - [ ] Kiểm tra riêng vạch kẻ đường, tín hiệu đèn và báo hiệu trên cao tốc trước khi bổ sung thành mục học mở rộng.
+
+
+## Tiến độ cập nhật biển báo QCVN 41:2024 — 11/11/2026
+- [x] Chuẩn hóa mã/phụ lục và phân trạng thái đủ 332 bản ghi gốc.
+- [x] Sửa 9 mục văn bản có bằng chứng; thêm 8 mã chưa có hình (không hiển thị ảnh sai).
+- [x] Gắn dẫn nguồn/trạng thái theo mục, giữ nguyên ID tiến độ và ảnh gốc, cập nhật PWA cache.
+- [ ] Đối chiếu 321 phần mô tả còn lại, 2 mã nguồn không rõ, 340 hình; trích hình chính thức và hoàn tất kiểm duyệt ảnh.
+- [ ] Xây bộ mã toàn bộ QCVN 41:2024 để đánh giá các mục còn thiếu so với quy chuẩn.

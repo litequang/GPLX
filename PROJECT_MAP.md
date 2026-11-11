@@ -156,3 +156,7 @@ Nút cài luôn có trong browser: dùng beforeinstallprompt khi có, còn lại
 ## Bản vá khởi động/cache v3 (11/11/2026)
 
 HTML tải CSS và entry module qua URL có `?v=gplx-shell-v3`; app import core/chrome với cùng version. SW precache đúng các URL này và kiểm MIME bằng pathname (bỏ query). Bootstrap inline đăng ký worker độc lập trước khi import app, bắt lỗi import và có timeout 20 giây để thay trạng thái chờ bằng nút tải lại. `await init()` bao gồm initChrome trong error boundary và fetch dataset timeout 15 giây. Không xóa localStorage/sessionStorage/cache dữ liệu học. Các lần sửa shell sau phải đổi revision đồng thời ở HTML, imports và SW.
+
+## Cài nhanh Android — shell v4
+
+Classic script #pwa-install-capture trong head giữ sự kiện ở window.gplxInstall trước khi tải async modules; chrome.js nhận cả sự kiện sớm và muộn. Khi có prompt, Cài ngay gọi prompt() trực tiếp trong handler click, không await trước đó. Android Chromium chưa có prompt hiện toast trạng thái thay vì modal hướng dẫn; iOS/trình duyệt khác giữ hướng dẫn dự phòng. Accepted ẩn nút trong phiên, appinstalled đánh dấu đã cài. Các URL shell/import đồng bộ v4.

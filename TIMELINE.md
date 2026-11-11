@@ -21,3 +21,7 @@ Hoàn thành mã: thanh dưới 5 mục, menu phụ, header/menu đồng bộ cu
 ## 11/11/2026 — Vá lỗi “Đang mở bộ câu hỏi…”
 
 Tái hiện lỗi trộn HTML mới và app v1 trong cache, sửa bằng shell v3 có URL version hóa và bootstrap tự báo lỗi/cập nhật worker. Bổ sung test khởi động thực thi code với dataset thật trong DOM mô phỏng, kiểm cache upgrade/offline; 18/18 PASS. Commit: `Fix startup hang caused by mixed PWA shell versions`. Cần tải lại toàn bộ dist lên hosting; giữ nguyên tiến độ người dùng.
+
+## 11/11/2026 — Cài PWA nhanh Android
+
+Capture beforeinstallprompt/appinstalled ngay trong head trước module bất đồng bộ. Android đủ điều kiện: Cài ngay → hộp xác nhận native, không modal trung gian; chặn bấm lặp và không tái dùng prompt đã tiêu thụ. Shell v4. 21/21 test PASS, 659 URL HTTP PASS, syntax/deploy PASS. Chưa cài trên thiết bị Android thật; chưa redeploy hosting.

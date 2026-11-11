@@ -8,7 +8,10 @@ export function initChrome({ showModal, modalHeading, toast }) {
   const standalone = matchMedia('(display-mode: standalone)');
   const mobile = matchMedia('(max-width: 700px)');
   let previous = window.scrollY, distance = 0, direction = 0, frame = 0;
-  let promptEvent = null, installing = false, installed = false, keyboardNavigation = false;
+  const installState = window.gplxInstall || (window.gplxInstall = { prompt: null, installed: false });
+  const android = /Android/i.test(navigator.userAgent);
+  const nativeInstallBrowser = android && /Chrome|Chromium|EdgA|SamsungBrowser/i.test(navigator.userAgent) && !/; wv\)|FBAN|FBAV|Instagram/i.test(navigator.userAgent);
+  let installing = false, accepted = false, keyboardNavigation = false;
   const position = () => Math.max(0, Math.min(window.scrollY, Math.max(0, document.documentElement.scrollHeight - innerHeight)));
   function setHidden(hidden) {
     body.classList.toggle('chrome-hidden', hidden);
@@ -42,28 +45,38 @@ export function initChrome({ showModal, modalHeading, toast }) {
   onMediaChange(mobile, show);
   document.addEventListener('pointerdown', () => { keyboardNavigation = false; });
   document.addEventListener('keydown', event => { if (event.key === 'Tab') { keyboardNavigation = true; show(); } });
-  function updateInstall() { button.hidden = installed || standalone.matches || navigator.standalone === true; }
+  function updateInstall() {
+    button.hidden = installState.installed || accepted || standalone.matches || navigator.standalone === true;
+    button.disabled = installing;
+    button.textContent = installing ? 'Đang cài…' : installState.prompt ? 'Cài ngay' : nativeInstallBrowser ? 'Cài ứng dụng' : 'Cách cài ứng dụng';
+    button.title = installState.prompt ? 'Chạm để mở xác nhận cài GPLX' : 'Cài GPLX lên màn hình chính';
+  }
   addEventListener('beforeinstallprompt', event => {
-    event.preventDefault(); promptEvent = event; updateInstall();
+    event.preventDefault(); installState.prompt = event; accepted = false; updateInstall();
   });
   addEventListener('appinstalled', () => {
-    installed = true; promptEvent = null; updateInstall();
+    installState.installed = true; installState.prompt = null; updateInstall();
     toast('Đã cài ứng dụng. Chúc bạn học tốt!');
   });
   onMediaChange(standalone, updateInstall);
   button.addEventListener('click', async () => {
-    if (installing) return;
-    if (!promptEvent) {
+    if (installing || installState.installed || accepted) return;
+    if (!installState.prompt) {
+      if (nativeInstallBrowser) {
+        toast('Chưa có xác nhận cài từ trình duyệt. Bạn có thể tiếp tục học; khi sẵn sàng, nút sẽ đổi thành “Cài ngay”.');
+        return;
+      }
       const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       showModal(`${modalHeading('Cài ứng dụng GPLX')}<div class="modal-copy"><p>${ios ? 'Trên iPhone/iPad, mở trang bằng Safari, nhấn Chia sẻ, chọn Thêm vào Màn hình chính rồi nhấn Thêm.' : 'Mở menu trình duyệt Chrome/Edge và chọn Cài ứng dụng hoặc Thêm vào màn hình chính nếu có. Nếu chưa thấy, hãy mở trang trực tiếp bằng trình duyệt, chờ tải xong rồi thử lại.'}</p><p>Sau khi cài, mở GPLX từ biểu tượng trên màn hình của bạn. Để học không có mạng, hãy chọn “Tải để học ngoại tuyến” ở Tổng quan và chờ hoàn tất.</p></div>`);
       return;
     }
-    installing = true; button.disabled = true;
-    const pending = promptEvent; promptEvent = null;
+    installing = true;
+    const pending = installState.prompt; installState.prompt = null;
+    updateInstall();
     try {
       await pending.prompt();
       const choice = await pending.userChoice;
-      if (choice.outcome === 'accepted') toast('Đã gửi yêu cầu cài ứng dụng.');
+      if (choice.outcome === 'accepted') { accepted = true; toast('Đang cài GPLX. Biểu tượng sẽ xuất hiện khi trình duyệt hoàn tất.'); }
     } catch { toast('Chưa mở được cửa sổ cài đặt. Bạn có thể thử từ menu trình duyệt.'); }
     finally { installing = false; button.disabled = false; updateInstall(); }
   });

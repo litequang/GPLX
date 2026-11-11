@@ -17,7 +17,7 @@ npm start
 Mở **http://localhost:4173**. Không cần `npm install` vì dự án không có dependency. Không mở `index.html` bằng `file://`: ES modules và service worker cần HTTP/HTTPS.
 
 ```sh
-npm test                    # 18 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
+npm test                    # 21 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
 node --check dist/app.js
 node --check dist/sw.js
 npm run test:http           # Chạy trong terminal khác khi npm start đang hoạt động

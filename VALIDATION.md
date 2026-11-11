@@ -60,3 +60,7 @@ Tái hiện bằng mô phỏng: worker cache-first trả app v1 tại URL không
 `npm test`: **18/18 PASS**. Bổ sung kiểm thử thực thi app + chrome trong DOM mô phỏng với dataset thật (render home/menu, legacy media API, lỗi init/dataset), worker với cache v1 và URL v3, precache/offline đầy đủ các import và CSS. Không coi đây là browser E2E. Cập nhật check-http để lấy danh sách SHELL thực tế và kiểm MIME JavaScript, bao gồm chrome.js/versioned URLs (lần kiểm tra trước dùng danh sách cố định nên chưa kiểm module chrome.js). Kiểm tra cú pháp app/chrome/SW, check:deploy và diff --check PASS. QA thiết bị thật vẫn chờ; hosting không tự triển khai trong bản vá GitHub này.
 
 HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query version và MIME JS đúng; tổng 27,8 MiB do dataset có cả URL ./data và data trong danh sách kiểm tra.
+
+## Cài nhanh Android — shell v4
+
+21/21 test PASS: bổ sung capture sự kiện trước khi module chạy, gọi prompt đồng bộ trong click đầu tiên, trạng thái chưa đủ điều kiện → có prompt, appinstalled trước UI. 659 URL HTTP 200; kiểm tra cú pháp app/chrome/SW, check:deploy và diff --check PASS. Đây là mô phỏng; chưa xác nhận cài thực tế trên Android. Trình duyệt quyết định khi nào phát beforeinstallprompt, website không ép phát hay tự xác nhận cài.

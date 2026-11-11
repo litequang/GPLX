@@ -2,6 +2,18 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <script id="pwa-install-capture">
+    // Capture before async modules load: browsers may emit this only once.
+    window.gplxInstall = { prompt: null, installed: false };
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      window.gplxInstall.prompt = event;
+    });
+    window.addEventListener('appinstalled', () => {
+      window.gplxInstall.prompt = null;
+      window.gplxInstall.installed = true;
+    });
+  </script>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b3434">
   <meta name="description" content="Học 600 câu hỏi GPLX, ôn điểm liệt, tra cứu biển báo và luyện đề. Lưu tiến độ và học ngoại tuyến.">
@@ -9,7 +21,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=gplx-shell-v3">
+  <link rel="stylesheet" href="./styles.css?v=gplx-shell-v4">
   <title>Ôn thi GPLX · Học vững, lái an tâm</title>
 </head>
 <body>
@@ -46,7 +58,7 @@
       main.replaceChildren(message, retry);
     }
     const startupTimer = setTimeout(startupError, 20000);
-    import('./app.js?v=gplx-shell-v3').catch(error => {
+    import('./app.js?v=gplx-shell-v4').catch(error => {
       console.error('GPLX startup failed:', error);
       startupError();
     }).finally(() => clearTimeout(startupTimer));

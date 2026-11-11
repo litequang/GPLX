@@ -21,7 +21,7 @@ function workerHarness() {
     async match(input) { for (const store of stores.values()) if (store.has(key(input))) return store.get(key(input)).clone(); },
   };
   const fetch = async input => {
-    const url = key(input);
+    const url = new URL(key(input)).pathname;
     if (disconnected) throw new Error('Network unavailable');
     if (failingPath && url.endsWith(failingPath)) return new Response('failed', { status: 503 });
     if (url.endsWith('data/offline.json')) return Response.json({ revision: 'fixture-1', urls: ['data/dataset.json', 'assets/one.webp', 'assets/two.png'] });
@@ -75,4 +75,28 @@ test('a failed offline download has no ready marker and a subsequent retry compl
   await h.dispatch('message', { data: { type: 'download-offline' } });
   assert.equal(h.messages.at(-1).type, 'offline-done');
   assert.ok(await cache.match(new URL('offline-ready', h.scope)));
+});
+
+// Reproduce the old worker's cache-first policy with an already cached v1 app.
+test('versioned entry and imports bypass legacy shell cache and remain available offline', async () => {
+  const h = workerHarness();
+  const legacy = await h.caches.open('gplx-shell-v1');
+  const oldApp = "document.querySelector('#menu-button').addEventListener('click', () => {});";
+  await legacy.put(new URL('app.js', h.scope), new Response(oldApp));
+  const request = path => ({ request: { url: new URL(path, h.scope).href, method: 'GET', mode: 'cors' } });
+  assert.equal(await (await h.dispatch('fetch', request('app.js'))).text(), oldApp);
+  // Old JS paired with the new HTML fails before init(), leaving its loading text.
+  assert.throws(() => vm.runInNewContext(oldApp, { document: { querySelector: () => null } }), /addEventListener/);
+  const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const entry = html.match(/import\('([^']+)'\)/)[1];
+  assert.notEqual(await (await h.dispatch('fetch', request(entry))).text(), oldApp);
+  await h.dispatch('install'); await h.dispatch('activate'); h.offline(true);
+  const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
+  const urls = [entry, html.match(/href="([^" ]+styles\.css[^" ]*)"/)[1], ...[...app.matchAll(/from '([^']+)'/g)].map(m => m[1])];
+  for (const url of urls) {
+    const response = await h.dispatch('fetch', request(url));
+    assert.equal(response.status, 200, url);
+    assert.match(response.headers.get('content-type'), /javascript|css/, url);
+  }
+  assert(!(await h.caches.keys()).includes('gplx-shell-v1'));
 });

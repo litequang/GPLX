@@ -9,7 +9,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=gplx-shell-v3">
   <title>Ôn thi GPLX · Học vững, lái an tâm</title>
 </head>
 <body>
@@ -31,6 +31,25 @@
   <nav id="bottom-nav" class="bottom-nav" aria-label="Điều hướng nhanh"></nav>
   <dialog id="modal"><div id="modal-content"></div></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./app.js"></script>
+  <script type="module">
+    // Update the worker even if an application module fails before init().
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch(() => {});
+    }
+    function startupError() {
+      const main = document.querySelector('#main');
+      const message = document.createElement('p');
+      message.textContent = 'Chưa tải được ứng dụng. Kiểm tra kết nối và tải lại trang. Nếu vừa cập nhật, hãy tải lên đầy đủ thư mục dist.';
+      const retry = document.createElement('button');
+      retry.className = 'primary'; retry.textContent = 'Tải lại ứng dụng';
+      retry.addEventListener('click', () => location.reload());
+      main.replaceChildren(message, retry);
+    }
+    const startupTimer = setTimeout(startupError, 20000);
+    import('./app.js?v=gplx-shell-v3').catch(error => {
+      console.error('GPLX startup failed:', error);
+      startupError();
+    }).finally(() => clearTimeout(startupTimer));
+  </script>
 </body>
 </html>

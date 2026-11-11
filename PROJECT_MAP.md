@@ -124,7 +124,7 @@ Shell được cache khi cài worker. Ảnh đã xem được cache theo yêu c�
 | --- | --- | --- |
 | localStorage | `gplx-progress-v1` | version, license, answers, bookmarks, history, lastQuestion |
 | sessionStorage | `gplx-active-exam` | Bài đang làm, tồn tại khi tải lại trong cùng tab |
-| Cache Storage | `gplx-shell-v2` | Shell + dataset cần để khởi động offline |
+| Cache Storage | `gplx-shell-v3` | Shell + dataset cần để khởi động offline |
 | Cache Storage | `gplx-offline-data-v1` | JSON và ảnh, marker revision |
 
 Tiến độ theo origin và trình duyệt. Không tự đồng bộ nhiều thiết bị. Export/import thay thế tiến độ hiện có; import tính lại tính đúng/sai từ dataset đang dùng.
@@ -152,3 +152,7 @@ Tiến độ theo origin và trình duyệt. Không tự đồng bộ nhiều th
 `updateNav()` render sidebar và thanh dưới (Tổng quan, Học câu hỏi, Luyện đề, Biển báo, Thêm). Mục Thêm mở dialog tới điểm liệt/câu sai/đánh dấu/cài đặt; sidebar chỉ hiển thị trên desktop/tablet. `chrome.js` dùng một class `chrome-hidden` cho header, thanh dưới và sidebar, passive scroll + requestAnimationFrame, ngưỡng xuống 36px/lên 14px và chặn overscroll. Route mới, đầu trang, modal hoặc điều hướng bàn phím khôi phục thanh. Controls ẩn dùng inert. CSS có safe-area, giảm chuyển động, backdrop-filter và nền đặc dự phòng.
 
 Nút cài luôn có trong browser: dùng beforeinstallprompt khi có, còn lại mở hướng dẫn; ẩn khi standalone/appinstalled. Prompt chỉ dùng một lần và chặn bấm lặp. `chrome.js` được precache cùng shell v2; không đổi schema tiến độ hay dữ liệu. Kiểm thử mô phỏng nằm ở `tests/chrome.test.mjs`.
+
+## Bản vá khởi động/cache v3 (11/11/2026)
+
+HTML tải CSS và entry module qua URL có `?v=gplx-shell-v3`; app import core/chrome với cùng version. SW precache đúng các URL này và kiểm MIME bằng pathname (bỏ query). Bootstrap inline đăng ký worker độc lập trước khi import app, bắt lỗi import và có timeout 20 giây để thay trạng thái chờ bằng nút tải lại. `await init()` bao gồm initChrome trong error boundary và fetch dataset timeout 15 giây. Không xóa localStorage/sessionStorage/cache dữ liệu học. Các lần sửa shell sau phải đổi revision đồng thời ở HTML, imports và SW.

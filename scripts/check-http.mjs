@@ -1,12 +1,17 @@
 import { readFileSync } from 'node:fs';
 const base = process.env.PREVIEW_URL || 'http://localhost:4173/';
 const manifest = JSON.parse(readFileSync(new URL('../dist/data/offline.json', import.meta.url)));
-const paths = ['', 'index.html', 'app.js', 'core.js', 'styles.css', 'sw.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'data/offline.json', ...manifest.urls];
+// Read the actual precache URLs so new modules/versioned requests cannot be missed.
+const worker = readFileSync(new URL('../dist/sw.js', import.meta.url), 'utf8');
+const shell = JSON.parse(worker.match(/const SHELL = (\[[^;]+\]);/)[1].replaceAll("'", '"'));
+const paths = [...new Set([...shell, './sw.js', ...manifest.urls])];
 let count = 0, bytes = 0;
 for (let index = 0; index < paths.length; index += 12) {
   await Promise.all(paths.slice(index, index + 12).map(async path => {
     const response = await fetch(new URL(path, base));
     if (!response.ok || response.redirected) throw new Error(`${path}: HTTP ${response.status}, redirected=${response.redirected}`);
+    const pathname = new URL(path, base).pathname;
+    if (pathname.endsWith('.js') && !/javascript/.test(response.headers.get('content-type') || '')) throw new Error(`Invalid JavaScript MIME: ${path}`);
     const body = await response.arrayBuffer();
     if (!body.byteLength) throw new Error(`Empty response: ${path}`);
     if (path.includes('assets/') && !response.headers.get('content-type')?.startsWith('image/')) throw new Error(`Invalid image MIME: ${path}`);

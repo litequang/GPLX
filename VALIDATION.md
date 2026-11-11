@@ -52,3 +52,11 @@ Không đánh dấu các mục trên đã hoàn thành cho tới khi thực hi�
 - HTTP preview và check-http chạy trong cùng tiến trình kiểm tra: **657 URL trả 200**. Không có bước build vì dist là source runtime.
 - Đã thử Playwright Chromium: không khởi chạy được vì `socket() failed: Operation not permitted` (process singleton). Shared browser không truy cập được preview (`ERR_CONNECTION_REFUSED`). Vì vậy chưa xác nhận trực quan 390px/desktop, thao tác học/luyện đề, cuộn trên thiết bị, offline/cài PWA thật. Các mục QA thực tế vẫn mở trong ROADMAP.
 - Shell tăng v2 và precache chrome.js. Không triển khai lại hosting trong thay đổi này; phạm vi là mã GitHub.
+
+## Bản vá treo khởi động — 11/11/2026
+
+Tái hiện bằng mô phỏng: worker cache-first trả app v1 tại URL không version trong khi HTML mới không còn #menu-button; listener cũ throw trước init. Đây là nguyên nhân tái hiện được, chưa đọc console của máy người dùng. Bản v3 version hóa JS/CSS và imports, đăng ký worker độc lập với app, hiển thị retry khi lỗi module/khởi động, timeout tải dataset và hỗ trợ MediaQueryList.addListener trên Safari cũ.
+
+`npm test`: **18/18 PASS**. Bổ sung kiểm thử thực thi app + chrome trong DOM mô phỏng với dataset thật (render home/menu, legacy media API, lỗi init/dataset), worker với cache v1 và URL v3, precache/offline đầy đủ các import và CSS. Không coi đây là browser E2E. Cập nhật check-http để lấy danh sách SHELL thực tế và kiểm MIME JavaScript, bao gồm chrome.js/versioned URLs (lần kiểm tra trước dùng danh sách cố định nên chưa kiểm module chrome.js). Kiểm tra cú pháp app/chrome/SW, check:deploy và diff --check PASS. QA thiết bị thật vẫn chờ; hosting không tự triển khai trong bản vá GitHub này.
+
+HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query version và MIME JS đúng; tổng 27,8 MiB do dataset có cả URL ./data và data trong danh sách kiểm tra.

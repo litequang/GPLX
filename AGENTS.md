@@ -28,7 +28,7 @@ npm run check:deploy
 
 Nếu sửa UI/PWA, chạy `npm start` và kiểm tra trình duyệt khi công cụ khả dụng: desktop, mobile 390px, chọn đáp án đúng/sai, đổi bộ lọc, sinh/nộp đề, tải lại tab giữa bài, tải offline rồi tắt server và mở lại. Không đánh dấu đã kiểm tra trực quan nếu chỉ đọc code hoặc chạy HTTP. Ghi kết quả thật trong VALIDATION.md.
 
-Tăng `APP_REVISION` trong sw.js sau thay đổi shell. Không sửa dữ liệu/ảnh mà bỏ cập nhật manifest offline. Nếu thêm schema tiến độ, viết migration; không làm mất tiến độ v1.
+Tăng `APP_REVISION` trong sw.js sau thay đổi shell, đồng thời đổi query `?v=` của CSS/entry module trong index.html, mọi import trong app.js và URL tương ứng trong SHELL của sw.js. Giữ cùng revision để HTML mới không chạy JS cũ từ worker cache-first. Không sửa dữ liệu/ảnh mà bỏ cập nhật manifest offline. Nếu thêm schema tiến độ, viết migration; không làm mất tiến độ v1.
 
 ## Khi bàn giao
 

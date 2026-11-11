@@ -1,5 +1,5 @@
-import { initChrome } from './chrome.js';
-import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js';
+import { initChrome } from './chrome.js?v=gplx-shell-v3';
+import { STORAGE_KEY, normalize, emptyProgress, parseProgress, poolFor, generateExam, gradeExam } from './core.js?v=gplx-shell-v3';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -234,11 +234,18 @@ function updateConnection() { $('#connection-label').textContent = navigator.onL
 addEventListener('online', updateConnection); addEventListener('offline', updateConnection); updateConnection();
 addEventListener('hashchange', () => { if (dataset) go(location.hash.slice(1)); });
 
-const chrome = initChrome({ showModal, modalHeading, toast });
+let chrome = { show() {} }; // Initialized inside the startup error boundary.
 
 async function init() {
   try {
-    const response = await fetch('./data/dataset.json'); if (!response.ok) throw new Error('Không tải được dữ liệu.'); dataset = await response.json();
+    chrome = initChrome({ showModal, modalHeading, toast });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch('./data/dataset.json', { signal: controller.signal });
+      if (!response.ok) throw new Error('Không tải được dữ liệu.');
+      dataset = await response.json();
+    } finally { clearTimeout(timeout); }
     try { progress = parseProgress(localStorage.getItem(STORAGE_KEY)); } catch { progress = emptyProgress(); }
     if (!dataset.licenses.some(l => l.name === progress.license)) progress.license = 'B';
     try {
@@ -254,7 +261,7 @@ async function init() {
         if (m.type === 'offline-error') { offline.status = 'error'; toast(m.message || 'Tải chưa hoàn tất. Bạn có thể thử lại.'); }
         if (state.route === 'home' && m.type.startsWith('offline-')) { const panel = document.querySelector('.offline-panel'); if (panel) panel.outerHTML = offlinePanel(); }
       });
-      navigator.serviceWorker.register('./sw.js').then(async registration => {
+      navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(async registration => {
         serviceWorkerRegistration = registration;
         const dataCache = await caches.open('gplx-offline-data-v1');
         const ready = await dataCache.match(new URL('offline-ready', registration.scope));
@@ -264,4 +271,4 @@ async function init() {
     }
   } catch (error) { $('#main').innerHTML = `<div class="empty"><h1>Chưa mở được bộ câu hỏi</h1><p>${escape(error.message)} Kiểm tra kết nối rồi tải lại trang.</p><button class="primary" onclick="location.reload()">Thử lại</button></div>`; }
 }
-init();
+await init();

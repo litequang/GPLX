@@ -17,3 +17,7 @@ Cập nhật trạng thái sau mỗi chặng. Phần chưa hoàn thành phải g
 ## 11/11/2026 — Điều hướng glass và nút cài PWA
 
 Hoàn thành mã: thanh dưới 5 mục, menu phụ, header/menu đồng bộ cuộn, safe-area và giảm chuyển động, cài PWA với hướng dẫn dự phòng iPhone/iPad. Tăng shell v2; không đổi dữ liệu/tiến độ. 14 test PASS, kiểm tra cú pháp/deploy/HTTP PASS. QA trực quan và cài thiết bị thật còn chờ do lỗi môi trường trình duyệt (VALIDATION.md). Commit bàn giao mang tên `Add synchronized glass navigation and PWA install flow`; không phát hành lại hosting.
+
+## 11/11/2026 — Vá lỗi “Đang mở bộ câu hỏi…”
+
+Tái hiện lỗi trộn HTML mới và app v1 trong cache, sửa bằng shell v3 có URL version hóa và bootstrap tự báo lỗi/cập nhật worker. Bổ sung test khởi động thực thi code với dataset thật trong DOM mô phỏng, kiểm cache upgrade/offline; 18/18 PASS. Commit: `Fix startup hang caused by mixed PWA shell versions`. Cần tải lại toàn bộ dist lên hosting; giữ nguyên tiến độ người dùng.

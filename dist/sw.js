@@ -1,7 +1,7 @@
 // Bump APP_REVISION after changing shell files. Offline data revision comes from offline.json.
-const APP_REVISION = 'gplx-shell-v2';
+const APP_REVISION = 'gplx-shell-v3';
 const DATA_CACHE = 'gplx-offline-data-v1';
-const SHELL = ['./', './index.html', './styles.css', './app.js', './core.js', './chrome.js', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './data/dataset.json', './data/offline.json'];
+const SHELL = ['./', './index.html', './styles.css?v=gplx-shell-v3', './app.js?v=gplx-shell-v3', './core.js?v=gplx-shell-v3', './chrome.js?v=gplx-shell-v3', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './data/dataset.json', './data/offline.json'];
 let downloadTask;
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
@@ -9,7 +9,8 @@ self.addEventListener('install', event => {
     for (const path of SHELL) {
       const url = new URL(path, self.registration.scope);
       const response = await fetch(url, { cache: 'reload' });
-      const expected = path.endsWith('.js') ? /javascript/ : path.endsWith('.css') ? /text\/css/ : path.endsWith('.json') ? /json/ : path.endsWith('.webmanifest') ? /json|manifest/ : path.includes('/icons/') ? /^image\// : /text\/html/;
+      const pathname = url.pathname;
+      const expected = pathname.endsWith('.js') ? /javascript/ : pathname.endsWith('.css') ? /text\/css/ : pathname.endsWith('.json') ? /json/ : pathname.endsWith('.webmanifest') ? /json|manifest/ : pathname.includes('/icons/') ? /^image\// : /text\/html/;
       if (!response.ok || response.redirected || !expected.test(response.headers.get('content-type') || '')) throw new Error(`Invalid shell response: ${path}`);
       await cache.put(url, response);
     }

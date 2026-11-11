@@ -17,7 +17,7 @@ npm start
 Mở **http://localhost:4173**. Không cần `npm install` vì dự án không có dependency. Không mở `index.html` bằng `file://`: ES modules và service worker cần HTTP/HTTPS.
 
 ```sh
-npm test                    # 14 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
+npm test                    # 18 nhóm kiểm thử, gồm 1.000 đề ngẫu nhiên
 node --check dist/app.js
 node --check dist/sw.js
 npm run test:http           # Chạy trong terminal khác khi npm start đang hoạt động
@@ -70,4 +70,4 @@ Không đặt ZIP tải về hoặc APK/DB gốc trong `dist/`. Packager có th�
 
 GitHub Actions kiểm thử bằng Node 22 trên mỗi push/pull request. Dự án không tự bật GitHub Pages hoặc đổi quyền truy cập repository. Hosting Sites có cấu hình trong `.openai/hosting.json`; không tạo Site mới nếu đã có `project_id`.
 
-Khi sửa shell JS/CSS/HTML, tăng `APP_REVISION` trong `dist/sw.js` và chạy kiểm thử. Khi thay dữ liệu, chạy lại script xuất để cập nhật `data/offline.json`, đồng thời tăng revision shell.
+Khi sửa shell JS/CSS/HTML, tăng `APP_REVISION` trong `dist/sw.js` cùng query `?v=` của CSS/entry/imports trong `index.html`, `app.js` và danh sách `SHELL`, rồi chạy kiểm thử. Khi thay dữ liệu, chạy lại script xuất để cập nhật `data/offline.json`, đồng thời tăng revision shell.

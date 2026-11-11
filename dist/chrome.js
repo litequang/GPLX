@@ -35,7 +35,11 @@ export function initChrome({ showModal, modalHeading, toast }) {
   }
   addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(update); }, { passive: true });
   addEventListener('resize', show);
-  mobile.addEventListener('change', show);
+  const onMediaChange = (media, callback) => {
+    if (media.addEventListener) media.addEventListener('change', callback);
+    else media.addListener?.(callback);
+  };
+  onMediaChange(mobile, show);
   document.addEventListener('pointerdown', () => { keyboardNavigation = false; });
   document.addEventListener('keydown', event => { if (event.key === 'Tab') { keyboardNavigation = true; show(); } });
   function updateInstall() { button.hidden = installed || standalone.matches || navigator.standalone === true; }
@@ -46,7 +50,7 @@ export function initChrome({ showModal, modalHeading, toast }) {
     installed = true; promptEvent = null; updateInstall();
     toast('Đã cài ứng dụng. Chúc bạn học tốt!');
   });
-  standalone.addEventListener('change', updateInstall);
+  onMediaChange(standalone, updateInstall);
   button.addEventListener('click', async () => {
     if (installing) return;
     if (!promptEvent) {

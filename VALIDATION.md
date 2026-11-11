@@ -79,3 +79,12 @@ HTTP bản vá v3: 659 URL trả 200, bao gồm entry/import/CSS có query versi
 - Hiệu đính văn bản câu 1, 2, 600 theo PDF Cục CSGT. Câu 466, 474, 475 tiếp tục thiếu giải thích nguồn.
 - Cần phân biệt **đã xác minh ID** với **chưa xác minh đầy đủ 600/600 câu chữ/đáp án/ảnh**. Chưa chỉnh các đáp án vì PDF dùng định dạng gạch chân cần kiểm tra trực quan.
 - Nguồn: https://cuccsgt.bocongan.gov.vn/upload/services/2071319603_H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20s%E1%BB%AD%20d%E1%BB%A5ng%20b%E1%BB%99%20c%C3%A2u%20h%E1%BB%8Fi%20s%C3%A1t%20h%E1%BA%A1ch%20GPLX%20%28CV%202262.07.5.2025%29.pdf
+
+
+## Khôi phục tiến độ học — PWA shell v7 (11/11/2026)
+- Khắc phục việc `state.responses` bị xóa khi `go()` hoặc F5: đọc lại `progress.answers` đã lưu trong `localStorage`, giữ đúng/sai/giải thích.
+- Bổ sung `studyPositions` tùy chọn theo `license|route|category` trong schema backup v1, không nâng version hay xóa dữ liệu cũ. `parseProgress` xử lý backup cũ thiếu trường này, lọc khóa/vị trí không hợp lệ.
+- Tích hợp lưu vị trí khi chuyển câu, trả lời, chuyển mục học; `retry-question` chỉ mở lại UI tạm, không hủy đáp án cũ tới khi người học trả lời lại.
+- Test trong `tests/study-progress.test.mjs`: trả lời sai/đúng → chuyển tab → F5 → khôi phục vị trí, xem lại giải thích, legacy backup, nhóm câu cần ôn; cộng thêm test lõi migration.
+- Nút Xóa tiến độ không mang lại vị trí cũ khi reset; nhập backup không bị trộn vị trí phiên trước.
+- CI Node mô phỏng không thay thế xác nhận trực tiếp Android/iPhone và trình duyệt thật.

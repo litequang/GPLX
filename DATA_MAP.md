@@ -112,3 +112,11 @@ Script kiểm tra tên asset, sự tồn tại ảnh, giữ ID và ghi manifest 
 - `examQuestions()` lấy câu hỏi theo hạng để chấm đúng; `validExamIds()` không khôi phục đề từ phiên cũ có cấu trúc sai. Tiến độ `gplx-progress-v1` giữ nguyên.
 - Câu **1, 2, 600** hiệu đính văn bản đã kiểm tra theo PDF chính thức; đáp án, ID, category và ảnh không đổi. Script trích xuất giữ các hiệu đính để tái tạo dữ liệu nhất quán.
 - **Chưa hoàn thành xác minh 600/600 câu chữ, lựa chọn, đáp án có gạch chân và hình ảnh**; xem `docs/OFFICIAL_2025_STEP1_AUDIT.md`.
+
+
+## Tiến độ học cá nhân — bổ sung từ shell v7
+- `STORAGE_KEY='gplx-progress-v1'` không đổi: vẫn giữ `answers`, `bookmarks`, `history`, `license`, `lastQuestion`.
+- `studyPositions` tùy chọn ánh xạ `hạng|mục học|chủ đề` → ID câu cuối; ví dụ `B|learn|all`, `A1|critical|all`, `B|learn|6`. Backup cũ vẫn nhập được.
+- `restoredStudyResponses()` lấy đáp án đã lưu (`selected=1..4`) vào trạng thái học khi vào màn hình, loại câu bỏ trống (`selected=0`), không dùng để tự điền đáp án trong bài thi mới.
+- Bấm `Làm lại câu này` tạm ẩn phần phản hồi hiện tại, chỉ ghi đè record khi trả lời lại; F5 trước khi chọn sẽ vẫn khôi phục câu trả lời đã lưu.
+- `answers` đang lưu **lần trả lời gần nhất** cho mỗi câu, không phải nhật ký không giới hạn các lần thử. `history` bài thi là tóm tắt, chưa lưu chi tiết từng đề đã nộp.

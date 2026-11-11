@@ -43,3 +43,11 @@
 - [x] Hiệu đính câu 1, 2, 600 từ văn bản CSGT chính thức, giữ nguồn trong extractor.
 - [ ] Đối chiếu 600/600 câu chữ, lựa chọn, đáp án có gạch chân và từng hình ảnh theo số câu trước khi khẳng định 100% chính xác.
 - [ ] Kiểm chứng trên điện thoại và PWA đã được nâng cache lên v6.
+
+
+## Kế hoạch 11/11/2026 — tiến độ học và biển báo
+- [x] Khôi phục đáp án đã lưu, trạng thái đúng/sai, giải thích và vị trí câu theo hạng/mục học sau F5/chuyển tab.
+- [x] Giữ tương thích backup `gplx-progress-v1`, bổ sung kiểm thử chuyển màn hình/reload, cache PWA shell v7.
+- [ ] QA trực tiếp học → đổi tab → F5 trên trình duyệt Android/iOS và PWA.
+- [ ] Cập nhật thư viện 332 biển báo theo **QCVN 41:2024/BGTVT**, bắt đầu từ kiểm kê/đối chiếu theo phụ lục B–F, theo quy trình `docs/QCVN41_2024_SIGN_UPDATE_PLAN.md`.
+- [ ] Kiểm tra riêng vạch kẻ đường, tín hiệu đèn và báo hiệu trên cao tốc trước khi bổ sung thành mục học mở rộng.

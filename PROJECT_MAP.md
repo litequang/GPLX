@@ -35,6 +35,7 @@ GPLX/                              # Repository này
 ├── DATA_MAP.md                     # Schema, provenance, mapping hạng bằng
 ├── DESIGN_SYSTEM.md                # Quy tắc giao diện
 ├── VALIDATION.md                   # Kiểm thử đã chạy và chưa chạy
+├── DEPLOYMENT.md                   # URL riêng tư, trạng thái và commit runtime đã triển khai
 ├── ROADMAP.md                      # Công việc tiếp theo theo thứ tự
 ├── TIMELINE.md                     # Tiến độ triển khai
 ├── package.json                    # start/dev/extract/test; không dependency

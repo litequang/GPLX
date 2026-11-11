@@ -2,6 +2,8 @@
 
 Ứng dụng ôn tập cá nhân từ dữ liệu ứng dụng Android **Ôn thi GPLX**, có 600 câu hỏi, 60 câu điểm liệt và 332 biển báo. Chạy bằng HTML/CSS/JavaScript thuần; không cần dịch vụ backend hoặc bước build.
 
+**[Mở bản app đã triển khai](https://gplx-hoc-lai-xe-quang.quartzcello4.chatgpt.site)** — hosting riêng tư của chủ sở hữu. Trạng thái và commit runtime: [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Chạy ngay
 
 Yêu cầu Node.js 22.13 trở lên.

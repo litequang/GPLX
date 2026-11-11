@@ -10,5 +10,6 @@ Ngày thực hiện: 11/11/2026 (Asia/Saigon).
 | 4. Kiểm thử | Tự động/HTTP đã qua; UI còn chờ | Xem VALIDATION.md: không tuyên bố đã kiểm tra browser do Computer Use dừng |
 | 5. Bàn giao | Hoàn thành tài liệu | README, AGENTS.md, PROJECT_MAP.md, DATA_MAP.md, DESIGN_SYSTEM.md, VALIDATION.md, ROADMAP.md |
 | 6. Đẩy GitHub | Hoàn thành | Nhánh main tại https://github.com/litequang/GPLX; bản đầu 64e6b58; xem commit mới nhất để lấy bàn giao hiện tại |
+| 7. Hosting riêng tư | Hoàn thành | Công cụ trả succeeded kèm URL; xem DEPLOYMENT.md. QA trực quan vẫn nằm trong ROADMAP |
 
 Cập nhật trạng thái sau mỗi chặng. Phần chưa hoàn thành phải ghi rõ ở ROADMAP.md; không đánh dấu hoàn thành khi chưa kiểm tra.
